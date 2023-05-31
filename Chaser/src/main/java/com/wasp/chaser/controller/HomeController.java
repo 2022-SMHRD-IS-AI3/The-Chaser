@@ -1,4 +1,4 @@
-package com.wasp.chaser;
+package com.wasp.chaser.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
