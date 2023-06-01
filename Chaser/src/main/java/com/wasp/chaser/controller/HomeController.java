@@ -33,7 +33,38 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
+		return "home";
+		
+	}
+	
+	@RequestMapping(value = "/address", method = RequestMethod.GET)
+	public String address(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
 		return "address";
+		
+	}
+	
+	@RequestMapping(value = "/map", method = RequestMethod.GET)
+	public String map(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "map";
+		
 	}
 	
 }
