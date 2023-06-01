@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 public class AppeDTO {
 	
 	private int appe_idx;					// 인상착의 순번
-	private int case_idx;					// 사건 번호
 	private String appe_top_type;			// 상의 종루
 	private String appe_top_color;			// 상의 색상
 	private String appe_bottom_type;		// 하의 종류
@@ -20,6 +19,7 @@ public class AppeDTO {
 	private char appe_gender;				// 성별
 	private int appe_age;					// 연령대
 	private int appe_height;				// 키
-	private String appe_form;				// 체형
+	private String appe_body;				// 체형
+	private int episode_idx;				// 사건 번호
 
 }
