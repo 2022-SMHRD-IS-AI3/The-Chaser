@@ -19,22 +19,19 @@
          <!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
          <property name="jdbcUrl" value="jdbc:oracle:thin:@59.0.124.219:1521:XE"></property> -->
          <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-         <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@220.80.165.49:1521:XE"></property>
-         <property name="username" value="spring"></property>
-         <property name="password" value="0000"></property>
+         <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@project-db-stu.smhrd.com:1524:XE"></property>
+         <property name="username" value="campus_c_230531_3"></property>
+         <property name="password" value="smhrd3"></property>
    </bean>
-   
    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
    		<constructor-arg ref="hikariConfig"></constructor-arg>
    </bean>
-   
    <tx:annotation-driven/>
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
    		<property name="dataSource" ref="dataSource"></property>	
    		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>	
    		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
    </bean>
-   
    <!-- mybatis-spring에서 제공하는 SqlSessionTemplate -->
    <!-- Mybatis의 Sqlsession 인터페이스를 구현한 클래스,
    		트랜잭션 관리, 쓰레드 처리의 안정성 보장, 데이터베이스의 연결과 종료를 책임 -->
