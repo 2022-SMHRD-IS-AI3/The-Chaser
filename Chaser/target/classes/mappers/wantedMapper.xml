@@ -5,12 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="WantedMapper">
+
 	<select id="listAll" resultType="com.wasp.chaser.domain.WantedDTO">
-	
+		SELECT * FROM tb_wanted 
+		WHERE episode_idx = #{episode_idx} and image_idx = #{image_idx}
 	</select>
+
 	<update id="update">
-	
+		UPDATE tb_wanted
+		SET w_flag = #{w_flag}
+		WHERE w_idx = #{w_idx}	
 	</update>
+
 	<delete id="delete">
+		DELETE FROM tb_wanted 
+		WHERE w_idx = #{w_idx}
 	</delete>
 </mapper>
