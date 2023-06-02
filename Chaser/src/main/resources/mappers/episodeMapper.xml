@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EpisodeMapper">
+
+	<insert id="insert">
+		INSERT INTO tb_episode(episode_type, episode_title, episode_content, episode_loc, episode_time)
+		VALUES(#{episode_type}, #{episode_title}, #{episode_content}, #{episode_loc}, #{episode_time})
+	</insert>
+	
+	<select id="read" resultType="com.wasp.chaser.domain.EpisodeDTO">
+		SELECT 	episode_idx,
+				episode_type,
+				episode_title,
+				episode_content,
+				episode_loc,
+				episode_time,
+				episode_start_dt,
+				episode_end_dt,
+				episode_flag
+		FROM tb_episode
+		WHERE episode_idx = #{episode_idx}
+	</select>
+	
+	<update id="update">
+		UPDATE tb_episode
+		SET episode_type = #{episode_type}, episode_title = #{episode_title}, episode_content = #{episode_content},
+			episode_loc = #{episode_loc}, episode_time = #{episode_time}
+		WHERE episode_idx = #{episode_idx}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM tb_episode
+		WHERE episode_idx = #{episode_idx}
+	</delete>
+	
+	<select id="listAll" resultType="com.wasp.chaser.domain.EpisodeDTO">
+		<![CDATA[
+			SELECT 	episode_idx,
+					episode_type,
+					episode_title,
+					episode_content,
+					episode_loc,
+					episode_time,
+					episode_start_dt,
+					episode_end_dt,
+					episode_flag
+			FROM tb_episode
+			ORDER BY episode_idx DESC
+		]]>
+	</select>
+	
+	
+
+</mapper>

@@ -1,6 +1,6 @@
 package com.wasp.chaser.domain;
 
-public class WantDTO {
+public class WantedDTO {
 	
 	private int w_idx;				// 용의자 후보 순번
 	private int w_first;				// 영상에서 나온 첫 프레임
