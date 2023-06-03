@@ -37,11 +37,13 @@ public class EpisodeController {
 	public void update(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
 	}
+	
 	// 사건 삭제
-	public int delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
+	public void delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		log.info("사건 삭제");
-		return 0;
 	}
+	
 	// 사건 리스트
 	@RequestMapping(value="/episode_list", method = RequestMethod.GET)
 	public void list(Model model) throws Exception{
