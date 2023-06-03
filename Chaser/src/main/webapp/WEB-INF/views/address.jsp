@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/juso" method="get">
+<form action="/juso" method="post">
 	<input type="text" id="sample4_postcode" placeholder="우편번호">
 	<input type="button" onclick="sample4_execDaumPostcode()"
 		value="우편번호 찾기">

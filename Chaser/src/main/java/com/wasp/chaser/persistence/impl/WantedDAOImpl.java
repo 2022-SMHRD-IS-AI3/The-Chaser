@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.wasp.chaser.domain.WantedDTO;
 import com.wasp.chaser.persistence.IWantedDAO;
 
+@Repository
 public class WantedDAOImpl implements IWantedDAO{
 
 	@Autowired
@@ -16,21 +18,18 @@ public class WantedDAOImpl implements IWantedDAO{
 	private static final String namespace = "com.wasp.chaser.wantedMapper";
 	
 	@Override
-	public List<WantedDTO> listAll(int episode_idx, int img_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception {
+		return sqlSession.selectList(namespace + ".listAll", wanted);
 	}
 
 	@Override
-	public int update(int w_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(WantedDTO wanted) throws Exception {
+		return sqlSession.update(namespace + ".update", wanted);
 	}
 
 	@Override
 	public int delete(int w_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace + ".delete", w_idx);
 	}
 
 }
