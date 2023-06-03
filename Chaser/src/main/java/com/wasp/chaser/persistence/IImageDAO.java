@@ -7,7 +7,7 @@ import com.wasp.chaser.domain.ImageDTO;
 public interface IImageDAO {
 	
 	// 영상 작성
-	public void insert(int image) throws Exception;
+	public void insert(ImageDTO image) throws Exception;
 	
 	// 영상 리스트 불러오기
 	public List<ImageDTO> listAll(int episode_idx) throws Exception;

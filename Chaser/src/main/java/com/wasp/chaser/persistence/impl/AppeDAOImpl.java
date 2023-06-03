@@ -17,26 +17,22 @@ public class AppeDAOImpl implements IAppeDAO {
 
 	@Override
 	public void insert(AppeDTO appe) throws Exception {
-		// TODO Auto-generated method stub
-		
+		sqlSession.insert(namespace + ".insert", appe);
 	}
 
 	@Override
 	public AppeDTO read(int episode_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace + ".read", episode_idx);
 	}
 
 	@Override
 	public int update(AppeDTO appe) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace + ".update", appe);
 	}
 
 	@Override
 	public int delete(int episode_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace + ".delete", episode_idx);
 	}
 
 }

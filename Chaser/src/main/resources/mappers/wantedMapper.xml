@@ -4,11 +4,13 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="WantedMapper">
+<mapper namespace="com.wasp.chaser.wantedMapper">
 
 	<select id="listAll" resultType="com.wasp.chaser.domain.WantedDTO">
-		SELECT * FROM tb_wanted 
-		WHERE episode_idx = #{episode_idx} and image_idx = #{image_idx}
+		<![CDATA[
+			SELECT * FROM tb_wanted 
+			WHERE episode_idx = #{episode_idx} and img_idx = #{img_idx}
+		]]>
 	</select>
 
 	<update id="update">

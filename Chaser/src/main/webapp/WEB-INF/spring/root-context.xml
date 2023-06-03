@@ -38,6 +38,6 @@
    <bean id="sqlsession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
    	<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
    </bean>
-   <context:component-scan base-package="com.smart.smhrd"></context:component-scan>
-   <mybatis-spring:scan base-package="com.smart.smhrd.mapper"/>
+   <context:component-scan base-package="com.wasp.chaser"></context:component-scan>
+   <mybatis-spring:scan base-package="com.wasp.chaser.mapper"/>
 </beans>

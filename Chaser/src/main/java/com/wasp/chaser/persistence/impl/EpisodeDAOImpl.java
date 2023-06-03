@@ -16,35 +16,30 @@ public class EpisodeDAOImpl implements IEpisodeDAO {
 	private SqlSession sqlSession;
 	
 	private static final String namespace = "com.wasp.chaser.episodeMapper";
-	
+
 	@Override
 	public void insert(EpisodeDTO episode) throws Exception {
-		
-		
+		sqlSession.insert(namespace + ".insert", episode);		
 	}
 
 	@Override
 	public EpisodeDTO read(int episode_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(namespace + ".read", episode_idx);
 	}
 
 	@Override
 	public int update(EpisodeDTO episode) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.update(namespace + ".update", episode);
 	}
 
 	@Override
 	public int delete(int episode_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace + ".delete", episode_idx);
 	}
 
 	@Override
 	public List<EpisodeDTO> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(namespace + ".listAll");
 	}
 
 }
