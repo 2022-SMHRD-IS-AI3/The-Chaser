@@ -1,5 +1,12 @@
 package com.wasp.chaser.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class WantedDTO {
 	
 	private int w_idx;				// 용의자 후보 순번

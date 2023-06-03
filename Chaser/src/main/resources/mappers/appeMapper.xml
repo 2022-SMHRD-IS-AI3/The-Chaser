@@ -4,7 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="AppeMapper">
+<mapper namespace="com.wasp.chaser.appeMapper">
 	
 	<insert id="insert">
 		INSERT INTO tb_appearance
@@ -34,14 +34,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="read" resultType="com.wasp.chaser.domain.AppeDTO">
-		SELECT * FROM tb_apperance 
+		SELECT * FROM tb_appearance 
 		WHERE episode_idx = #{episode_idx}
 	</select>
 	
 	<update id="update">
 		UPDATE tb_appearance
-		SET
-			appe_top_type = #{appe_top_type},
+		SET	appe_top_type = #{appe_top_type},
 			appe_top_color = #{appe_top_color},
 			appe_bottom_type = #{appe_bottom_type},
 			appe_bottom_color = #{appe_bottom_color},
@@ -51,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			appe_age = #{appe_age},
 			appe_height = #{appe_height},
 			appe_body = #{appe_body}
-		WHERE appe_idx = #{appe_idx};
+		WHERE appe_idx = #{appe_idx}
 	</update>
 	
 	<delete id="delete">

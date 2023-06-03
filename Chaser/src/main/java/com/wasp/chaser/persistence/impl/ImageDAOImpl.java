@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.wasp.chaser.domain.ImageDTO;
 import com.wasp.chaser.persistence.IImageDAO;
 
+@Repository
 public class ImageDAOImpl implements IImageDAO{
 
 	@Autowired
@@ -16,21 +18,18 @@ public class ImageDAOImpl implements IImageDAO{
 	private static final String namespace = "com.wasp.chaser.imageMapper";
 	
 	@Override
-	public void insert(int image) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void insert(ImageDTO image) throws Exception {
+		sqlSession.insert(namespace + ".insert", image);	
 	}
-
+	
 	@Override
 	public List<ImageDTO> listAll(int episode_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList(namespace + ".listAll", episode_idx);
 	}
 
 	@Override
 	public int delete(int img_idx) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(namespace + ".delete", img_idx);
 	}
 
 }

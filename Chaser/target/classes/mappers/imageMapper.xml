@@ -4,7 +4,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ImageMapper">
+<mapper namespace="com.wasp.chaser.imageMapper">
 
 	<insert id="insert">
 		INSERT INTO tb_image
@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{img_src},
 			#{img_xy},
 			#{img_length},
-			sysdate,
+			#{img_time},
 			#{episode_idx})
 	</insert>
 	
