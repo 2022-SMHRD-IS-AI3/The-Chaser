@@ -114,8 +114,12 @@ var map = new naver.maps.Map("map", {
        position: polylinePath[polylinePath.length-5], //마크 표시할 위치 배열의 마지막 위치
        map: map
    });
-  
-var map = new naver.maps.Map('map', mapOptions);
+   
+   // 클릭시 마커 생성 함수
+   naver.maps.Event.addListener(map, 'click', function(e) {
+	    marker.setPosition(e.coord);
+	});
+
 
 </script>
 
