@@ -8,5 +8,8 @@
 </head>
 <body>
 	<h1>분석 결과 페이지</h1>
+	<c:forEach items="${list}" var="wanted">
+		${wanted.wanted_thumb }
+	</c:forEach>
 </body>
 </html>

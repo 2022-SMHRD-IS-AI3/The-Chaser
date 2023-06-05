@@ -21,9 +21,9 @@ public class WantedController {
 	
 	// 후보 리스트 불러오기
 	@RequestMapping(value="/analysis_result", method = RequestMethod.GET)
-	public void list(Model model) throws Exception{
+	public void list(WantedDTO wanted, Model model) throws Exception{
 		log.info("후보 리스트 불러오기");
-		model.addAttribute("list", service.listAll());
+		model.addAttribute("list", service.listAll(wanted));
 	}
 	// 후보 수정
 	@RequestMapping(value="analysis_modify", method = RequestMethod.GET)

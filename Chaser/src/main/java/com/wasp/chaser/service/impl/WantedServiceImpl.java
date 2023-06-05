@@ -16,8 +16,8 @@ public class WantedServiceImpl implements IWantedService{
 	private WantedDAOImpl wDao;
 
 	@Override
-	public List<WantedDTO> listAll() throws Exception {
-		return wDao.listAll();
+	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception {
+		return wDao.listAll(wanted);
 	}
 
 	@Override

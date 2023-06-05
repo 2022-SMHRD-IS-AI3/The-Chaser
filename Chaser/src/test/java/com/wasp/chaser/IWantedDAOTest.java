@@ -23,13 +23,13 @@ public class IWantedDAOTest {
 	@Autowired
 	private IWantedDAO wDao;
 
-//	@Test
-//	public void testListAll() throws Exception {
-//		WantedDTO want = new WantedDTO();
-//		want.setEpisode_idx(1);
-//		want.setImg_idx(3);
-//		List<WantedDTO> wantList =  wDao.listAll(want);
-//	}
+	@Test
+	public void testListAll() throws Exception {
+		WantedDTO wanted = new WantedDTO();
+		wanted.setEpisode_idx(1);
+		wanted.setImg_idx(3);
+		List<WantedDTO> wantList =  wDao.listAll(wanted);
+	}
 	
 //	@Test
 //	public void testUpdate() throws Exception{

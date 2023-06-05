@@ -6,7 +6,7 @@ import com.wasp.chaser.domain.WantedDTO;
 
 public interface IWantedService {
 
-	public List<WantedDTO> listAll() throws Exception;
+	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception;
 	
 	public boolean update(WantedDTO wanted) throws Exception;
 	

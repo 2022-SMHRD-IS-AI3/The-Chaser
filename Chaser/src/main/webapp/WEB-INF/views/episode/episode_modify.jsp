@@ -12,8 +12,11 @@
 		<table>
 			<tr>
 				<td>사건제목</td>
+			</tr>
 				<td>사건유형</td>
+			</tr>
 				<td>발생시간</td>
+			</tr>
 				<td>장소</td>
 			</tr>
 		</table>
