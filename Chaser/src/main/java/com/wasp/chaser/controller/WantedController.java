@@ -26,12 +26,12 @@ public class WantedController {
 		model.addAttribute("list", service.listAll(wanted));
 	}
 	// 후보 수정
-	@RequestMapping(value="analysis_modify", method = RequestMethod.GET)
+	@RequestMapping(value="/analysis_modify", method = RequestMethod.GET)
 	public void update(WantedDTO wanted, Model model) throws Exception{
 		log.info("후보 수정");
 	}
 	// 후보 삭제
-	@RequestMapping(value="analysis_delete", method = RequestMethod.GET)
+	@RequestMapping(value="/analysis_delete", method = RequestMethod.GET)
 	public void delete(@RequestParam("w_idx") int w_idx,Model model) throws Exception{
 		log.info("후보 삭제");
 	}
