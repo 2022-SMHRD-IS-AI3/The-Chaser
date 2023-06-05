@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>인상착의등록페이지</h1>
 </body>
 </html>
