@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TestDTO {
 	
-	private int testInt;
+	private String testInt;
 	private String testStr;
 
 }
