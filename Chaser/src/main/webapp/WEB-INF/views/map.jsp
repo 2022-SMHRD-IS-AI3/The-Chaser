@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>좌표로 주소를 얻어내기</title>
+    <title>좌표와 주소를 얻어내기</title>
     <style>
     .map_wrap {position:relative;width:100%;height:350px;}
     .title {font-weight:bold;display:block;}
