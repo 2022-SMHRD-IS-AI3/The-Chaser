@@ -39,14 +39,14 @@ public class IImageDAOTest {
 //		log.info("ifewhfoewhfiowefhweoifhweo======================");
 //	}
 	
-//	@Test
-//	public void testListAll() throws Exception{
-//		List<ImageDTO> imgList = iDao.listAll(2);
-//		
-//		for (ImageDTO img : imgList) {
-//			log.info("listAll--------------------------->" + img.toString());			
-//		}
-//	}
+	@Test
+	public void testListAll() throws Exception{
+		List<ImageDTO> imgList = iDao.listAll(2);
+		
+		for (ImageDTO img : imgList) {
+			log.info("listAll--------------------------->" + img.toString());			
+		}
+	}
 	
 //	@Test
 //	public void testDelete() throws Exception{

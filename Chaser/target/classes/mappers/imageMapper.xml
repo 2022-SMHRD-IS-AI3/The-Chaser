@@ -9,17 +9,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert">
 		INSERT INTO tb_image
 			(img_nm,
-			img_src,
 			img_xy,
-			img_length,
-			img_time,
+			origin_img_src,
+			origin_img_first,
+			origin_img_last,
 			episode_idx)
 		VALUES
 			(#{img_nm},
-			#{img_src},
 			#{img_xy},
-			#{img_length},
-			#{img_time},
+			#{origin_img_src},
+			#{origin_img_first},
+			#{origin_img_last},
 			#{episode_idx})
 	</insert>
 	

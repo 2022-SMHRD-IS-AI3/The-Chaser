@@ -19,7 +19,7 @@
          <!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
          <property name="jdbcUrl" value="jdbc:oracle:thin:@59.0.124.219:1521:XE"></property> -->
          <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-         <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@project-db-stu.smhrd.com:1524:XE"></property>
+         <property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@project-db-cgi.smhrd.com:1524:XE"></property>
          <property name="username" value="campus_c_230531_3"></property>
          <property name="password" value="smhrd3"></property>
    </bean>

@@ -32,14 +32,30 @@ public class ImageControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
+//	@Test
+//	public void testUploadList() throws Exception {
+//		log.info("원본 영상 리스트" + mockMvc.perform(MockMvcRequestBuilders
+//				.get("/analysis/image_list"))
+//				.andReturn()
+//				.getModelAndView()
+//				.getModelMap());
+//	}
+	
 	@Test
-	public void testUploadList() throws Exception {
-		log.info("sdfjowijroiwejroiwejroiwejriowe"+mockMvc.perform(MockMvcRequestBuilders
-				.get("/analysis/image_list"))
+	public void testUploadInsert() throws Exception{
+		log.info("원본 영상을 DB에 넣는 작업" );
+	}
+	
+	@Test
+	public void testImageList() throws Exception{
+		log.info("프레임 드랍된 영상 리스트" + mockMvc.perform(MockMvcRequestBuilders
+				.get("/analysis/analysis_result")
+				.param("episode_idx", "1"))
 				.andReturn()
 				.getModelAndView()
 				.getModelMap());
 	}
+	
 	
 	
 	
