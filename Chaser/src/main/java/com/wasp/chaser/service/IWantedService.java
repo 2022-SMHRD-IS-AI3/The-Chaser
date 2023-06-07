@@ -12,4 +12,6 @@ public interface IWantedService {
 	
 	public boolean delete(int w_idx) throws Exception;
 	
+	public boolean deleteAll(int img_idx) throws Exception;
+	
 }

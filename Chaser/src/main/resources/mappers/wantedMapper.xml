@@ -23,4 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM tb_wanted 
 		WHERE w_idx = #{w_idx}
 	</delete>
+	
+	<delete id="deleteAll">
+		DELETE FROM tb_wanted
+		WHERE img_idx = #{img_idx}
+	</delete>
 </mapper>

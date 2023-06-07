@@ -79,9 +79,9 @@ public class ImageController {
 	
 	// 압축된 영상 삭제하는 메소드
 	@RequestMapping(value = "/image_delete", method = RequestMethod.GET)
-	public String delete(@RequestParam("img_idx") int img_idx) throws Exception {
+	public String delete(@RequestParam("img_idx") int img_idx, @RequestParam("episode_idx") int episode_idx) throws Exception {
 		service.delete(img_idx);
-		return "redirect:/analysis/analysis_result";
+		return "redirect:/analysis/analysis_result?episode_idx=" + episode_idx;
 	}
 	
 	// 모델링단과 통신하는 메소드
@@ -95,10 +95,12 @@ public class ImageController {
 		// 4. 분석 처리 완료 -> 이때 분석 결과에 대한 데이터를 받아옴 -> DB에 insert
 	}
 	
-//	@RequestMapping(value="/analysis_result", method=RequestMethod.GET)
-//	public void listAll(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
-//		
-//		service.listAll(episode_idx);
-//	}
+	// 분석된 영상 리스트를 출력하는 메소드
+	@RequestMapping(value="/analysis_result", method=RequestMethod.GET)
+	public void listAll(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+		model.addAttribute("imageList", service.listAll(episode_idx));
+		
+		
+	}
 
 }

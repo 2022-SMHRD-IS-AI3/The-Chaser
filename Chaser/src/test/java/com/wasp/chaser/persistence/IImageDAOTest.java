@@ -1,4 +1,4 @@
-package com.wasp.chaser;
+package com.wasp.chaser.persistence;
 
 import static org.junit.Assert.*;
 
