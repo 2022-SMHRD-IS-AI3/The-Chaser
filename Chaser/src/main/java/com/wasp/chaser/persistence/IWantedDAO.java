@@ -14,4 +14,7 @@ public interface IWantedDAO {
 	
 	// 후보 삭제
 	public int delete(int w_idx) throws Exception;
+	
+	// 후보 전체 삭제
+	public int deleteAll(int img_idx) throws Exception;
 }
