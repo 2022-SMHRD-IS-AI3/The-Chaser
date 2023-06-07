@@ -32,4 +32,9 @@ public class WantedDAOImpl implements IWantedDAO{
 		return sqlSession.delete(namespace + ".delete", w_idx);
 	}
 
+	@Override
+	public int deleteAll(int img_idx) throws Exception {
+		return sqlSession.delete(namespace + ".deleteAll", img_idx);
+	}
+
 }

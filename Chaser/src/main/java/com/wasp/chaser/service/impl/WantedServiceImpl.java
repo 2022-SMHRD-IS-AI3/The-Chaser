@@ -29,7 +29,10 @@ public class WantedServiceImpl implements IWantedService{
 	public boolean delete(int w_idx) throws Exception {
 		return wDao.delete(w_idx) == 1;
 	}
-	
-	
 
+	@Override
+	public boolean deleteAll(int img_idx) throws Exception {
+		return wDao.deleteAll(img_idx) >= 1;
+	}
+	
 }

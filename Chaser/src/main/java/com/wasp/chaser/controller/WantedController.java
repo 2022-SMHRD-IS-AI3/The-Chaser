@@ -20,10 +20,12 @@ public class WantedController {
 	@Autowired private IWantedService service;
 	
 	// 후보 리스트 불러오기
-	@RequestMapping(value="/analysis_result", method = RequestMethod.GET)
+	@RequestMapping(value="/getWanted", method = RequestMethod.GET)
 	public void list(WantedDTO wanted, Model model) throws Exception{
 		log.info("후보 리스트 불러오기");
-		model.addAttribute("list", service.listAll(wanted));
+		log.info(service.listAll(wanted).toString());
+//		model.addAttribute("list", service.listAll(wanted));
+		
 	}
 	// 후보 수정
 	@RequestMapping(value="/analysis_modify", method = RequestMethod.GET)

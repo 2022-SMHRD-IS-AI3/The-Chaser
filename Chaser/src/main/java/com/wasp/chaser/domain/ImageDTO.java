@@ -1,6 +1,7 @@
 package com.wasp.chaser.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,5 +19,7 @@ public class ImageDTO {
 	private int img_length;			// 영상 총 프레임 수
 	private Date img_time;			// 영상이 찍힌 시간
 	private int episode_idx;			// 사건 번호
+	
+	private List<WantedDTO> wantedDTOList;	// 영상에 나온 후보자 목록
 
 }
