@@ -39,18 +39,29 @@ public class IImageDAOTest {
 //		log.info("ifewhfoewhfiowefhweoifhweo======================");
 //	}
 	
-	@Test
-	public void testListAll() throws Exception{
-		List<ImageDTO> imgList = iDao.listAll(2);
-		
-		for (ImageDTO img : imgList) {
-			log.info("listAll--------------------------->" + img.toString());			
-		}
-	}
+//	@Test
+//	public void testListAll() throws Exception{
+//		List<ImageDTO> imgList = iDao.listAll(2);
+//		
+//		for (ImageDTO img : imgList) {
+//			log.info("listAll--------------------------->" + img.toString());			
+//		}
+//	}
 	
 //	@Test
 //	public void testDelete() throws Exception{
-//		iDao.delete(1);
+//		iDao.delete(3);
+//	}
+	
+//	@Test
+//	public void testUpdate() throws Exception{
+//		ImageDTO iDto = new ImageDTO();
+//		iDto.setImg_idx(81);
+//		iDto.setImg_src("드랍 경로");
+//		iDto.setImg_length(2123);
+//		iDto.setImg_time(new Date());
+//		
+//		iDao.update(iDto);
 //	}
 
 }

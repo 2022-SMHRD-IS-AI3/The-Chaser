@@ -7,51 +7,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wasp.chaser.appeMapper">
 	
 	<insert id="insert">
-		INSERT INTO tb_appearance
-			(appe_top_type,
-			appe_top_color,
-			appe_bottom_type,
-			appe_bottom_color,
-			appe_stuff_type,
-			appe_stuff_color,
-			appe_gender,
-			appe_age,
-			appe_height,
-			appe_body,
-			episode_idx)
-		VALUES
-			(#{appe_top_type},
-			#{appe_top_color},
-			#{appe_bottom_type},
-			#{appe_bottom_color},
-			#{appe_stuff_type},
-			#{appe_stuff_color},
-			#{appe_gender},
-			#{appe_age},
-			#{appe_height},
-			#{appe_body},
-			#{episode_idx})
+		MERGE INTO tb_appearance
+		USING DUAL ON (episode_idx = #{episode_idx})
+		WHEN NOT MATCHED THEN
+		INSERT(
+				appe_top_type,
+				appe_top_color,
+				appe_bottom_type,
+				appe_bottom_color,
+				appe_stuff_type,
+				appe_stuff_color,
+				appe_gender,
+				appe_age,
+				appe_height,
+				appe_body,
+				episode_idx)
+		VALUES(
+				#{appe_top_type},
+				#{appe_top_color},
+				#{appe_bottom_type},
+				#{appe_bottom_color},
+				#{appe_stuff_type},
+				#{appe_stuff_color},
+				#{appe_gender},
+				#{appe_age},
+				#{appe_height},
+				#{appe_body},
+				#{episode_idx})
+		WHEN MATCHED THEN
+		UPDATE SET
+				appe_top_type = #{appe_top_type},
+				appe_top_color = #{appe_top_color},
+				appe_bottom_type = #{appe_bottom_type},
+				appe_bottom_color = #{appe_bottom_color},
+				appe_stuff_type = #{appe_stuff_type},
+				appe_stuff_color = #{appe_stuff_color},
+				appe_gender = #{appe_gender},
+				appe_age = #{appe_age},
+				appe_height = #{appe_height},
+				appe_body = #{appe_body}
 	</insert>
 	
 	<select id="read" resultType="com.wasp.chaser.domain.AppeDTO">
 		SELECT * FROM tb_appearance 
 		WHERE episode_idx = #{episode_idx}
 	</select>
-	
-	<update id="update">
-		UPDATE tb_appearance
-		SET	appe_top_type = #{appe_top_type},
-			appe_top_color = #{appe_top_color},
-			appe_bottom_type = #{appe_bottom_type},
-			appe_bottom_color = #{appe_bottom_color},
-			appe_stuff_type = #{appe_stuff_type},
-			appe_stuff_color = #{appe_stuff_color},
-			appe_gender = #{appe_gender},
-			appe_age = #{appe_age},
-			appe_height = #{appe_height},
-			appe_body = #{appe_body}
-		WHERE appe_idx = #{appe_idx}
-	</update>
 	
 	<delete id="delete">
 		DELETE 

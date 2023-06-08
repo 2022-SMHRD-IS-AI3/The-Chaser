@@ -21,24 +21,24 @@ public class IAppeDAOTest {
 	@Autowired
 	private IAppeDAO aDao;
 
-//	@Test
-//	public void testcreate() throws Exception {
-//		AppeDTO aDto = new AppeDTO();
-//		
-//		aDto.setAppe_top_type("상의 종류");
-//		aDto.setAppe_top_color("상의 색상");
-//		aDto.setAppe_bottom_type("하의 종류");
-//		aDto.setAppe_bottom_color("하의 색상");
-//		aDto.setAppe_stuff_type("소지품 종류");
-//		aDto.setAppe_stuff_color("소지품 색상");
-//		aDto.setAppe_gender('M');
-//		aDto.setAppe_age(22);
-//		aDto.setAppe_height(183.2);
-//		aDto.setAppe_body("체형");
-//		aDto.setEpisode_idx(2);
-//		
-//		aDao.insert(aDto);
-//	}
+	@Test
+	public void testcreate() throws Exception {
+		AppeDTO aDto = new AppeDTO();
+		
+		aDto.setAppe_top_type("상의 종류");
+		aDto.setAppe_top_color("상의 색상");
+		aDto.setAppe_bottom_type("하의 종류");
+		aDto.setAppe_bottom_color("하의 색상");
+		aDto.setAppe_stuff_type("소지품 종류");
+		aDto.setAppe_stuff_color("소지품 색상");
+		aDto.setAppe_gender('M');
+		aDto.setAppe_age(22);
+		aDto.setAppe_height(183.2);
+		aDto.setAppe_body("체형");
+		aDto.setEpisode_idx(2);
+		
+		aDao.insert(aDto);
+	}
 	
 //	@Test
 //	public void testRead() throws Exception{

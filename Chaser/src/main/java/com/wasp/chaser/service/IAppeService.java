@@ -8,8 +8,6 @@ public interface IAppeService {
 	
 	public AppeDTO read(int appe_idx) throws Exception;
 	
-	public boolean update(AppeDTO appe) throws Exception;
-	
 	public boolean delete(int appe_idx) throws Exception;
 	
 }

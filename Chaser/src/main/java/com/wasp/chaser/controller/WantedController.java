@@ -31,6 +31,7 @@ public class WantedController {
 	@RequestMapping(value="/analysis_modify", method = RequestMethod.GET)
 	public void update(WantedDTO wanted, Model model) throws Exception{
 		log.info("후보 수정");
+		service.update(wanted);
 	}
 	// 후보 삭제
 	@RequestMapping(value="/analysis_delete", method = RequestMethod.GET)

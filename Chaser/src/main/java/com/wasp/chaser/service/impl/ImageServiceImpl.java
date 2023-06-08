@@ -39,8 +39,12 @@ public class ImageServiceImpl implements IImageService{
 
 	@Override
 	public boolean delete(int img_idx) throws Exception {
-		wDao.deleteAll(img_idx);
 		return iDao.delete(img_idx) == 1;
+	}
+
+	@Override
+	public boolean update(ImageDTO img) throws Exception {
+		return iDao.update(img) == 1;
 	}
 
 
