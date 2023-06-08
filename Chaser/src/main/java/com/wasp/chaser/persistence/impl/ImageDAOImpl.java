@@ -32,4 +32,10 @@ public class ImageDAOImpl implements IImageDAO{
 		return sqlSession.delete(namespace + ".delete", img_idx);
 	}
 
+	@Override
+	public int update(ImageDTO image) throws Exception {
+		return sqlSession.update(namespace + ".update", image);
+	}
+
+
 }

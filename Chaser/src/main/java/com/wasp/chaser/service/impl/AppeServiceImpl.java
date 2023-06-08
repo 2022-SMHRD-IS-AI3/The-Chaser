@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.wasp.chaser.domain.AppeDTO;
 import com.wasp.chaser.persistence.impl.AppeDAOImpl;
+import com.wasp.chaser.persistence.impl.EpisodeDAOImpl;
 import com.wasp.chaser.service.IAppeService;
 
 @Service
@@ -12,6 +13,9 @@ public class AppeServiceImpl implements IAppeService{
 	
 	@Autowired
 	private AppeDAOImpl aDao;
+	
+	@Autowired
+	private EpisodeDAOImpl eDao;
 
 	@Override
 	public void insert(AppeDTO appe) throws Exception {
@@ -22,11 +26,6 @@ public class AppeServiceImpl implements IAppeService{
 	@Override
 	public AppeDTO read(int appe_idx) throws Exception {
 		return aDao.read(appe_idx);
-	}
-
-	@Override
-	public boolean update(AppeDTO appe) throws Exception {
-		return aDao.update(appe) == 1;
 	}
 
 	@Override

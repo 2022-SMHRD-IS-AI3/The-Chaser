@@ -14,11 +14,14 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wasp.chaser.domain.FileDTO;
 import com.wasp.chaser.domain.ImageDTO;
+import com.wasp.chaser.domain.ImageDTOList;
 import com.wasp.chaser.domain.TestDTO;
 import com.wasp.chaser.domain.TestDTOList;
 import com.wasp.chaser.domain.UploadDTO;
 import com.wasp.chaser.domain.UploadDTOList;
+import com.wasp.chaser.domain.WantedDTO;
 import com.wasp.chaser.service.IImageService;
+import com.wasp.chaser.service.IWantedService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -29,6 +32,8 @@ public class ImageController {
 
 	@Autowired
 	private IImageService service;
+	@Autowired
+	private IWantedService service2;
 
 	private String uploadPath = "C:\\Users\\smhrd\\Desktop\\cctv";
 
@@ -76,11 +81,6 @@ public class ImageController {
 	public void listup(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception {
 		FileDTO fileList = getFolder(uploadPath);
 		List<ImageDTO> imageDTOList = service.listAll(episode_idx);
-		for(ImageDTO imageDTO : imageDTOList) {
-			fileList.getFileList().contains(imageDTO.getOrigin_img_first());
-			
-		}
-		
 		
 		model.addAttribute("fileList", fileList);
 		model.addAttribute("episode_idx", episode_idx);
@@ -104,8 +104,11 @@ public class ImageController {
 			imageDTO.setImg_nm(uploadDTO.getUploadFolder());
 			imageDTO.setImg_xy(uploadDTO.getLoc());
 			imageDTO.setOrigin_img_src(uploadDTO.getUploadFolderList().get(0));
-			imageDTO.setOrigin_img_first(uploadDTO.getUploadFolderList().get(0));
-			imageDTO.setOrigin_img_last(uploadDTO.getUploadFolderList().get(uploadDTO.getUploadFolderList().size()-1));
+			String nms = new String();
+			for(String nm : uploadDTO.getUploadFolderList()) {
+				nms += nm + ",";
+			}
+			imageDTO.setOrigin_imgs(nms);
 			imageDTO.setEpisode_idx(uploadList.getEpisode_idx());
 			log.info(imageDTO);
 			service.insert(imageDTO);
@@ -114,15 +117,35 @@ public class ImageController {
 		// 로딩 페이지
 		// 0. 모델링 단으로 원본 영상에 대한 정보를 줌
 		// 1. 영상 처리 중
-		// 2. 영상 처리 완료 -> 이때 영상에 대한 데이터를 받아옴 -> DB에 insert
+		// 2. 영상 처리 완료 -> 이때 영상에 대한 데이터를 받아옴 -> DB에 update
 		// 3. 분석 처리 중
-		// 4. 분석 처리 완료 -> 이때 분석 결과에 대한 데이터를 받아옴 -> DB에 insert
+		// 4. 분석 처리 완료 -> 이때 분석 결과에 대한 데이터를 받아옴 -> DB에 update
 	}
+	
+	@RequestMapping(value="/image_update", method=RequestMethod.GET)
+	public void image_update(ImageDTOList imageDTOList, RedirectAttributes rttr) throws Exception{
+		for(ImageDTO imageDTO : imageDTOList.getImageDTOList()) {
+			service.update(imageDTO);
+		}
+	}
+
 	
 	// 분석된 영상 리스트를 출력하는 메소드
 	@RequestMapping(value="/analysis_result", method=RequestMethod.GET)
 	public void listAll(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
-		model.addAttribute("imageList", service.listAll(episode_idx));
+		// 영상 리스트를 불러와서 담음
+		List<ImageDTO> imageList = service.listAll(episode_idx);
+		
+		// 영상에 나오는 후보 리스트를 담음
+		for(ImageDTO imageDTO : imageList) {
+			WantedDTO wanted = new WantedDTO();
+			wanted.setEpisode_idx(episode_idx);
+			wanted.setImg_idx(imageDTO.getImg_idx());
+			imageDTO.setWantedDTOList(service2.listAll(wanted));
+		}
+				
+		model.addAttribute("imageList", imageList);
+		
 		
 		
 	}
