@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.persistence.IEpisodeDAO;
 
@@ -23,6 +24,15 @@ public class IEpisodeDaoTest {
 
 	@Autowired
 	private IEpisodeDAO eDao;
+	
+//	@Test
+//	public void testListAll() throws Exception{
+//		Criteria cri = new Criteria();
+//		cri.setPageNum(1);
+//		cri.setAmount(10);
+//		
+//		eDao.listAll(cri);
+//	}
 	
 //	@Test
 //	public void testCreate() throws Exception {
@@ -58,5 +68,22 @@ public class IEpisodeDaoTest {
 //	public void testDelete() throws Exception{
 //		log.info(eDao.delete(18));
 //	}
+//	
+//	@Test
+//	public void testUpdateFlag() throws Exception{
+//		EpisodeDTO eDto = new EpisodeDTO();
+//		eDto.setEpisode_idx(1);
+//		eDto.setEpisode_flag('1');
+//		log.info(eDao.updateFlag(eDto));
+//	}
+	
+	@Test
+	public void testUpdateEnd() throws Exception{
+		EpisodeDTO eDto = new EpisodeDTO();
+		eDto.setEpisode_idx(1);
+		eDto.setEpisode_flag('9');
+		log.info(eDao.updateEnd(eDto));
+	}
+	
 
 }

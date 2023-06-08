@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.persistence.impl.EpisodeDAOImpl;
 import com.wasp.chaser.service.IEpisodeService;
@@ -38,8 +39,18 @@ public class EpisodeServiceImpl implements IEpisodeService {
 	}
 
 	@Override
-	public List<EpisodeDTO> listAll() throws Exception {
-		return eDao.listAll();
+	public List<EpisodeDTO> listAll(Criteria cri) throws Exception {
+		return eDao.listAll(cri);
+	}
+
+	@Override
+	public boolean updateFlag(EpisodeDTO episode) throws Exception {
+		return eDao.updateFlag(episode) == 1;
+	}
+
+	@Override
+	public boolean updateEnd(EpisodeDTO episode) throws Exception {
+		return eDao.updateEnd(episode) == 1;
 	}
 
 }

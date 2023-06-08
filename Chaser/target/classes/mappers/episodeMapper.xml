@@ -53,9 +53,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<select id="getListWithPaging" resultType = "com.wasp.chaser.domain.EpisodeDTO">
+			<![CDATA[
+			SELECT 	episode_idx,
+					episode_type,
+					episode_title,
+					episode_content,
+					episode_loc,
+					episode_time,
+					episode_start_dt,
+					episode_end_dt,
+					episode_flag
+			FROM (
+					SELECT /*+ INDEX_DESC(tb_episode episode_idx) */
+						rownum rn,
+						episode_idx,
+						episode_type,
+						episode_title,
+						episode_content,
+						episode_loc,
+						episode_time,
+						episode_start_dt,
+						episode_end_dt,
+						episode_flag
+					FROM tb_episode
+					WHERE 
+			]]>
+			<![CDATA[	
+					rownum <= #{pageNum} * #{amount}
+					ORDER BY episode_idx DESC
+				)
+				WHERE rn > (#{pageNum} -1) * #{amount}
+			]]>
+	</select>
+	
 	<update id="updateFlag">
 		UPDATE tb_episode
 		SET episode_flag = #{episode_flag}
+		WHERE episode_idx = #{episode_idx}
+	</update>
+	
+	<update id="updateEnd">
+		UPDATE tb_episode
+		SET episode_flag = 9, episode_end_dt  = sysdate
 		WHERE episode_idx = #{episode_idx}
 	</update>
 	

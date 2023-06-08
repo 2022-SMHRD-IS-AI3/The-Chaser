@@ -2,6 +2,7 @@ package com.wasp.chaser.persistence;
 
 import java.util.List;
 
+import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
 
 public interface IEpisodeDAO {
@@ -19,7 +20,13 @@ public interface IEpisodeDAO {
 	public int delete(int episode_idx) throws Exception;
 	
 	// 사건 리스트
-	public List<EpisodeDTO> listAll() throws Exception;
+	public List<EpisodeDTO> listAll(Criteria cri) throws Exception;
+	
+	// 사건 상태 수정
+	public int updateFlag(EpisodeDTO episode) throws Exception;
+	
+	// 사건 종결
+	public int updateEnd(EpisodeDTO episode) throws Exception;
 	
 	
 }
