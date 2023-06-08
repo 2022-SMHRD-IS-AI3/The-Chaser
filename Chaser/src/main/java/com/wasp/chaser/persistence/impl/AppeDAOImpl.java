@@ -26,11 +26,6 @@ public class AppeDAOImpl implements IAppeDAO {
 	}
 
 	@Override
-	public int update(AppeDTO appe) throws Exception {
-		return sqlSession.update(namespace + ".update", appe);
-	}
-
-	@Override
 	public int delete(int episode_idx) throws Exception {
 		return sqlSession.delete(namespace + ".delete", episode_idx);
 	}

@@ -11,15 +11,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(img_nm,
 			img_xy,
 			origin_img_src,
-			origin_img_first,
-			origin_img_last,
+			origin_imgs,
 			episode_idx)
 		VALUES
 			(#{img_nm},
 			#{img_xy},
 			#{origin_img_src},
-			#{origin_img_first},
-			#{origin_img_last},
+			#{origin_imgs},
 			#{episode_idx})
 	</insert>
 	
@@ -29,6 +27,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE episode_idx = #{episode_idx}
 		]]>
 	</select>
+	
+	<update id="update">
+		UPDATE tb_image
+		SET	img_src = #{img_src}, img_length = #{img_length}, img_time = #{img_time}
+		WHERE img_idx = #{img_idx}
+	</update>
+	
 	
 	<delete id="delete">
 		DELETE FROM tb_image

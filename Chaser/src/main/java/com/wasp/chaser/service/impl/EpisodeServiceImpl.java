@@ -15,9 +15,11 @@ public class EpisodeServiceImpl implements IEpisodeService {
 	@Autowired
 	private EpisodeDAOImpl eDao;
 	
+		
 	@Override
 	public void insert(EpisodeDTO episode) throws Exception {
 		eDao.insert(episode);
+		
 	}
 
 	@Override

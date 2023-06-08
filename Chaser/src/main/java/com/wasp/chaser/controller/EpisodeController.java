@@ -27,21 +27,21 @@ public class EpisodeController {
 	}
 	
 	// 사건 열기
-	@RequestMapping(value="/episode_desc", method = RequestMethod.GET)
+	@RequestMapping(value={"/episode_desc", "/episode_modify"}, method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
 	}
  
 	// 사건 수정
-	@RequestMapping(value="/episode_modify", method = RequestMethod.GET)
-	public void update(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
-		model.addAttribute("episode", service.read(episode_idx));
+	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
+	public void update(EpisodeDTO eDto, Model model) throws Exception{
+		model.addAttribute("episode", service.update(eDto));
 	}
 	
 	// 사건 삭제
-	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
+	@RequestMapping(value="/episode_delete", method = RequestMethod.GET)
 	public void delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
-		log.info("사건 삭제");
+		service.delete(episode_idx);
 	}
 	
 	// 사건 리스트

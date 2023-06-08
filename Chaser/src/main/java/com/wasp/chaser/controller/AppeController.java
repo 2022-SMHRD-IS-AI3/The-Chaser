@@ -19,27 +19,24 @@ public class AppeController {
 
 	@Autowired private IAppeService service;
 	
-	// 인상착의 작성
-	@RequestMapping(value="/appearance", method = RequestMethod.GET)
-	public void insert(AppeDTO aDto, Model model) throws Exception{
-		log.info("인상착의작성");
-	}
+	
 	
 	// 인상착의 불러오기
-	@RequestMapping(value="/appearance2", method = RequestMethod.GET)
+	@RequestMapping(value="/appearance", method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode_idx", service.read(episode_idx));
 		log.info("인상착의불러오기");
 	}
 	
-	// 인상착의 수정
-//	@RequestMapping(value="/appearanceUpdate", method = RequestMethod.POST)
-//	public void update(@RequestParam("appe_idx") int appe_idx, Model model) throws Exception{
-//		model.addAttribute("appe_idx", service.read(appe_idx));
-//	}
+	// 인상착의 작성
+	@RequestMapping(value="/appearance", method = RequestMethod.POST)
+	public void insert(AppeDTO aDto, Model model) throws Exception{
+		log.info("인상착의작성");
+		service.insert(aDto);
+	}
 	
 	// 인상착의 삭제
-//	public void delete(@RequestParam("appe_idx") int appe_idx, Model model) throws Exception{
-//		log.info("인상착의삭제");
-//	}
+	//	public void delete(@RequestParam("appe_idx") int appe_idx, Model model) throws Exception{
+	//		log.info("인상착의삭제");
+	//	}
 }

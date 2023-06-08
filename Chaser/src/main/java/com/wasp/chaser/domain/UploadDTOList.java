@@ -2,7 +2,9 @@ package com.wasp.chaser.domain;
 
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 public class UploadDTOList {

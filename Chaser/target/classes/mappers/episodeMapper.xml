@@ -53,4 +53,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
+	<update id="updateFlag">
+		UPDATE tb_episode
+		SET episode_flag = #{episode_flag}
+		WHERE episode_idx = #{episode_idx}
+	</update>
+	
 </mapper>

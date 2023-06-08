@@ -53,10 +53,10 @@ public class IEpisodeDaoTest {
 //		int result = eDao.update(eDto);
 //		log.info("result========================>" + result);
 //	}
-
+//
 //	@Test
 //	public void testDelete() throws Exception{
-//		log.info(eDao.delete(105));
+//		log.info(eDao.delete(18));
 //	}
 
 }
