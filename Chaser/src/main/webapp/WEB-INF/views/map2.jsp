@@ -14,7 +14,7 @@
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(35.14838454247798, 126.91838510907495), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
 
@@ -24,21 +24,34 @@ var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니
 var positions = [
     {
         //인포위도우에 표시할 내용
-        title : "11",
+        title : "광주광역시 동구 금남로 245",
         // 표시할 위도경도 좌표값
-        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+        latlng: new kakao.maps.LatLng(35.14838454247798, 126.91838510907495)
     },
     {         
-        title : "22",
-        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+        title : "광주광역시 동구 중앙로196번길 35",
+        latlng: new kakao.maps.LatLng(35.1484931914149, 126.91910929651485)
     },
     {        
-        title : "33",
-        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+        title : "광주광역시 동구 예술길 38",
+        latlng: new kakao.maps.LatLng(35.14883825585116, 126.91955066768315)
     },
     {        
-        title : "44",
-        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+        title : "광주광역시 동구 예술길 31-15",
+        latlng: new kakao.maps.LatLng(35.14979168613704, 126.91991462661997)
+    },
+    {        
+        title : "광주광역시 동구 중앙로196번길 13",
+        latlng: new kakao.maps.LatLng(35.14992516754839, 126.91734923619617)
+    },{        
+        title : "광주광역시 동구 중앙로 207",
+        latlng: new kakao.maps.LatLng(35.15152244332673, 126.91678517345801)
+    },{        
+        title : "광주광역시 동구 제봉로 183-5",
+        latlng: new kakao.maps.LatLng(35.152480109927836, 126.9167430432406)
+    },{        
+        title : "광주광역시 동구 구성로204번길 15-7",
+        latlng: new kakao.maps.LatLng(35.15286045736732, 126.91605124548794)
     }
 ];
  
@@ -62,9 +75,14 @@ for (var i = 0; i < positions.length; i ++) {
         image : markerImage // 마커 이미지 
     });
 
-    var iwContent = '<div style="padding:5px;">'+positions[i].title + '</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    // if(i!=positions.length){
     
-
+    
+    // var iwContent = '<div style="padding:5px;"><a href="https://map.kakao.com/?sName='+
+    //     positions[i].title+'&eName='+positions[i+1].title+'">'+positions[i].title + '</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    // };
+    
+    var iwContent = '<div style="width:100%;padding:5px;">'+positions[i].title + '</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
     // 인포윈도우를 생성합니다
     var infowindow = new kakao.maps.InfoWindow({
         position : positions[i].latlng, 
@@ -90,9 +108,9 @@ for (var i = 0; i < positions.length; i ++) {
 
 var linePath;
 var lineLine = new daum.maps.Polyline();
-for (var i = 0; i < positions.length; i++) {
+for (var i = 1; i < positions.length; i++) {
         if (i != 0) {
-            linePath = [ positions[i - 1].latlng, positions[i].latlng ] //라인을 그리려면 두 점이 있어야하니깐 두 점을 지정했습니다
+            linePath = [ positions[i -1].latlng, positions[i].latlng ] //라인을 그리려면 두 점이 있어야하니깐 두 점을 지정했습니다
         }
         ;
         lineLine.setPath(linePath); // 선을 그릴 라인을 세팅합니다
