@@ -38,20 +38,20 @@
 				<input type="text" name="uploadList[0].uploadFolderList[1]" placeholder="영상 파일 경로">
 				<input type="text" name="uploadList[0].uploadFolderList[2]" placeholder="영상 파일 경로">
 			</tr>
-			<br>
+			<br><br>
 			<tr>
 				<input type="text" name="uploadList[1].uploadFolder" placeholder="영상 폴더 이름">
 				<input type="text" name="uploadList[1].loc" placeholder="영상이 찍힌 위치">
 				<input type="text" name="uploadList[1].uploadFolderList[0]"  placeholder="영상 파일 경로">
 				<input type="text" name="uploadList[1].uploadFolderList[1]"  placeholder="영상 파일 경로">
 			</tr>
-			<br>
+			<br><br>
 			<tr>
 				<input type="text" name="uploadList[2].uploadFolder" placeholder="영상 폴더 이름">
 				<input type="text" name="uploadList[2].loc" placeholder="영상이 찍힌 위치">
 				<input type="text" name="uploadList[2].uploadFolderList[0]"  placeholder="영상 파일 경로">
 			</tr>
-			<br>
+			<br><br>
 			<tr>
 				<input type="text" name="uploadList[3].uploadFolder" placeholder="영상 폴더 이름">
 				<input type="text" name="uploadList[3].loc" placeholder="영상이 찍힌 위치">
@@ -59,7 +59,7 @@
 				<input type="text" name="uploadList[3].uploadFolderList[1]"  placeholder="영상 파일 경로">
 				<input type="text" name="uploadList[3].uploadFolderList[2]"  placeholder="영상 파일 경로">
 			</tr>
-			<br>
+			<br><br>
 			<input type="submit">	
 		</form>
 

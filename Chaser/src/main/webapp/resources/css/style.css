@@ -46,7 +46,7 @@ a {
     padding-left: 50px;
 }
 
-.bt_wrap a {
+.bt_wrap button {
     display: inline-block;
     min-width: 80px;
     margin-left: 10px;
@@ -54,13 +54,14 @@ a {
     border: 1px solid #000;
     border-radius: 2px;
     font-size: 1.4rem;
+    background-color: #fff;
 }
 
-.bt_wrap a:first-child {
+.bt_wrap button:first-child {
     margin-left: 0;
 }
 
-.bt_wrap a.on {
+.bt_wrap button.on {
     background: #000;
     color: #fff;
 }

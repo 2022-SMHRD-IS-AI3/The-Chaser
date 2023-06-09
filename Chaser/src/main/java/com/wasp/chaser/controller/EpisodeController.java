@@ -23,11 +23,25 @@ public class EpisodeController {
 	
 	// 사건 작성
 	@RequestMapping(value="/episode_register", method = RequestMethod.GET)
-	public void insert(EpisodeDTO eDto, Model model) throws Exception{
+	public void insertGET(EpisodeDTO eDto, Model model) throws Exception{
 		log.info("사건작성");
+		
+		log.info("register GET ...................");
+		
 	}
 	
-	// 사건 열기
+	@RequestMapping(value="/episode_register", method = RequestMethod.POST)
+	public String insertPOST(EpisodeDTO eDto, Model model) throws Exception{
+		log.info("사건작성");
+		log.info("register POST...........");
+		eDto.setEpisode_flag('0');
+		service.insert(eDto);
+		
+		model.addAttribute("result", eDto.getEpisode_idx());
+		return "redirect:/episode/episode_list";
+	}
+	
+	// 사건 열기 and 상세보기에서 수정
 	@RequestMapping(value={"/episode_desc", "/episode_modify"}, method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
@@ -35,8 +49,13 @@ public class EpisodeController {
  
 	// 사건 수정
 	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
-	public void update(EpisodeDTO eDto, Model model) throws Exception{
-		model.addAttribute("episode", service.update(eDto));
+	public String update(EpisodeDTO eDto, Model model) throws Exception{
+		log.info("사건수정");
+		log.info("episode_modify POST...........");
+		service.update(eDto);
+		
+		model.addAttribute("result", eDto.getEpisode_idx());
+		return "redirect:/episode/episode_list";
 	}
 	
 	// 사건 삭제
