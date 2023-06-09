@@ -223,11 +223,14 @@ option {
 									
 										<input type="text" id="sample4_postcode" placeholder="우편번호">
 										<input type="button" onclick="sample4_execDaumPostcode()"
-											value="우편번호 찾기"> <br> <input type="text" value="${episode.episode_loc }"
-											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc"> <input
+											value="우편번호 찾기"> <br> 
+										<input type="text" value="${episode.episode_loc }"
+											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc"> 
+										<input
 											type="hidden" id="sample4_jibunAddress" name="juso"
 											placeholder="지번주소"> <span id="guide"
-											style="color: #999; display: none"></span> <input type="text"
+											style="color: #999; display: none"></span> 
+										<input type="text"
 											id="sample4_detailAddress" name="juso2" placeholder="상세주소">
 										<input type="hidden" id="sample4_extraAddress"
 											placeholder="참고항목">

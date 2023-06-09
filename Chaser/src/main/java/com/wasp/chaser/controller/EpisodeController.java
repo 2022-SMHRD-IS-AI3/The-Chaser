@@ -54,7 +54,7 @@ public class EpisodeController {
 		log.info("episode_modify POST...........");
 		service.update(eDto);
 		
-	
+		model.addAttribute("result", eDto.getEpisode_idx());
 		return "redirect:/episode/episode_list";
 	}
 	
