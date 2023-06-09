@@ -33,14 +33,15 @@ public class EpisodeControllerTests {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 	}
 
-//	@Test
-//	public void testEpisodeList() throws Exception {
-//		log.info("사건 목록 페이지 =======================>"+mockMvc.perform(MockMvcRequestBuilders
-//				.get("/episode/episode_list"))
-//				.andReturn()
-//				.getModelAndView()
-//				.getModelMap());
-//	}
+	@Test
+	public void testEpisodeList() throws Exception {
+		log.info("사건 목록 페이지 =======================>"+mockMvc.perform(MockMvcRequestBuilders
+				.get("/episode/episode_list")
+				.param("pageNum", "2"))
+				.andReturn()
+				.getModelAndView()
+				.getModelMap());
+	}
 
 //	@Test
 //	public void testEpiRead() throws Exception{
@@ -84,4 +85,18 @@ public class EpisodeControllerTests {
 //				.getModelAndView()
 //				.getModelMap());
 //	}
+	
+	@Test
+	public void testUpdateEnd() throws Exception{
+		log.info("사건 종결하기 =============> " + mockMvc.perform(MockMvcRequestBuilders
+				.post("/episode/episode_end")
+				.param("episode_idx", "2")
+				.param("episode_flag", "9"))
+				.andReturn()
+				.getModelAndView()
+				.getModelMap()
+		);
+	}
+	
+	
 }

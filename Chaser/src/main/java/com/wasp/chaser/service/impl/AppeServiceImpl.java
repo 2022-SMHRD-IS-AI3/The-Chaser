@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wasp.chaser.domain.AppeDTO;
+import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.persistence.impl.AppeDAOImpl;
 import com.wasp.chaser.persistence.impl.EpisodeDAOImpl;
 import com.wasp.chaser.service.IAppeService;
@@ -20,6 +21,11 @@ public class AppeServiceImpl implements IAppeService{
 	@Override
 	public void insert(AppeDTO appe) throws Exception {
 		aDao.insert(appe);
+		EpisodeDTO eDto = new EpisodeDTO();
+		eDto.setEpisode_idx(appe.getEpisode_idx());
+		eDto.setEpisode_flag('1');
+		eDao.updateFlag(eDto);
+		
 		
 	}
 

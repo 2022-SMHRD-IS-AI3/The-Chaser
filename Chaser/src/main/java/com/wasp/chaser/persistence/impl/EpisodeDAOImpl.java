@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.persistence.IEpisodeDAO;
 
@@ -38,8 +39,18 @@ public class EpisodeDAOImpl implements IEpisodeDAO {
 	}
 
 	@Override
-	public List<EpisodeDTO> listAll() throws Exception {
-		return sqlSession.selectList(namespace + ".listAll");
+	public List<EpisodeDTO> listAll(Criteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".getListWithPaging", cri);
+	}
+
+	@Override
+	public int updateFlag(EpisodeDTO episode) throws Exception {
+		return sqlSession.update(namespace + ".updateFlag", episode);
+	}
+
+	@Override
+	public int updateEnd(EpisodeDTO episode) throws Exception {
+		return sqlSession.update(namespace + ".updateEnd", episode);
 	}
 
 }

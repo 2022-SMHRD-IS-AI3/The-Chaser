@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.domain.ImageDTO;
 import com.wasp.chaser.domain.WantedDTO;
+import com.wasp.chaser.persistence.impl.EpisodeDAOImpl;
 import com.wasp.chaser.persistence.impl.ImageDAOImpl;
 import com.wasp.chaser.persistence.impl.WantedDAOImpl;
 import com.wasp.chaser.service.IImageService;
@@ -19,10 +21,18 @@ public class ImageServiceImpl implements IImageService{
 	
 	@Autowired
 	private WantedDAOImpl wDao;
+	
+	@Autowired
+	private EpisodeDAOImpl eDao;
 
 	@Override
 	public void insert(ImageDTO img) throws Exception {
 		iDao.insert(img);
+		
+		EpisodeDTO eDto = new EpisodeDTO();
+		eDto.setEpisode_idx(img.getEpisode_idx());
+		eDto.setEpisode_flag('2');
+		eDao.updateFlag(eDto);
 	}
 
 	@Override
@@ -44,7 +54,15 @@ public class ImageServiceImpl implements IImageService{
 
 	@Override
 	public boolean update(ImageDTO img) throws Exception {
-		return iDao.update(img) == 1;
+		boolean b = iDao.update(img) == 1;
+		
+		EpisodeDTO eDto = new EpisodeDTO();
+		eDto.setEpisode_idx(img.getEpisode_idx());
+		eDto.setEpisode_flag('3');
+		eDao.updateFlag(eDto);
+		
+		return b;
+		
 	}
 
 
