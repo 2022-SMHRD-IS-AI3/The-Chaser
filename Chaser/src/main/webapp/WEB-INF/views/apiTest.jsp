@@ -6,7 +6,7 @@
 
 <h2>KIT 웹앱 프로그래밍</h2>
 
-<form action="/apiTest" method="POST">
+<form action="http://localhost:9444/method" method="POST">
   <label for="fname">학번:</label><br>
   <input type="text" id="fname" name="num"><br>
   <label for="lname">이름:</label><br>
