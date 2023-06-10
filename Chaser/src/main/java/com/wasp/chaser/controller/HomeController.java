@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import lombok.extern.log4j.Log4j;
 
+@Log4j
 @Controller
 public class HomeController {
 	
@@ -20,7 +22,7 @@ public class HomeController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/test/", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -95,6 +97,15 @@ public class HomeController {
 		
 	}
 	
+	
+	@RequestMapping(value = "/apiTest", method = RequestMethod.GET)
+	public String apiTest(Model model) {
+		
+		log.info("apicon................");
+		
+		return "apiTest";
+		
+	}
 	
 
 	

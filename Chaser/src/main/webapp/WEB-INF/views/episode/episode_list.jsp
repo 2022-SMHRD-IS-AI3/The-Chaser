@@ -104,76 +104,24 @@
                             <div class="state">상태</div>
                             <div class="date">작성일</div>
                         </div>
-                        <div>
-                            <div class="num">1</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">절도</div>
-                            <div class="state">진행중</div>
-                            <div class="date">2023-05-16</div>
-                        </div>
-                        <div>
-                            <div class="num">2</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">공갈</div>
-                            <div class="state">진행중</div>
-                            <div class="date">2023-05-20</div>
-                        </div>
-                        <div>
-                            <div class="num">3</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">손괴</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-05-25</div>
-                        </div>
-                        <div>
-                            <div class="num">4</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">폭행</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-05-25</div>
-                        </div>
-                        <div>
-                            <div class="num">5</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">강도</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-05-28</div>
-                        </div>
-                        <div>
-                            <div class="num">6</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">방화</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-06-01</div>
-                        </div>
-                        <div>
-                            <div class="num">7</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">강간</div>
-                            <div class="state">진행중</div>
-                            <div class="date">2023-06-01</div>
-                        </div>
-                        <div>
-                            <div class="num">8</div>
-                            <div class="title"><a href="view.html">정유정 살인사건.</a></div>
-                            <div class="type">살인</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-06-02</div>
-                        </div>
-                        <div>
-                            <div class="num">9</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">유괴</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-06-03</div>
-                        </div>
-                        <div>
-                            <div class="num">10</div>
-                            <div class="title"><a href="view.html">글 제목이 들어갑니다.</a></div>
-                            <div class="type">납치</div>
-                            <div class="state">진행완료</div>
-                            <div class="date">2023-06-05</div>
-                        </div>
+                        <c:forEach items="${list }" var="episode">
+                        	<div>
+                           		<div class="num">${episode.episode_idx }</div>
+                            	<div class="title"><a href="./episode_desc?episode_idx=${episode.episode_idx} ">${episode.episode_title }</a></div>
+                            	<div class="type">${episode.episode_type}</div>
+                            	<div class="state">
+                            		<c:choose>
+                            			<c:when test="${episode.episode_flag.toString() eq '9'}">사건생성</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '3'}">인상착의 등록완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '2'}">동영상 선택완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '1'}">동영상 분석완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '0'}">사건 종결</c:when>
+                            			<c:otherwise>바보야 다시해</c:otherwise>
+                            		</c:choose>
+                            	</div>
+                            	<div class="date">${episode.episode_start_dt}</div>
+                        	</div>
+                        </c:forEach>
                     </div>
                     <div class="board_page">
                         <a href="#" class="bt first"></a>
@@ -187,15 +135,19 @@
                         <a href="#" class="bt last">>></a>
                     </div>
                     <div class="bt_wrap">
-                        <a href="write.html" class="on">등록</a>
-                        <!--<a href="#">수정</a>-->
+                        <button onclick="moveUrl('/episode/episode_register')" class="on">등록</button>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </main>
    
-
+	<script type="text/javascript">
+		const moveUrl = (url) => {
+			location.href = url;
+		}
+	</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
