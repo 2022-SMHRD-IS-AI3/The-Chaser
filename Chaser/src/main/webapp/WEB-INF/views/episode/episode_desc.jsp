@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +128,7 @@ body {
 							</dl>
 							<dl>
 								<dt>작성일</dt>
-								<dd>${episode.episode_start_dt }</dd>
+								<dd><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${episode.episode_start_dt}"/></dd>
 							</dl>
 
 						</div>
@@ -140,8 +140,9 @@ body {
 						</div>
 					</div>
 					<div class="bt_wrap">
-						<button onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button> <button onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')"onclick="episode_delete?episode_idx=${episode.episode_idx }">삭제</button> <button href="/episode_list"
-							class="on">목록</button>
+						<button onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button>
+						<button onclick="moveUrl('/episode/episode_delete?episode_idx=${episode.episode_idx }')">삭제</button>
+						<button onclick="moveUrl('/episode/episode_list')" class="on">목록</button>
 					</div>
 				</div>
 			</div>
