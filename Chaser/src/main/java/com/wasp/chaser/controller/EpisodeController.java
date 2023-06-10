@@ -1,5 +1,9 @@
 package com.wasp.chaser.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +36,14 @@ public class EpisodeController {
 	
 	@RequestMapping(value="/episode_register", method = RequestMethod.POST)
 	public String insertPOST(EpisodeDTO eDto, Model model) throws Exception{
+		String strDate = eDto.getTime_string();
+		strDate = strDate.replace("-", "/");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+		Date dateStr = formatter.parse(strDate);
+		
+		eDto.setEpisode_time(dateStr);
+		
+		
 		log.info("사건작성");
 		log.info("register POST...........");
 		eDto.setEpisode_flag('0');
@@ -60,8 +72,9 @@ public class EpisodeController {
 	
 	// 사건 삭제
 	@RequestMapping(value="/episode_delete", method = RequestMethod.GET)
-	public void delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+	public String delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		service.delete(episode_idx);
+		return "redirect:/episode/episode_list";
 	}
 	
 	// 사건 리스트

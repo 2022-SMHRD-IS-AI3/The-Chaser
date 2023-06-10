@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,7 +120,8 @@
                             			<c:otherwise>바보야 다시해</c:otherwise>
                             		</c:choose>
                             	</div>
-                            	<div class="date">${episode.episode_start_dt}</div>
+                            	<div class="date"><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${episode.episode_start_dt}"/></div>
+                            	
                         	</div>
                         </c:forEach>
                     </div>
