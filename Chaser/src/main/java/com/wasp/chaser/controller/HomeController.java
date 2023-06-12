@@ -107,6 +107,15 @@ public class HomeController {
 		
 	}
 	
+	@RequestMapping(value = "/product_use", method = RequestMethod.GET)
+	public String product_use(Model model) {
+		
+		log.info("product_use................");
+		
+		return "/product_use";
+		
+	}
+	
 
 	
 }

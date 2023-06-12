@@ -1,5 +1,4 @@
 package com.wasp.chaser.controller;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +31,7 @@ public class AppeController {
 	@RequestMapping(value="/appearance", method = RequestMethod.POST)
 	public void insert(AppeDTO aDto, Model model) throws Exception{
 		log.info("인상착의작성");
+		
 		service.insert(aDto);
 	}
 	

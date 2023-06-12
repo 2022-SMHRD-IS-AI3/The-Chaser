@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,51 +181,53 @@ option {
 	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
-        <form action="/episode/episode_modify" method="post">
-		<div class=main_content style="width: 100%; height: 100%;">
-			<div class="board_wrap">
+		<form action="/episode/episode_modify" method="post" id="form">
+			<div class=main_content style="width: 100%; height: 100%;">
+				<div class="board_wrap">
 
-				<div class="board_write_wrap">
-					<div class="board_write">
-						<div class="title">
-							<dl>
-								<dt>제목</dt>
-								<dd>
-									<input type="text" name="episode_title" value="${episode.episode_title }" >
-								</dd>
-							</dl>
-						</div>
-						<div class="title">
-							<dl>
-								<dt>사건유형</dt>
-								<dd>
-									<select name="episode_type">
-										<option value="none" selected>선택</option>
-										<option value="절도">절도</option>
-										<option value="공갈">공갈</option>
-										<option value="손괴">손괴</option>
-										<option value="폭행">폭행</option>
-										<option value="강도">강도</option>
-										<option value="방화">방화</option>
-										<option value="강간">강간</option>
-										<option value="살인">살인</option>
-										<option value="유괴">유괴</option>
-										<option value="납치">납치</option>
+					<div class="board_write_wrap">
+						<div class="board_write">
+							<div class="title">
+								<dl>
+									<dt>제목</dt>
+									<dd>
+										<input type="text" id="episode_title" name="episode_title"
+											value="${episode.episode_title }">
+									</dd>
+								</dl>
+							</div>
+							<div class="title">
+								<dl>
+									<dt>사건유형</dt>
+									<dd>
+										<select id="episode_type" name="episode_type">
+											<option value="" selected>선택</option>
+											<option value="절도">절도</option>
+											<option value="공갈">공갈</option>
+											<option value="손괴">손괴</option>
+											<option value="폭행">폭행</option>
+											<option value="강도">강도</option>
+											<option value="방화">방화</option>
+											<option value="강간">강간</option>
+											<option value="살인">살인</option>
+											<option value="유괴">유괴</option>
+											<option value="납치">납치</option>
 
-									</select>
-								</dd>
-							</dl>
-						</div>
-						<div class="title">
-							<dl>
-								<dt>장소</dt>
-								<dd>
-									
+										</select>
+									</dd>
+								</dl>
+							</div>
+							<div class="title">
+								<dl>
+									<dt>장소</dt>
+									<dd>
+
 										<input type="text" id="sample4_postcode" placeholder="우편번호">
 										<input type="button" onclick="sample4_execDaumPostcode()"
 											value="우편번호 찾기"> <br> 
-										<input type="text" value="${episode.episode_loc }"
-											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc"> 
+										<input type="text"
+											value="${episode.episode_loc }" id="sample4_roadAddress"
+											placeholder="도로명주소" name="episode_loc"> 
 										<input
 											type="hidden" id="sample4_jibunAddress" name="juso"
 											placeholder="지번주소"> <span id="guide"
@@ -233,35 +235,95 @@ option {
 										<input type="text"
 											id="sample4_detailAddress" name="juso2" placeholder="상세주소">
 										<input type="hidden" id="sample4_extraAddress"
-											placeholder="참고항목">
-										<input type="hidden" name="episode_idx" value="${episode.episode_idx }">
-											
+											placeholder="참고항목"> <input type="hidden"
+											name="episode_idx" value="${episode.episode_idx }">
 
-									
-								</dd>
-							</dl>
+
+
+									</dd>
+								</dl>
+							</div>
+							<div class="info">
+								<dl>
+									<dt>사건발생일자</dt>
+									<dd style="padding-top: 5px;">
+										<input type="date"  id="time_string" name="time_string" value="<fmt:formatDate pattern='yyyy-MM-dd' value='${episode.episode_time}'/>">
+										
+									</dd>
+								</dl>
+							</div>
+							<div class="cont">
+								<textarea type="text" id="episode_content" name="episode_content">${episode.episode_content }</textarea>
+							</div>
 						</div>
-						<div class="info">
-							<dl>
-								<dt>사건발생일자</dt>
-								<dd style="padding-top: 5px;">
-									<input type="text" id="date" name="episode_time">
-								</dd>
-							</dl>
+						<div class="bt_wrap" style="padding-right: 60px;">
+							<button type="button" class="on" onclick="submitData()">등록</button>
+							<button type="button" onclick="moveUrl('/episode/episode_list')">취소</button>
 						</div>
-						<div class="cont">
-							<textarea type="text" name="episode_content"  >${episode.episode_content }</textarea>
-						</div>
-					</div>
-					<div class="bt_wrap" style="padding-right: 60px;">
-						<button class="on" type="submit">등록</button>
-                        <button><a href="../">취소</a></button>
 					</div>
 				</div>
 			</div>
-		</div>
-    </form>
+		</form>
 	</main>
+
+<script type="text/javascript">
+		const moveUrl = (url) => {
+			location.href = url;
+		}
+		
+		function submitData(){
+			console.log('testtttttttttttttttttttttt');
+		          var input1 = document.getElementById("episode_title")['value'];
+		          console.log(input1);
+		          var input2 = document.getElementById("episode_type")['value'];
+		          console.log(input2);
+		          var input3 = document.getElementById("sample4_roadAddress")['value'];	
+		          console.log(input3);
+		          var input4 = document.getElementById("time_string")['value'];
+		          console.log(input4);
+		          var input5 = document.getElementById("episode_content")['value'];
+		          
+		          
+		          
+		          
+		          console.log(input5);
+		          
+		          /* var input44 = document.getElementById("time_string");
+		          
+		          input44.innerHTML = input4.replace( /-/g, '/');
+		          
+		          console.log(input44.innerText); */
+		       
+		          if (input1 == '') {
+		             alert("글 제목을 입력해주세요.");
+		             return;
+		          }
+		          if (input2 == '') {
+		             alert("타입을 입력해주세요.");
+		             return;
+		          }
+		          if (input3 == '') {
+		             alert("장소를 입력해주세요.");
+		             return;
+		          }
+		          if (input4 == '') {
+		             alert("발생 시간을 입력해주세요.");
+		             return;
+		          }
+		          if (input5 == '') {
+		             alert("사건에 대한 내용을 입력해주세요.");
+		             return;
+		          } else{
+		        	  var form1 = document.getElementById('form')
+		        	  form1.submit();
+		          }
+		          
+		          
+		    }   
+		
+
+	       
+	</script>
 
 
 

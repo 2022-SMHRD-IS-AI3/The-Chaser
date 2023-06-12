@@ -53,7 +53,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     var latlng = mouseEvent.latLng;
     
     
-    var message = '클릭한 위치의 좌표 (경도,위도) : ' + latlng.getLat() + ', ' + latlng.getLng();
+    var message = '클릭한 위치의 좌표 (위도, 경도) : ' + latlng.getLat() + ', ' + latlng.getLng();
     var message1= latlng.getLat();
     var message2= latlng.getLng();
     var resultDiv = document.getElementById('result'); 

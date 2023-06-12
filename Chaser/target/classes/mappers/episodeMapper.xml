@@ -7,8 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wasp.chaser.episodeMapper">
 
 	<insert id="insert">
-		INSERT INTO tb_episode(episode_type, episode_title, episode_content, episode_loc, episode_time, episode_start_dt, episode_flag)
-		VALUES(#{episode_type}, #{episode_title}, #{episode_content}, #{episode_loc}, #{episode_time}, sysdate, #{episode_flag})
+		INSERT INTO tb_episode(episode_idx, episode_type, episode_title, episode_content, episode_loc, episode_time, episode_start_dt, episode_flag)
+		VALUES(TB_EPISODE_SEQ.nextval, #{episode_type}, #{episode_title}, #{episode_content}, #{episode_loc}, #{episode_time}, sysdate, #{episode_flag})
+		<selectKey keyProperty="episode_idx" resultType="Integer"
+			order="AFTER">
+			SELECT TB_EPISODE_SEQ.currval FROM dual
+		</selectKey>
 	</insert>
 	
 	<select id="read" resultType="com.wasp.chaser.domain.EpisodeDTO">
