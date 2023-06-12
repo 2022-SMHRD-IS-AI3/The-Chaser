@@ -175,7 +175,7 @@ option {
 		    
 		          var input1 = document.getElementById("episode_title")['value'];		         
 		          var input2 = document.getElementById("episode_type")['value'];
-		          var input3 = document.getElementById("episode_loc")['value'];		   
+		          var input3 = document.getElementById("sample4_roadAddress")['value'];		   
 		          var input4 = document.getElementById("time_string")['value'];
 		          var input5 = document.getElementById("episode_content")['value'];
 		          
@@ -276,7 +276,7 @@ option {
 										<input type="text" id="sample4_postcode" placeholder="우편번호">
 										<input type="button" onclick="sample4_execDaumPostcode()"
 											value="우편번호 찾기"> <br> <input type="text"
-											id="episode_loc" placeholder="도로명주소" name="episode_loc">
+											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc">
 										<input type="hidden" id="sample4_jibunAddress" name="juso"
 											placeholder="지번주소"> <span id="guide"
 											style="color: #999; display: none"></span> <input type="text"

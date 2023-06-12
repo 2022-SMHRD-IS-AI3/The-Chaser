@@ -32,6 +32,7 @@ public class AppeController {
 	@RequestMapping(value="/appearance", method = RequestMethod.POST)
 	public void insert(AppeDTO aDto, Model model) throws Exception{
 		log.info("인상착의작성");
+		
 		service.insert(aDto);
 	}
 	
