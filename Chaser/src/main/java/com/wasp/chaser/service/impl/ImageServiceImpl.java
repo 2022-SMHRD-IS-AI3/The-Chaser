@@ -34,10 +34,16 @@ public class ImageServiceImpl implements IImageService{
 		eDto.setEpisode_flag('2');
 		eDao.updateFlag(eDto);
 	}
-
+	
 	@Override
-	public List<ImageDTO> listAll(int img_idx) throws Exception {
-		List<ImageDTO> imgList = iDao.listAll(img_idx);
+	public List<ImageDTO> beforeListAll(int episode_idx) throws Exception {
+		List<ImageDTO> imgList = iDao.beforeListAll(episode_idx);
+		return imgList;
+	}
+	
+	@Override
+	public List<ImageDTO> afterListAll(int episode_idx) throws Exception {
+		List<ImageDTO> imgList = iDao.afterListAll(episode_idx);
 		for(ImageDTO img : imgList) {
 			WantedDTO wanted = new WantedDTO();
 			wanted.setEpisode_idx(img.getEpisode_idx());
@@ -46,6 +52,7 @@ public class ImageServiceImpl implements IImageService{
 		}
 		return imgList;
 	}
+
 
 	@Override
 	public boolean delete(int img_idx) throws Exception {
@@ -62,8 +69,6 @@ public class ImageServiceImpl implements IImageService{
 		eDao.updateFlag(eDto);
 		
 		return b;
-		
 	}
-
 
 }
