@@ -167,11 +167,10 @@
     <script>
     	$(document).ready(function(){
     		$.ajax({
-    			url : "/apiTest",
+    			url : "/flaskStart",
     			type : "POST",
     			data : {
-    				num : 1,
-    				name : 'name1'
+    				episode_idx : 2
     			},
     			success : function(){
     				alert("성공");
@@ -181,10 +180,7 @@
     			}
     		})
     	})
-    </script>
-    
-    
-    
+    </script>  
     
     <script>
     	let sock = new SockJS("http://localhost:9090/socket");

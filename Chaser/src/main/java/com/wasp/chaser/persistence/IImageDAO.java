@@ -9,8 +9,11 @@ public interface IImageDAO {
 	// 분석할 영상 작성
 	public void insert(ImageDTO image) throws Exception;
 	
-	// 분석 영상 리스트 불러오기 (분석된 후)
-	public List<ImageDTO> listAll(int episode_idx) throws Exception;
+	// 분석할 영상 리스트 불러오기
+	public List<ImageDTO> beforeListAll(int episode_idx) throws Exception;
+	
+	// 분석된 영상 리스트 불러오기
+	public List<ImageDTO> afterListAll(int episode_idx) throws Exception;
 	
 	// 분석된 영상 업데이트
 	public int update(ImageDTO image) throws Exception;

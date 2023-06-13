@@ -23,11 +23,6 @@ public class ImageDAOImpl implements IImageDAO{
 	}
 	
 	@Override
-	public List<ImageDTO> listAll(int episode_idx) throws Exception {
-		return sqlSession.selectList(namespace + ".listAll", episode_idx);
-	}
-
-	@Override
 	public int delete(int img_idx) throws Exception {
 		return sqlSession.delete(namespace + ".delete", img_idx);
 	}
@@ -35,6 +30,16 @@ public class ImageDAOImpl implements IImageDAO{
 	@Override
 	public int update(ImageDTO image) throws Exception {
 		return sqlSession.update(namespace + ".update", image);
+	}
+
+	@Override
+	public List<ImageDTO> beforeListAll(int episode_idx) throws Exception {
+		return sqlSession.selectList(namespace + ".beforeListAll", episode_idx);
+	}
+
+	@Override
+	public List<ImageDTO> afterListAll(int episode_idx) throws Exception {
+		return sqlSession.selectList(namespace + ".afterListAll", episode_idx);
 	}
 
 

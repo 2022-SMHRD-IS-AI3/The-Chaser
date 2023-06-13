@@ -22,6 +22,8 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wasp.chaser.domain.ImageDTO;
+import com.wasp.chaser.domain.ImageDTOList;
 import com.wasp.chaser.domain.TestDTO;
 import com.wasp.chaser.domain.TestDTOList;
 import com.wasp.chaser.service.IImageService;
@@ -37,12 +39,43 @@ public class ApiController {
 	
 	@RequestMapping(value = "/flaskStart", method = RequestMethod.POST)
 	public String flaskStart(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+		// 보낼 데이터 리스트 불러오기
 		log.info("데이터 가져오기..............");
-		service.listAll(episode_idx);
+		List<ImageDTO> imgList =  service.beforeListAll(episode_idx);
+		log.info("데이터 가져오기 완료..............");
+		ImageDTOList imgDTOList = new ImageDTOList();
+		imgDTOList.setImageDTOList(imgList);
 		
-		return null;
+		
+		// 데이터 담을 객체 생성
+		RestTemplate restTemplate = new RestTemplate();
+		
+		String url = "http://localhost:9091/";
+		
+		// 객체 Header 
+		HttpHeaders httpHeaders = new HttpHeaders();
+		httpHeaders.setContentType(MediaType.APPLICATION_JSON_UTF8);
+		
+		// 객체 body
+		MultiValueMap<String, List<ImageDTO>> body = new LinkedMultiValueMap<String, List<ImageDTO>>();
+		body.add("imgDTOList", imgDTOList.getImageDTOList());
+		
+		// 보낼 Message
+		HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
+		
+		// Request
+		HttpEntity<String> response = restTemplate.postForEntity(url, requestMessage, String.class);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
+		
+		TestDTO dto = objectMapper.readValue(response.getBody(), TestDTO.class);
+		
+		log.info(dto);
 		
 		
+		return dto.toString();
+				
 	}
 	
 

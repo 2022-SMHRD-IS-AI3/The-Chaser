@@ -21,10 +21,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{episode_idx})
 	</insert>
 	
-	<select id="listAll" resultType="com.wasp.chaser.domain.ImageDTO">
+	<select id="afterListAll" resultType="com.wasp.chaser.domain.ImageDTO">
 		<![CDATA[
 			SELECT * FROM tb_image 
-			WHERE episode_idx = #{episode_idx}
+			WHERE episode_idx = #{episode_idx} AND img_src IS NOT NULL
+		]]>
+	</select>
+	
+	<select id="beforeListAll" resultType="com.wasp.chaser.domain.ImageDTO">
+		<![CDATA[
+			SELECT img_idx, img_xy, img_nm, origin_img_src, origin_imgs 
+			FROM tb_image 
+			WHERE episode_idx = #{episode_idx} AND img_src IS NULL
 		]]>
 	</select>
 	
