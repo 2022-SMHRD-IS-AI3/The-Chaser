@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wasp.chaser.domain.AppeDTO;
+import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.service.IAppeService;
 
 import lombok.extern.log4j.Log4j;
@@ -23,16 +24,25 @@ public class AppeController {
 	// 인상착의 불러오기
 	@RequestMapping(value="/appearance", method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
-		model.addAttribute("episode_idx", service.read(episode_idx));
+		AppeDTO appeDto = service.read(episode_idx);
+		if(appeDto != null) {
+			model.addAttribute("appe", appeDto);	
+		}else {
+			model.addAttribute("episode_idx", episode_idx);
+		}		
 		log.info("인상착의불러오기");
+		log.info("get...................");
 	}
 	
 	// 인상착의 작성
 	@RequestMapping(value="/appearance", method = RequestMethod.POST)
-	public void insert(AppeDTO aDto, Model model) throws Exception{
+	public String insert(AppeDTO aDto, EpisodeDTO eDto,Model model) throws Exception{
 		log.info("인상착의작성");
+		log.info("post...................");
 		
+		aDto.setEpisode_idx(eDto.getEpisode_idx());
 		service.insert(aDto);
+		return "redirect:image_list?episode_idx="+aDto.getEpisode_idx().toString();
 	}
 	
 	// 인상착의 삭제

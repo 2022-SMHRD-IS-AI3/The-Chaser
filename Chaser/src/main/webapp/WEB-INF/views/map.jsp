@@ -26,7 +26,7 @@
 <p>도로명 주소 : </p><span id="juso"></span>
 
 </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9c0deedb88176aa84bd8b795d8d9523e&libraries=services"></script>
 
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -53,7 +53,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     var latlng = mouseEvent.latLng;
     
     
-    var message = '클릭한 위치의 좌표 (위도, 경도) : ' + latlng.getLat() + ', ' + latlng.getLng();
+    var message = '클릭한 위치의 좌표 (경도,위도) : ' + latlng.getLat() + ', ' + latlng.getLng();
     var message1= latlng.getLat();
     var message2= latlng.getLng();
     var resultDiv = document.getElementById('result'); 
