@@ -42,6 +42,7 @@ public class AppeController {
 		
 		aDto.setEpisode_idx(eDto.getEpisode_idx());
 		service.insert(aDto);
+		
 		return "redirect:image_list?episode_idx="+aDto.getEpisode_idx().toString();
 	}
 	

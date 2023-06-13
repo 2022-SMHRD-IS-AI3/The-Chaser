@@ -116,6 +116,22 @@ public class HomeController {
 		
 	}
 	
-
+	@RequestMapping(value = "/introduction", method = RequestMethod.GET)
+	public String introduction(Model model) {
+		
+		log.info("introduction................");
+		
+		return "introduction";
+		
+	}
+	
+	@RequestMapping(value = "/intro_video", method = RequestMethod.GET)
+	public String intro_video(Model model) {
+		
+		log.info("intro_video................");
+		
+		return "intro_video";
+		
+	}
 	
 }

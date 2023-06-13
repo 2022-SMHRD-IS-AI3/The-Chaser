@@ -320,12 +320,10 @@ input {
 			<img src="./사진1.png" alt="" class="top_img">
 		</div>
 		<span class="wnwp">The Chaser</span>
-		<button type="button" onclick="location.href='introduce.html'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='demo_video.html'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='product_use.html'"
-			class="menu">시작하기</button>
+		<button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" id="Logsuccess" onclick="location.href='/product_use'" class="menu">시작하기</button>
 	</div>
 	<form action="/analysis/appearance" method="post" id="form">
 		<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
@@ -444,6 +442,7 @@ input {
 								<c:if test="${appe.appe_body.toString() eq '비만' }">
 									checked </c:if>>
 							<label for="appe_body3">비만</label>
+														
 						</div>
 
 
