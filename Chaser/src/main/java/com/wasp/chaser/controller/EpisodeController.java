@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.wasp.chaser.domain.PageDTO;
 import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.service.IEpisodeService;
@@ -86,9 +87,13 @@ public class EpisodeController {
 	
 	// 사건 리스트
 	@RequestMapping(value="/episode_list", method = RequestMethod.GET)
-	public void list(Criteria cri, Model model) throws Exception{
+	public void list(@ModelAttribute("cri") Criteria  cri, Model model) throws Exception{
 		log.info("사건 목록");
 		model.addAttribute("list", service.listAll(cri));
+		
+		int total = service.getTotalCnt(cri);
+	      log.info("total............" + total);
+	      model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	// 사건 종결

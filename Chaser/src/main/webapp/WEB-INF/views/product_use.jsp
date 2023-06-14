@@ -221,7 +221,7 @@ body {
 				<div
 					style="font-size: 30px; position: relative; left: 1750px; bottom: 50px;"
 					class="next">
-					<a href="/episode/episode_list" style="color: black;">다음</a>
+					<a href="/episode/episode_list?pageNum=1" style="color: black;">다음</a>
 				</div>
 		</div>
 	</main>

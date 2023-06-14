@@ -19,17 +19,15 @@ public class AppeController {
 
 	@Autowired private IAppeService service;
 	
-	
-	
 	// 인상착의 불러오기
 	@RequestMapping(value="/appearance", method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		AppeDTO appeDto = service.read(episode_idx);
 		if(appeDto != null) {
 			model.addAttribute("appe", appeDto);	
-		}else {
-			model.addAttribute("episode_idx", episode_idx);
-		}		
+		}
+		model.addAttribute("episode_idx", episode_idx);
+		
 		log.info("인상착의불러오기");
 		log.info("get...................");
 	}
@@ -37,6 +35,7 @@ public class AppeController {
 	// 인상착의 작성
 	@RequestMapping(value="/appearance", method = RequestMethod.POST)
 	public String insert(AppeDTO aDto, EpisodeDTO eDto,Model model) throws Exception{
+		
 		log.info("인상착의작성");
 		log.info("post...................");
 		
