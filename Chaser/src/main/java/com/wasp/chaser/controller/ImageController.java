@@ -167,13 +167,13 @@ public class ImageController {
 
 					log.info(imageDTO);
 
-					//
 					service.insert(imageDTO);
 				}
 			}
 		}
+		rttr.addFlashAttribute("episode_idx", uploadList.getEpisode_idx());
 		
-		return "analysis/analyzing";
+		return "redirect:/analysis/analyzing";
 
 		// 로딩 페이지
 		// 0. 모델링 단으로 원본 영상에 대한 정보를 줌
@@ -182,6 +182,12 @@ public class ImageController {
 		// 3. 분석 처리 중
 		// 4. 분석 처리 완료 -> 이때 분석 결과에 대한 데이터를 받아옴 -> DB에 update
 
+	}
+	
+	@RequestMapping("analyzing")
+	public String analyzing(String episode_idx) {
+				
+		return "/analysis/analyzing";
 	}
 
 	@RequestMapping(value = "/image_update", method = RequestMethod.GET)
@@ -206,7 +212,11 @@ public class ImageController {
 		}
 
 		model.addAttribute("imageList", imageList);
-
+	}
+	
+	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)
+	public void list(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+		
 	}
 
 }

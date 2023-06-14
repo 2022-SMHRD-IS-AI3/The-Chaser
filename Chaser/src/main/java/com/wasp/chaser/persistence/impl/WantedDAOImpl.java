@@ -18,6 +18,12 @@ public class WantedDAOImpl implements IWantedDAO{
 	private static final String namespace = "com.wasp.chaser.wantedMapper";
 	
 	@Override
+	public void insert(WantedDTO wanted) throws Exception {
+		sqlSession.insert(namespace + ".insert", wanted);
+		
+	}
+	
+	@Override
 	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception {
 		return sqlSession.selectList(namespace + ".listAll", wanted);
 	}
@@ -36,5 +42,6 @@ public class WantedDAOImpl implements IWantedDAO{
 	public int deleteAll(int img_idx) throws Exception {
 		return sqlSession.delete(namespace + ".deleteAll", img_idx);
 	}
+
 
 }

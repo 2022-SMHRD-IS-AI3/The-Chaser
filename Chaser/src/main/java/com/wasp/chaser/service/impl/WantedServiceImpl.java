@@ -16,6 +16,12 @@ public class WantedServiceImpl implements IWantedService{
 	private WantedDAOImpl wDao;
 
 	@Override
+	public void insert(WantedDTO wanted) throws Exception {
+		wDao.insert(wanted);
+		
+	}
+	
+	@Override
 	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception {
 		return wDao.listAll(wanted);
 	}
@@ -34,5 +40,5 @@ public class WantedServiceImpl implements IWantedService{
 	public boolean deleteAll(int img_idx) throws Exception {
 		return wDao.deleteAll(img_idx) >= 1;
 	}
-	
+
 }

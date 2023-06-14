@@ -4,9 +4,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
     <meta charset="utf-8">
     <title>Visualize_result Page</title>
     
+=======
+<meta charset="UTF-8">
+<title>결과화면</title>
+>>>>>>> branch 'main' of https://github.com/2022-SMHRD-IS-AI3/The-Chaser.git
 </head>
 <body>
 <h1>Visualize_result Page</h1>
