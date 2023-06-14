@@ -140,19 +140,19 @@
                     <div class='pull-right'>
 					<ul class="pagination">
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button previous"><a
+							<li class="bt prev"><a
 								href="/episode/episode_list?pageNum=${pageMaker.startPage -1}">Previous</a></li>
 						</c:if>
 
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
-							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+							<li class="num  ${pageMaker.cri.pageNum == num ? "active":""} ">
 								<a href="/episode/episode_list?pageNum=${num}">${num}</a>
 							</li>
 						</c:forEach>
 
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a
+							<li class="bt next"><a
 								href="/episode/episode_list?pageNum=${pageMaker.endPage +1 }">Next</a></li>
 						</c:if>
 					</ul>
