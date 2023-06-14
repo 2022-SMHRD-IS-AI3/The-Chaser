@@ -212,7 +212,11 @@ public class ImageController {
 		}
 
 		model.addAttribute("imageList", imageList);
-
+	}
+	
+	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)
+	public void list(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+		
 	}
 
 }
