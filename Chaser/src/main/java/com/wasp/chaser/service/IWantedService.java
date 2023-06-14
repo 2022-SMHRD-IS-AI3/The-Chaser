@@ -5,6 +5,8 @@ import java.util.List;
 import com.wasp.chaser.domain.WantedDTO;
 
 public interface IWantedService {
+	
+	public void insert(WantedDTO wanted) throws Exception;
 
 	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception;
 	

@@ -1,8 +1,5 @@
 package com.wasp.chaser.domain;
 
-import com.wasp.chaser.domain.Criteria;
-import com.wasp.chaser.domain.PageDTO;
-
 import lombok.Data;
 
 @Data

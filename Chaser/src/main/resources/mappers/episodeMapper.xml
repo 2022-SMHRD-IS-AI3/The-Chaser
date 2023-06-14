@@ -104,4 +104,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE episode_idx = #{episode_idx}
 	</update>
 	
+	<select id="getTotalCnt" resultType="int">
+		select count(*)
+		from tb_episode
+		where 
+		episode_idx > 0
+	</select>
+	
 </mapper>

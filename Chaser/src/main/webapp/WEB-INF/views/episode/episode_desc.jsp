@@ -111,17 +111,15 @@ body {
 							</dl>
 							<dl>
 								<dt>상태</dt>
-								<dd>
-								
-									<c:choose>
-										<c:when test="${episode.episode_flag.toString() eq '9'}">사건생성</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '3'}">인상착의 등록완료</c:when>
+								<dd>								
+									 <c:choose>
+										<c:when test="${episode.episode_flag.toString() eq '0'}">사건생성완료</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '1'}">인상착의 등록완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '2'}">동영상 선택완료</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '1'}">동영상 분석완료</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '0'}">사건 종결</c:when>
-										<c:otherwise>바보야 다시해</c:otherwise>
-									</c:choose>
-								
+										<c:when test="${episode.episode_flag.toString() eq '3'}">동영상 분석완료</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '9'}">사건 종결</c:when>
+										<c:otherwise>DB Error02</c:otherwise>
+									</c:choose>		 						
 								</dd>
 							</dl>
 							<dl>
@@ -141,6 +139,25 @@ body {
 						<button onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button>
 						<button onclick="moveUrl('/episode/episode_delete?episode_idx=${episode.episode_idx }')">삭제</button>
 						<button onclick="moveUrl('/episode/episode_list')" class="on">목록</button>
+									 <c:choose>
+										<c:when test="${episode.episode_flag.toString() eq '0'}">
+										<button class="on" onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의 입력</button>
+										</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '1'}">
+										<button class="on" onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의 수정</button>
+										</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '2'}">
+										동영상 선택완료
+										</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '3'}">
+										동영상 분석완료
+										</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '9'}">
+										사건 종결
+										</c:when>
+										<c:otherwise>DB Error02</c:otherwise>
+									</c:choose> 
+						
 					</div>
 				</div>
 			</div>
@@ -149,7 +166,17 @@ body {
 
 	<script type="text/javascript">
 		const moveUrl = (url) => {
-			location.href = url;
+			
+	        	  if (confirm("정말 진행하시겠습니까??") == true){    //확인
+
+	        		  location.href = url;
+
+	        		 }else{   //취소
+
+	        		     return false;
+
+	        		 }
+	        		
 		}
 	</script>
 

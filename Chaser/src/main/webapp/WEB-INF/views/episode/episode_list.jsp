@@ -126,7 +126,7 @@
                         </c:forEach>
                     </div>
                     <!-- 페이징 -->
-                    <div class="board_page">
+                   <!--  <div class="board_page">
                         <a href="#" class="bt first"></a>
                         <a href="#" class="bt prev"></a>
                         <a href="#" class="num on">1</a>
@@ -136,7 +136,28 @@
                         <a href="#" class="num">5</a>
                         <a href="#" class="bt next">></a>
                         <a href="#" class="bt last">>></a>
-                    </div>
+                    </div> -->
+                    <div class='pull-right'>
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous"><a
+								href="/episode/episode_list?pageNum=${pageMaker.startPage -1}">Previous</a></li>
+						</c:if>
+
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+								<a href="/episode/episode_list?pageNum=${num}">${num}</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a
+								href="/episode/episode_list?pageNum=${pageMaker.endPage +1 }">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+                    
                     <div class="bt_wrap">
                         <button onclick="moveUrl('/episode/episode_register')" class="on">등록</button>
                         

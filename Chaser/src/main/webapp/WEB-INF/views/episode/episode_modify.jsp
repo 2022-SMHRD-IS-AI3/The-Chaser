@@ -199,7 +199,7 @@ option {
 									<dt>사건유형</dt>
 									<dd>
 										<select id="episode_type" name="episode_type">
-											<option value="" selected>선택</option>
+											<option value="${episode.episode_type }" selected>${episode.episode_type }</option>
 											<option value="절도">절도</option>
 											<option value="공갈">공갈</option>
 											<option value="손괴">손괴</option>
@@ -312,8 +312,18 @@ option {
 		             alert("사건에 대한 내용을 입력해주세요.");
 		             return;
 		          } else{
-		        	  var form1 = document.getElementById('form')
-		        	  form1.submit();
+		        	  if (confirm("정말 진행하시겠습니까??") == true){    //확인
+
+		        		  var form1 = document.getElementById('form')
+			        	  form1.submit();
+
+		        		 }else{   //취소
+
+		        		     return false;
+
+		        		 }
+		        		
+		        	  
 		          }
 		          
 		          

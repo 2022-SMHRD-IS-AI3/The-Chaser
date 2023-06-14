@@ -16,7 +16,7 @@ public interface IImageService {
 	public List<ImageDTO> afterListAll(int episode_idx) throws Exception;
 	
 	// 분석된 영상 업데이트
-	public boolean update(ImageDTO img) throws Exception;
+	public boolean update(ImageDTO imageDTO) throws Exception;
 	
 	// 영상 파일 삭제
 	public boolean delete(int img_idx) throws Exception;

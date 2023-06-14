@@ -205,11 +205,21 @@ option {
 		             alert("사건에 대한 내용을 입력해주세요.");
 		             return;
 		          } else{
-		        	  var form1 = document.getElementById('form')
-		        	  form1.submit();
+		        	  if (confirm("정말 진행하시겠습니까??") == true){    //확인
+
+		        		  var form1 = document.getElementById('form')
+			        	  form1.submit();
+
+		        		 }else{   //취소
+
+		        		     return false;
+
+		        		 }
+		        		
+		        	  
 		          }
 		          
-		          
+		      
 		    }   
 		
 

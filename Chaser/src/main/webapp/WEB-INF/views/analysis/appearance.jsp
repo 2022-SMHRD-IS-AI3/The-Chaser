@@ -368,17 +368,17 @@ input {
 
 						<div class="ex5" style="padding-top: 20px;">
 							<input id="appe_age1" type="radio" name="appe_age" value="1"
-								<c:if test="${appe.appe_age eq '1' }">checked> </c:if>>
+								<c:if test="${appe.appe_age eq '1' }">checked </c:if>>
 							<label for="appe_age1">학생</label>
 						</div>
 						<div class="ex5">
 							<input id="appe_age2" type="radio" name="appe_age" value="2"
-								<c:if test="${appe.appe_age eq '2' }">checked> </c:if>>
+								<c:if test="${appe.appe_age eq '2' }">checked </c:if>>
 							<label for="appe_age2">성인</label>
 						</div>
 						<div class="ex5">
 							<input id="appe_age3" type="radio" name="appe_age" value="3"
-								<c:if test="${appe.appe_age eq '3' }">checked> </c:if>>
+								<c:if test="${appe.appe_age eq '3' }">checked </c:if>>
 							<label for="appe_gender3">노인</label>
 						</div>
 
@@ -394,25 +394,25 @@ input {
 						<div class="ex2" style="padding-top: 20px;">
 							<input id="appe_height1" type="radio" name="appe_height"
 								value="1"
-								<c:if test="${appe.appe_height eq '1' }">checked> </c:if>><label
+								<c:if test="${appe.appe_height eq '1' }">checked </c:if>><label
 								for="appe_height1">160cm미만</label>
 						</div>
 						<div class="ex2">
 							<input id="appe_height2" type="radio" name="appe_height"
 								value="2"
-								<c:if test="${appe.appe_height eq '2' }">checked> </c:if>>
+								<c:if test="${appe.appe_height eq '2' }">checked </c:if>>
 							<label for="appe_height2">160~170cm미만</label>
 						</div>
 						<div class="ex2">
 							<input id="appe_height3" type="radio" name="appe_height"
 								value="3"
-								<c:if test="${appe.appe_height eq '3' }">checked> </c:if>>
+								<c:if test="${appe.appe_height eq '3' }">checked </c:if>>
 							<label for="appe_height3">170~180cm미만</label>
 						</div>
 						<div class="ex2">
 							<input id="appe_height4" type="radio" name="appe_height"
 								value="4"
-								<c:if test="${appe.appe_height eq '4' }">checked> </c:if>>
+								<c:if test="${appe.appe_height eq '4' }">checked </c:if>>
 							<label for="appe_height4">180~190cm미만</label>
 						</div>
 
@@ -600,6 +600,7 @@ input {
 				</div>
 
 			</div>
+			
 			<input type="hidden" name="episode_idx" value="${episode_idx} ">
 
 			<div

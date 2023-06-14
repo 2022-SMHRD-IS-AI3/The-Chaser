@@ -53,4 +53,9 @@ public class EpisodeDAOImpl implements IEpisodeDAO {
 		return sqlSession.update(namespace + ".updateEnd", episode);
 	}
 
+	public int getTotalCnt(Criteria cri) throws Exception{
+		
+		return sqlSession.selectOne(namespace + ".getTotalCnt", cri);
+	}
+
 }

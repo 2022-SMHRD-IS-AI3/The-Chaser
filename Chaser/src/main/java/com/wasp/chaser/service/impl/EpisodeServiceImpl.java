@@ -53,4 +53,10 @@ public class EpisodeServiceImpl implements IEpisodeService {
 		return eDao.updateEnd(episode) == 1;
 	}
 
+	@Override
+	public int getTotalCnt(Criteria cri) throws Exception {
+		return eDao.getTotalCnt(cri);
+		
+	}
+
 }

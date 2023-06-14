@@ -6,6 +6,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.wasp.chaser.wantedMapper">
 
+	<insert id="insert">
+		INSERT INTO tb_wanted(
+			w_first,
+			w_last,
+			w_color,
+			w_flag,
+			w_per,
+			episode_idx,
+			img_idx,
+			appe_idx			
+		)VALUES(
+			#{w_first},
+			#{w_last},
+			#{w_color},
+			'N',
+			#{w_per},
+			#{episode_idx},
+			#{img_idx},
+			#{appe_idx}	
+		)
+	</insert>
+
 	<select id="listAll" resultType="com.wasp.chaser.domain.WantedDTO">
 		<![CDATA[
 			SELECT * FROM tb_wanted 
