@@ -60,11 +60,11 @@ public class ImageServiceImpl implements IImageService{
 	}
 
 	@Override
-	public boolean update(ImageDTO img) throws Exception {
-		boolean b = iDao.update(img) == 1;
+	public boolean update(ImageDTO imageDTO) throws Exception {
+		boolean b = iDao.update(imageDTO) == 1;
 		
 		EpisodeDTO eDto = new EpisodeDTO();
-		eDto.setEpisode_idx(img.getEpisode_idx());
+		eDto.setEpisode_idx(imageDTO.getEpisode_idx());
 		eDto.setEpisode_flag('3');
 		eDao.updateFlag(eDto);
 		

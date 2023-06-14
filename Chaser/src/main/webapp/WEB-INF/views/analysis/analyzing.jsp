@@ -170,10 +170,10 @@
     			url : "/flaskStart",
     			type : "POST",
     			data : {
-    				episode_idx : 2
+    				episode_idx : 1
     			},
     			success : function(){
-    				alert("성공");
+    				location.href = "/analysis/analysis_result?episode_idx=1";
     			},
     			error : function(){
     				alert("실패");

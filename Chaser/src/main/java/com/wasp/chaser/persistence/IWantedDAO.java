@@ -6,6 +6,9 @@ import com.wasp.chaser.domain.WantedDTO;
 
 public interface IWantedDAO {
 	
+	// 후보 삽입
+	public void insert(WantedDTO wanted) throws Exception;
+	
 	// 후보 리스트 불러오기
 	public List<WantedDTO> listAll(WantedDTO wanted) throws Exception;
 	
