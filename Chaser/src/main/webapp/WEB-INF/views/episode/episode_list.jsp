@@ -84,10 +84,10 @@
         <span
             class="wnwp">The
             Chaser</span>
-        <button type="button" onclick="location.href='introduce.html'" class="menu"
+        <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='demo_video.html'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='product_use.html'" class="menu">시작하기</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
     </div>
     <main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
         <div class = main_content style="width: 100%; height: 100%;">
@@ -125,6 +125,7 @@
                         	</div>
                         </c:forEach>
                     </div>
+                    <!-- 페이징 -->
                     <div class="board_page">
                         <a href="#" class="bt first"></a>
                         <a href="#" class="bt prev"></a>

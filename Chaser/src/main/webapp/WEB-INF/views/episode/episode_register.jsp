@@ -175,7 +175,7 @@ option {
 		    
 		          var input1 = document.getElementById("episode_title")['value'];		         
 		          var input2 = document.getElementById("episode_type")['value'];
-		          var input3 = document.getElementById("episode_loc")['value'];		   
+		          var input3 = document.getElementById("sample4_roadAddress")['value'];		   
 		          var input4 = document.getElementById("time_string")['value'];
 		          var input5 = document.getElementById("episode_content")['value'];
 		          
@@ -223,12 +223,10 @@ option {
 			<img src="./사진1.png" alt="" class="top_img">
 		</div>
 		<span class="wnwp">The Chaser</span>
-		<button type="button" onclick="location.href='introduce.html'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='demo_video.html'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='product_use.html'"
-			class="menu">시작하기</button>
+		<button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
 	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
@@ -276,7 +274,7 @@ option {
 										<input type="text" id="sample4_postcode" placeholder="우편번호">
 										<input type="button" onclick="sample4_execDaumPostcode()"
 											value="우편번호 찾기"> <br> <input type="text"
-											id="episode_loc" placeholder="도로명주소" name="episode_loc">
+											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc">
 										<input type="hidden" id="sample4_jibunAddress" name="juso"
 											placeholder="지번주소"> <span id="guide"
 											style="color: #999; display: none"></span> <input type="text"

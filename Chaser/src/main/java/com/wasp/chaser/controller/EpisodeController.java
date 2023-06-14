@@ -49,8 +49,8 @@ public class EpisodeController {
 		eDto.setEpisode_flag('0');
 		service.insert(eDto);
 		
-		model.addAttribute("result", eDto.getEpisode_idx());
-		return "redirect:/episode/episode_list";
+		
+		return "redirect:/analysis/appearance?episode_idx="+eDto.getEpisode_idx().toString();
 	}
 	
 	// 사건 열기 and 상세보기에서 수정
@@ -64,6 +64,13 @@ public class EpisodeController {
 	public String update(EpisodeDTO eDto, Model model) throws Exception{
 		log.info("사건수정");
 		log.info("episode_modify POST...........");
+		log.info(eDto.getEpisode_time());
+		String strDate = eDto.getTime_string();
+		strDate = strDate.replace("-", "/");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+		Date dateStr = formatter.parse(strDate);
+		
+		eDto.setEpisode_time(dateStr);
 		service.update(eDto);
 		
 		model.addAttribute("result", eDto.getEpisode_idx());

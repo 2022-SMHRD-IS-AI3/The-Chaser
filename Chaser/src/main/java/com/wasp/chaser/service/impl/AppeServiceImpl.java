@@ -25,8 +25,7 @@ public class AppeServiceImpl implements IAppeService{
 		eDto.setEpisode_idx(appe.getEpisode_idx());
 		eDto.setEpisode_flag('1');
 		eDao.updateFlag(eDto);
-		
-		
+			
 	}
 
 	@Override
