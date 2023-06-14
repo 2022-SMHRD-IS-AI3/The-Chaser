@@ -205,11 +205,21 @@ option {
 		             alert("사건에 대한 내용을 입력해주세요.");
 		             return;
 		          } else{
-		        	  var form1 = document.getElementById('form')
-		        	  form1.submit();
+		        	  if (confirm("정말 진행하시겠습니까??") == true){    //확인
+
+		        		  var form1 = document.getElementById('form')
+			        	  form1.submit();
+
+		        		 }else{   //취소
+
+		        		     return false;
+
+		        		 }
+		        		
+		        	  
 		          }
 		          
-		          
+		      
 		    }   
 		
 
@@ -223,12 +233,10 @@ option {
 			<img src="./사진1.png" alt="" class="top_img">
 		</div>
 		<span class="wnwp">The Chaser</span>
-		<button type="button" onclick="location.href='introduce.html'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='demo_video.html'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='product_use.html'"
-			class="menu">시작하기</button>
+		<button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
 	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">

@@ -151,9 +151,9 @@
         </div>
         <span class="wnwp"><a href="main.html" class="move">The
             Chaser</a></span>
-        <button type="button" onclick="" class="menu"
+        <button type="button" onclick="moveUrl('/introduction')" class="menu"
             style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="" class="menu">시연영상</button>
+        <button type="button" onclick="moveUrl('/intro_video')" class="menu">시연영상</button>
         <button type="button" id="Logsuccess" onclick="moveUrl('/product_use')" class="menu">시작하기</button>
     </div>
     <main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
@@ -191,6 +191,7 @@
     }
     
 	const moveUrl = (url) => {
+		console.log('move..............url...............')
 		location.href = url;
 	}
     </script>

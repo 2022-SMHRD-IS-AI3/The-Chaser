@@ -21,4 +21,6 @@ public interface IEpisodeService {
 	
 	public boolean updateEnd(EpisodeDTO episode) throws Exception;
 
+	public int getTotalCnt(Criteria cri) throws Exception;
+
 }

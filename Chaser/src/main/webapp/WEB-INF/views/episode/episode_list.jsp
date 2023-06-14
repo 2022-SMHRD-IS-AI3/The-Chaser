@@ -84,10 +84,10 @@
         <span
             class="wnwp">The
             Chaser</span>
-        <button type="button" onclick="location.href='introduce.html'" class="menu"
+        <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='demo_video.html'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='product_use.html'" class="menu">시작하기</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
     </div>
     <main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
         <div class = main_content style="width: 100%; height: 100%;">
@@ -125,7 +125,8 @@
                         	</div>
                         </c:forEach>
                     </div>
-                    <div class="board_page">
+                    <!-- 페이징 -->
+                   <!--  <div class="board_page">
                         <a href="#" class="bt first"></a>
                         <a href="#" class="bt prev"></a>
                         <a href="#" class="num on">1</a>
@@ -135,7 +136,28 @@
                         <a href="#" class="num">5</a>
                         <a href="#" class="bt next">></a>
                         <a href="#" class="bt last">>></a>
-                    </div>
+                    </div> -->
+                    <div class='pull-right'>
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button previous"><a
+								href="/episode/episode_list?pageNum=${pageMaker.startPage -1}">Previous</a></li>
+						</c:if>
+
+						<c:forEach var="num" begin="${pageMaker.startPage}"
+							end="${pageMaker.endPage}">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
+								<a href="/episode/episode_list?pageNum=${num}">${num}</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button next"><a
+								href="/episode/episode_list?pageNum=${pageMaker.endPage +1 }">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+                    
                     <div class="bt_wrap">
                         <button onclick="moveUrl('/episode/episode_register')" class="on">등록</button>
                         
