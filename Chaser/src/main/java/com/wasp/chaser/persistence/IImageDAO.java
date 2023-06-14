@@ -21,6 +21,8 @@ public interface IImageDAO {
 	// 영상 삭제
 	public int delete(int img_idx) throws Exception;
 	
+	public List<ImageDTO> resultListAll(int episode_idx) throws Exception;
+	
 	
 
 }

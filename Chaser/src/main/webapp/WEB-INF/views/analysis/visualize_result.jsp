@@ -1,23 +1,27 @@
+<%@page import="com.wasp.chaser.domain.ImageDTO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
     <meta charset="utf-8">
     <title>Visualize_result Page</title>
-    
-=======
-<meta charset="UTF-8">
-<title>결과화면</title>
->>>>>>> branch 'main' of https://github.com/2022-SMHRD-IS-AI3/The-Chaser.git
+
 </head>
 <body>
 <h1>Visualize_result Page</h1>
+<h2></h2>
 <div id="map" style="width:100%;height:350px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
+<script type="text/javascript">
+//console.log(${list[0]});
+</script>
+
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
@@ -26,19 +30,18 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
- 
+
+
+/* var titList=[];
+for(var i=0; i<${fn:length(list)}; i++){
+	titList[i]=list[i].img_nm;
+} */
+
 // 마커를 표시할 위치와 title 객체 배열입니다 
 var positions = [
 	
-	/* {
-		 for (let i = 0; i < list.length; i++) {
-        //인포위도우에 표시할 내용
-        title : ${list[i][0]},
-        // 표시할 위도경도 좌표값
-        latlng: new kakao.maps.LatLng(${list[i][1]})
-   			 } 
-	} */
-   /*  {
+	
+    /* {
         //인포위도우에 표시할 내용
         title : "광주광역시 동구 금남로 245",
         // 표시할 위도경도 좌표값
@@ -68,15 +71,29 @@ var positions = [
     },{        
         title : "광주광역시 동구 구성로204번길 15-7",
         latlng: new kakao.maps.LatLng(35.15286045736732, 126.91605124548794)
-    } */
+    }  */
 ];
- 
+
+<%
+List<ImageDTO> imgList = (List<ImageDTO>)request.getAttribute("list");
+	for (int i = 0; i < imgList.size(); i++) {
+%>
+	/* positions = ${list[0]}; */
+		console.log(<%=i%>);
+		positions[<%=i%>] = {
+			//인포위도우에 표시할 내용
+			title : `<%=imgList.get(i).getImg_nm()%>`,
+			// 표시할 위도경도 좌표값
+			latlng: new kakao.maps.LatLng(<%=imgList.get(i).getImg_xy()%>)
+		} 	
+<%
+	}
+%>
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
+  
 for (var i = 0; i < positions.length; i ++) {
-    
     // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(24, 35); 
     
@@ -126,7 +143,7 @@ var linePath;
 var lineLine = new daum.maps.Polyline();
 for (var i = 1; i < positions.length; i++) {
         if (i != 0) {
-            linePath = [ positions[i -1].latlng, positions[i].latlng ] //라인을 그리려면 두 점이 있어야하니깐 두 점을 지정했습니다
+            linePath = [ positions[i-1].latlng, positions[i].latlng ] //라인을 그리려면 두 점이 있어야하니깐 두 점을 지정했습니다
         }
         ;
         lineLine.setPath(linePath); // 선을 그릴 라인을 세팅합니다

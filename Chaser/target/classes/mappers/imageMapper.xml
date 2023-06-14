@@ -37,7 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="resultListAll" resultType="com.wasp.chaser.domain.ImageDTO">
-		select img_idx, img_nm, img_xy from tb_image where episode_idx = #{episode_idx};
+		select img_idx, img_nm, img_xy from tb_image where episode_idx = #{episode_idx}
+		order by img_idx ASC
 	</select>
 	
 	<update id="update">
