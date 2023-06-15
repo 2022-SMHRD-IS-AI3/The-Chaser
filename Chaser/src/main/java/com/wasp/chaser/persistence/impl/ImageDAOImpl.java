@@ -42,5 +42,10 @@ public class ImageDAOImpl implements IImageDAO{
 		return sqlSession.selectList(namespace + ".afterListAll", episode_idx);
 	}
 
+	@Override
+	public List<ImageDTO> resultListAll(int episode_idx) throws Exception {
+		return sqlSession.selectList(namespace + ".resultListAll", episode_idx);
+	}
+
 
 }

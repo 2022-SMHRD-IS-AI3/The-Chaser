@@ -76,6 +76,7 @@ public class ApiController {
 		body.add("imgDTOList", imgDTOList.getImageDTOList());
 		body.add("appe", appe);
 		
+		log.info("asdfasdfasdf");
 		// 보낼 Message
 		HttpEntity<?> requestMessage = new HttpEntity<>(body, httpHeaders);
 		
@@ -85,7 +86,7 @@ public class ApiController {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
 		
-		List<ImageDTO> img_result = objectMapper.readValue(response.getBody(), new TypeReference<List<ImageDTO>>(){});
+		ArrayList<ImageDTO> img_result = objectMapper.readValue(response.getBody(), new TypeReference<List<ImageDTO>>(){});
 		
 		log.info(img_result);
 		

@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,15 +36,15 @@ body {
 	top: 10px;
 }
 
-.wnwp {
-	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-	color: white;
-	font-size: 1.5rem;
-	font-weight: 600;
-	position: relative;
-	left: 42px;
-	top: 20px;
-}
+        .wnwp {
+            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+            color: white;
+            font-size: 23px;
+            font-weight: 600;
+            position: relative;
+            left: 47px;
+            top: 23px;
+        }
 
 .menu {
 	font-size: large;
@@ -232,7 +232,8 @@ option {
 		<div style="width: fit-content; height: 79px;">
 			<img src="./사진1.png" alt="" class="top_img">
 		</div>
-		<span class="wnwp">The Chaser</span>
+		<span class="wnwp"><a href="/main" class="move">The
+            Chaser</a></span>
 		<button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>

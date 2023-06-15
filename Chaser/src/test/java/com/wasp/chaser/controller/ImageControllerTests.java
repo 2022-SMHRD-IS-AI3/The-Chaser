@@ -81,7 +81,18 @@ public class ImageControllerTests {
 //				.getModelAndView()
 //				.getModelMap());
 //	}
-	
+	@Test
+	public void testImageUpdate() throws Exception{
+		log.info("프레임 드랍된 영상 업데이트 " + mockMvc.perform(MockMvcRequestBuilders
+				.get("/analysis//visualize_result")
+				.param("imageDTOList[0].img_idx", "21")
+				.param("imageDTOList[0].img_nm", "드랍 경로")
+				.param("imageDTOList[0].img_xy", "212312,43434343")
+				)
+				.andReturn()
+				.getModelAndView()
+				.getModelMap());
+	}	
 	
 
 }
