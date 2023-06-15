@@ -10,8 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
     <script>
@@ -21,11 +20,16 @@
         function createFolder() {
             var input = document.createElement("input");
             input.type = "text";
+            input.setAttribute("id", "id1");
             input.style.width = "160px";
             input.style.fontSize = "13px";
             input.style.marginLeft = "10px";
             input.style.marginTop = "10px";
             input.placeholder = "폴더 이름을 입력하세요.";
+            
+            var input2 = document.createElement("input");
+            input2.type = "hidden";
+            input2.setAttribute("id", "id2");
 
             var button = document.createElement("button");
             button.innerHTML = "확인";
@@ -38,9 +42,11 @@
 
             button.addEventListener("click", function () {
                 var folderName = input.value;
+                var xy = input2.value;
                 if (folderName) {
-                    createFolderElement(folderName);
+                    createFolderElement(folderName, xy);
                     input.remove();
+                    input2.remove();
                     button.remove();
                 }
             });
@@ -48,6 +54,7 @@
             var container = document.getElementById("container");
 
             container.appendChild(input);
+            container.appendChild(input2);
             container.appendChild(button);
 
             input.addEventListener("keyup", function (event) {
@@ -57,9 +64,10 @@
                     button.click();
                 }
             });
+            
         }
 
-        function createFolderElement(folderName) {
+        function createFolderElement(folderName, xy) {
             var folder = document.createElement("div");
             folder.className = "folder";
             folder.setAttribute("data-folder-name", folderName);
@@ -82,12 +90,12 @@
             var text_child1 = document.createElement("input");
             text_child1.type = "hidden";
             text_child1.setAttribute("name", "uploadList[" + folderCount + "].uploadFolder");
-            text_child1.setAttribute("value", "");
+            text_child1.setAttribute("value", folderName);
 
             var text_child2 = document.createElement("input");
             text_child2.type = "hidden";
             text_child2.setAttribute("name", "uploadList[" + (folderCount++) + "].loc");
-            text_child2.setAttribute("value", "");
+            text_child2.setAttribute("value", xy);
 
             var folderNameElement = document.createElement("span");
             folderNameElement.className = "folder-name";
@@ -301,7 +309,7 @@
             top: 65%;
             left: 53%;
         }
-	    .map_wrap {position:relative;width:100%;height:350px;}
+	    .map_wrap {position:relative;width:100%;height:650px;}
 	    .title {font-weight:bold;display:block;}
 	    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
 	    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
@@ -326,8 +334,7 @@
             <div
                 style="width: 1500px; height: 500px; margin-top: 50px; border: solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
                 <div style="width: 16%; height: 100%; border-right: solid; float: left;">
-                    <button onclick="createFolder()" class="createbtn">폴더
-                        생성</button>
+                    <button onclick="createFolder()" class="createbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">폴더 생성</button>
                         <form action="${contextPath}/analysis/image_insert" method="post" id="form1">
                             <input type="hidden" value="${episode_idx}" name="episode_idx">
                             <input type="hidden" value="cctv 파일 경로" name="path">
@@ -366,18 +373,29 @@
         </div>
 
     </main>
-    <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-    <div class="hAddr">
-        <span class="title">지도중심기준 행정동 주소정보</span>
-        <span id="centerAddr"></span>
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">녹화된 장소를 선택하세요</h5>
+            </div>
+            <div class="modal-body">
+                <div class="map_wrap">
+                    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+                    <div class="hAddr">
+                        <span class="title">지도중심기준 행정동 주소정보</span>
+                        <span id="centerAddr"></span>
+                    </div>
+                   
+                
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="loc_confirm" onclick="checkLoc();">확인</button>
+            </div>
+        </div>
+        </div>
     </div>
-    <p id="result">클릭한 위치의 좌표 (경도,위도) : 37.601261682402885, 126.99012523461104</p>
-<span>Y좌표(경도) : </span><span id="resultx">경도</span>
-<span>, X좌표(위도) : </span><span id="resulty">위도</span>
-<p>도로명 주소 : </p><span id="juso"></span>
-
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js""></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
@@ -392,8 +410,22 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 // 지도를 생성합니다    
 var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+var myModalEl = document.getElementById('staticBackdrop')
+myModalEl.addEventListener('shown.bs.modal', function (event) {
+    map.relayout();
+})
+
+
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
+geocoder.addressSearch('동구 예술길 31-15', function(result, status) {
+    // 정상적으로 검색이 완료됐으면
+    if (status === kakao.maps.services.Status.OK) {
+    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    map.setCenter(coords);
+}
+});
 
 var marker = new kakao.maps.Marker(), // 클릭한 위치를 표시할 마커입니다
     infowindow = new kakao.maps.InfoWindow({zindex:1}); // 클릭한 위치에 대한 주소를 표시할 인포윈도우입니다
@@ -406,36 +438,20 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
     // 클릭한 위도, 경도 정보를 가져옵니다 
     var latlng = mouseEvent.latLng;
     
-    
     var message = latlng.getLat() + ', ' + latlng.getLng();
     var message1= latlng.getLat();
     var message2= latlng.getLng();
-    var resultDiv = document.getElementById('result'); 
-    var resultDiv1 = document.getElementById('resultx')
-    var resultDiv2 = document.getElementById('resulty')
 
-    resultDiv1.innerHTML= message1;
-    resultDiv2.innerHTML= message2;
 
-    resultDiv.innerHTML = message;
     searchDetailAddrFromCoords(mouseEvent.latLng, function(result, status) {
-			if(document.getElementsByClassName('selected')[0] === undefined){
-            	alert('폴더를 선택해주세요');				
-			}
-			else{
 				
         if (status === kakao.maps.services.Status.OK) {
-            var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
-            document.getElementsByClassName('selected')[0].childNodes[1].innerText = result[0].road_address.address_name;
-            document.getElementsByClassName('selected')[0].childNodes[2].childNodes[1].setAttribute('value', result[0].road_address.address_name);
-    		document.getElementsByClassName('selected')[0].childNodes[2].childNodes[2].setAttribute('value', message);
+        	var detailAddr = !!result[0].road_address ? '<div>도로명주소 : ' + result[0].road_address.address_name + '</div>' : '';
             
             var content = '<div class="bAddr">' +
                             '<span class="title"> 주소정보</span>' + 
                             detailAddr + 
                         '</div>';
-            var juso = document.getElementById('juso');
-            juso.innerText = result[0].road_address.address_name;
 
             // 마커를 클릭한 위치에 표시합니다 
             marker.setPosition(mouseEvent.latLng);
@@ -444,8 +460,12 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             // 인포윈도우에 클릭한 위치에 대한 법정동 상세 주소정보를 표시합니다
             infowindow.setContent(content);
             infowindow.open(map, marker);
+            
+            document.getElementById('id1').setAttribute('value', result[0].road_address.address_name);
+            document.getElementById('id2').setAttribute('value', message);      
+            document.getElementById('loc_confirm').setAttribute('data-bs-dismiss', "modal");
         }   
-			}
+			
     });
 });
 
@@ -477,6 +497,17 @@ function displayCenterInfo(result, status) {
             }
         }
     }    
+}
+
+function checkLoc(){
+    var check = document.getElementById('id1').getAttribute('value');
+    if(check == null){
+		alert("장소를 선택해주세요");
+    }else{
+    	marker.setMap(null);
+    	infowindow.setMap(null);
+    	document.getElementById('loc_confirm').removeAttribute('data-bs-dismiss');
+    }
 }
 </script>
 </body>
