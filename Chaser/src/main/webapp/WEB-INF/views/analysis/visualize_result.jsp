@@ -16,7 +16,8 @@
 <h1>Visualize_result Page</h1>
 <h2></h2>
 <div id="map" style="width:100%;height:350px;"></div>
-
+<div class="datata"><input type="text"></div>
+<div class="datata"><input type="text"></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 <script type="text/javascript">
 //console.log(${list[0]});
