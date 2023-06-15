@@ -37,14 +37,14 @@ body {
 }
 
 .wnwp {
-	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-	color: white;
-	font-size: 1.5rem;
-	font-weight: 600;
-	position: relative;
-	left: 42px;
-	top: 20px;
-}
+            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+            color: white;
+            font-size: 23px;
+            font-weight: 600;
+            position: relative;
+            left: 47px;
+            top: 23px;
+        }
 
 .menu {
 	font-size: large;
