@@ -28,5 +28,8 @@ public interface IEpisodeDAO {
 	// 사건 종결
 	public int updateEnd(EpisodeDTO episode) throws Exception;
 	
+	// 사건 지역 조회
+	public String getEpisodeLoc(int episode_idx) throws Exception;
+	
 	
 }

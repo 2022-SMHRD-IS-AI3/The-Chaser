@@ -58,4 +58,9 @@ public class EpisodeDAOImpl implements IEpisodeDAO {
 		return sqlSession.selectOne(namespace + ".getTotalCnt", cri);
 	}
 
+	@Override
+	public String getEpisodeLoc(int episode_idx) throws Exception {
+		return sqlSession.selectOne(namespace + ".getEpisodeLoc", episode_idx);
+	}
+
 }

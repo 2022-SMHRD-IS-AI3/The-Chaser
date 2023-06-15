@@ -23,6 +23,7 @@ import com.wasp.chaser.domain.TestDTOList;
 import com.wasp.chaser.domain.UploadDTO;
 import com.wasp.chaser.domain.UploadDTOList;
 import com.wasp.chaser.domain.WantedDTO;
+import com.wasp.chaser.service.IEpisodeService;
 import com.wasp.chaser.service.IImageService;
 import com.wasp.chaser.service.IWantedService;
 
@@ -33,10 +34,9 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ImageController {
 
-	@Autowired
-	private IImageService service;
-	@Autowired
-	private IWantedService service2;
+	@Autowired	private IImageService service;
+	@Autowired	private IWantedService service2;
+	@Autowired	private IEpisodeService service3;
 
 	private String uploadPath = "C:\\Users\\smhrd\\Desktop\\cctv";
 
@@ -124,6 +124,7 @@ public class ImageController {
 		model.addAttribute("old_fileList", old_fileList);
 		model.addAttribute("fileList", onlyFileList);
 		model.addAttribute("episode_idx", episode_idx);
+		model.addAttribute("episode_loc", service3.getEpisodeLoc(episode_idx));
 	}
 
 	// 영상 삭제하는 메소드
