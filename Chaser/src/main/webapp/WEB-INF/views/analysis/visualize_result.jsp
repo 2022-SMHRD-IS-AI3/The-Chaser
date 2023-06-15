@@ -16,12 +16,23 @@
 <h1>Visualize_result Page</h1>
 <h2></h2>
 <div id="map" style="width:100%;height:350px;"></div>
-<div class="datata"><input type="text"></div>
-<div class="datata"><input type="text"></div>
+<div class="datata"><input type="text" id="fst_data"><input type="text" id="sec_data"><input type="button" onclick="search()" id="submit_btn" value="경로조회"></div>
+<div></div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 <script type="text/javascript">
 //console.log(${list[0]});
 </script>
+<script type="text/javascript">
+function search() {
+	var ip1 = document.getElementById('fst_data').value;
+	var ip2 = document.getElementById('sec_data').value;
+	console.log(ip1);
+	console.log(ip2);
+	var url = "https://map.kakao.com/?sName=" + ip1 + "&eName=" + ip2 ;
+			window.open(url);
+	
+}
+	</script>
 
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
@@ -93,7 +104,7 @@ List<ImageDTO> imgList = (List<ImageDTO>)request.getAttribute("list");
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-  
+var markers=[];
 for (var i = 0; i < positions.length; i ++) {
     // 마커 이미지의 이미지 크기 입니다
     var imageSize = new kakao.maps.Size(24, 35); 
@@ -108,6 +119,8 @@ for (var i = 0; i < positions.length; i ++) {
         title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
         image : markerImage // 마커 이미지 
     });
+    markers[i]=marker;
+    
 
     // if(i!=positions.length){
     
@@ -159,9 +172,38 @@ for (var i = 1; i < positions.length; i++) {
     }
 
 
-// 지도에 선을 표시합니다 
-polyline.setMap(map); 
+for (var i = 1; i < markers.length; i++) {
+	
+	// 마커에 click 이벤트를 등록합니다
+	kakao.maps.event.addListener(markers[i], 'click', function() {
+	    
+	        var click1 = document.getElementById('fst_data');
+	        var click2 = document.getElementById('sec_data');
+	        
+	        var ttl = this.getTitle();
+	        console.log(ttl);
+	        click1.value=click2.value;
+	        click2.value=ttl;    
+	   
+	});
+	
+}
 
+/* // 마커에 click 이벤트를 등록합니다
+kakao.maps.event.addListener(marker, 'click', function() {
+    
+        var click1 = document.getElementById('fst_data');
+        var click2 = document.getElementById('sec_data');
+        
+        var ttl = this.getTitle();
+        console.log(ttl);
+        click1.value=click2.value;
+        click2.value=ttl;    
+   
+}); */
+
+//지도에 선을 표시합니다 
+polyline.setMap(map); 
 
 
 </script>
