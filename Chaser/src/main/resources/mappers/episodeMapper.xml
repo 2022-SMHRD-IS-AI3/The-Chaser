@@ -111,4 +111,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		episode_idx > 0
 	</select>
 	
+	<select id="getEpisodeLoc">
+		
+	</select>
+	
 </mapper>
