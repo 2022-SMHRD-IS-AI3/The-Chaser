@@ -111,8 +111,8 @@ body {
         <div style="width: fit-content; height:79px;">
             <img src="./사진1.png" alt="" class="top_img">
         </div>
-        <span class="wnwp">The
-            Chaser</span>
+        <span class="wnwp"><a href="/main" class="move">The
+            Chaser</a></span>
         <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>

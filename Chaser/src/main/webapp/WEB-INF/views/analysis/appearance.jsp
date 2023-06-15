@@ -51,15 +51,15 @@ body {
 	top: 12px;
 }
 
-.wnwp {
-	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-	color: white;
-	font-size: 23px;
-	font-weight: 600;
-	position: relative;
-	left: 47px;
-	top: 23px;
-}
+        .wnwp {
+            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+            color: white;
+            font-size: 23px;
+            font-weight: 600;
+            position: relative;
+            left: 47px;
+            top: 23px;
+        }
 
 .menu {
 	font-size: large;
@@ -99,216 +99,169 @@ body {
 	color: #116dff;
 }
 
-@
-supports(-webkit-appearance: none) or (-moz-appearance: none) {input
-	[type='radio'] { --active:#275EFE; -
-	-active-inner: #fff; -
-	-focus: 2px rgba(39, 94, 254, .3); -
-	-border: #BBC1E1; -
-	-border-hover: #275EFE; -
-	-background: #fff; -
-	-disabled: #F6F8FF; -
-	-disabled-inner: #E1E6F9;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	height: 21px;
-	outline: none;
-	display: inline-block;
-	vertical-align: top;
-	position: relative;
-	margin: 0;
-	cursor: pointer;
-	border: 1px solid var(- -bc, var(- -border));
-	background: var(- -b, var(- -background));
-	transition: background .3s, border-color .3s, box-shadow .2s; &: after
-	{ content : '';
-	display: block;
-	left: 0;
-	top: 0;
-	position: absolute;
-	transition: transform var(- -d-t, .3s) var(- -d-t-e, ease), opacity
-		var(- -d-o, .2s);
-}
 
-&
-:checked { -
-	-b: var(- -active); -
-	-bc: var(- -active); -
-	-d-o: .3s; -
-	-d-t: .6s; -
-	-d-t-e: cubic-bezier(.2, .85, .32, 1.2);
-}
+        @supports(-webkit-appearance: none) or (-moz-appearance: none) {
 
-&
-:disabled { -
-	-b: var(- -disabled);
-	cursor: not-allowed;
-	opacity: .9; &: checked { --b : var( - -disabled-inner); -
-	-bc: var(- -border);
-}
+            input[type='radio'] {
+                --active: #275EFE;
+                --active-inner: #fff;
+                --focus: 2px rgba(39, 94, 254, .3);
+                --border: #BBC1E1;
+                --border-hover: #275EFE;
+                --background: #fff;
+                --disabled: #F6F8FF;
+                --disabled-inner: #E1E6F9;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                height: 21px;
+                outline: none;
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+                margin: 0;
+                cursor: pointer;
+                border: 1px solid var(--bc, var(--border));
+                background: var(--b, var(--background));
+                transition: background .3s, border-color .3s, box-shadow .2s;
 
-&+
-label {
-	cursor: not-allowed;
-}
+                &:after {
+                    content: '';
+                    display: block;
+                    left: 0;
+                    top: 0;
+                    position: absolute;
+                    transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
+                }
 
-}
-&
-:hover { &:
-	not (: checked){
-                        &:not(: disabled){
-                            --bc: var(- -border-hover);
-}
+                &:checked {
+                    --b: var(--active);
+                    --bc: var(--active);
+                    --d-o: .3s;
+                    --d-t: .6s;
+                    --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+                }
 
-}
-}
-&
-:focus {
-	box-shadow: 0 0 0 var(- -focus);
-}
+                &:disabled {
+                    --b: var(--disabled);
+                    cursor: not-allowed;
+                    opacity: .9;
 
-&
-:not(.switch) {
-	width: 21px;
-	&:
-	after
-	{
-	opacity
-	:
-	var(
-	-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	-o
-	,
-	0
-	);
-}
+                    &:checked {
+                        --b: var(--disabled-inner);
+                        --bc: var(--border);
+                    }
 
-&
-:checked { -
-	-o: 1;
-}
+                    &+label {
+                        cursor: not-allowed;
+                    }
+                }
 
-}
-&+
-label {
-	font-size: 20px;
-	line-height: 21px;
-	display: inline-block;
-	vertical-align: top;
-	cursor: pointer;
-	margin-left: 4px;
-	padding-left: 10px;
-}
+                &:hover {
+                    &:not(:checked) {
+                        &:not(:disabled) {
+                            --bc: var(--border-hover);
+                        }
+                    }
+                }
 
-}
-input[type='radio'] {
-	border-radius: 50%; &: after { width : 19px;
-	height: 19px;
-	border-radius: 50%;
-	background: var(- -active-inner);
-	opacity: 0;
-	transform: scale(var(- -s, .7));
-}
+                &:focus {
+                    box-shadow: 0 0 0 var(--focus);
+                }
 
-&
-:checked { -
-	-s: .5;
-}
+                &:not(.switch) {
+                    width: 21px;
 
-}
-}
-label {
-	font: 1rem 'Fira Sans', sans-serif;
-}
+                    &:after {
+                        opacity: var(--o, 0);
+                    }
 
-input {
-	margin: 0.4rem;
-}
+                    &:checked {
+                        --o: 1;
+                    }
+                }
 
-.ex {
-	padding-left: 40px;
-	padding-bottom: 20px;
-}
+                &+label {
+                    font-size: 20px;
+                    line-height: 21px;
+                    display: inline-block;
+                    vertical-align: top;
+                    cursor: pointer;
+                    margin-left: 4px;
+                    padding-left: 10px;
+                }
 
-.ex2 {
-	padding-bottom: 20px;
-}
+            }
 
-.ex3 {
-	padding-left: 40px;
-	padding-bottom: 10px;
-}
+            input[type='radio'] {
+                border-radius: 50%;
 
-.bigex {
-	width: 250px;
-	height: 240px;
-	border-radius: 10px;
-	box-shadow: 0px 10px 10px -10px grey;
-	border: #000;
-	padding-right: 20px;
-}
+                &:after {
+                    width: 19px;
+                    height: 19px;
+                    border-radius: 50%;
+                    background: var(--active-inner);
+                    opacity: 0;
+                    transform: scale(var(--s, .7));
+                }
 
-.ex4 {
-	padding-left: 5px;
-	float: left;
-	padding-top: 20px;
-}
+                &:checked {
+                    --s: .5;
+                }
+            }
+        }
 
-.ex5 {
-	padding-left: 45px;
-	padding-bottom: 35px;
-}
+        label {
+            font: 1rem 'Fira Sans', sans-serif;
+        }
 
-.ho {
-	flex-basis: 22%;
-	padding-top: 50px;
-	padding-left: 60px;
-}
+        input {
+            margin: 0.4rem;
+        }
 
-.colorpick {
-	font-size: 1.9rem;
-	padding-left: 5px;
-}
+        .ex {
+            padding-left: 40px;
+            padding-bottom: 20px;
+        }
+
+        .ex2 {
+            padding-bottom: 20px;
+        }
+
+        .ex3 {
+            padding-left: 40px;
+            padding-bottom: 10px;
+        }
+
+        .bigex {
+            width: 250px;
+            height: 240px;
+            border-radius: 10px;
+            box-shadow: 0px 10px 10px -10px grey;
+            border: #000;
+            padding-right: 20px;
+        }
+
+        .ex4 {
+            padding-left: 5px;
+            float: left;
+            padding-top: 20px;
+        }
+
+        .ex5 {
+            padding-left: 45px;
+            padding-bottom: 35px;
+        }
+
+        .ho {
+            flex-basis: 22%;
+            padding-top: 50px;
+            padding-left: 60px;
+        }
+
+        .colorpick{
+            font-size: 1.9rem;
+            padding-left: 5px;
+        }
 </style>
 </head>
 
@@ -316,17 +269,20 @@ input {
 
 	<div class="topp">
 		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
+			<img src="../사진1.png" alt="" class="top_img">
 		</div>
-		<span class="wnwp">The Chaser</span>
+		<span class="wnwp"><a href="/main" >The
+            Chaser</a></span>
 		<button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
         <button type="button" id="Logsuccess" onclick="location.href='/product_use'" class="menu">시작하기</button>
 	</div>
-	<form action="/analysis/appearance" method="post" id="form">
+	
+	
 		<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 			data-main-content="true">
+			<form action="/analysis/appearance" method="post" id="form">
 			<div class="main_content"
 				style="width: 100%; height: 100%; display: flex; flex-wrap: wrap; padding-left: 280px; padding-right: 180px;">
 
@@ -597,20 +553,20 @@ input {
 
 					</fieldset>
 				</div>
-
+			<div
+				style="padding: 5px 5px 5px 5px; position: absolute; width: 50px; height: 50px; right: 25%; bottom: 10%; ">
+				<button type="button" class="on" onclick="submitData()"
+					style="width: 100px;  height: 60px; font-size: 40px; background: #D3D3D3; border: none;border-radius:7px 7px 7px 7px;"
+					>다음</button>
+			</div>
 			</div>
 			
 			<input type="hidden" name="episode_idx" value="${episode_idx} ">
 
-			<div
-				style="padding-left: 35px; position: absolute; width: 50px; height: 50px; right: 20%;">
-				<button type="button" class="on" onclick="submitData()"
-					style="width: 100px; height: 50px; font-size: 40px; background: #0094ff; border: none;"
-					>다음</button>
-			</div>
-
+			
+			</form>
 		</main>
-	</form>
+	
 
 
 	<script
@@ -633,7 +589,8 @@ input {
 				}
 			})
 		}
-		
+		</script>
+		<script>
 		function submitData(){
 		    
 	          var input1 = document.getElementById("appe_gender1")['checked'];		         

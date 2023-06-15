@@ -26,7 +26,7 @@ public class EpisodeController {
 	
 	@Autowired private IEpisodeService service;
 	
-	// 사건 작성
+	// 사건 작성 GET
 	@RequestMapping(value="/episode_register", method = RequestMethod.GET)
 	public void insertGET(EpisodeDTO eDto, Model model) throws Exception{
 		log.info("사건작성");
@@ -34,7 +34,7 @@ public class EpisodeController {
 		log.info("register GET ...................");
 		
 	}
-	
+	//사건작성 POST
 	@RequestMapping(value="/episode_register", method = RequestMethod.POST)
 	public String insertPOST(EpisodeDTO eDto, Model model) throws Exception{
 		String strDate = eDto.getTime_string();
@@ -54,13 +54,13 @@ public class EpisodeController {
 		return "redirect:/analysis/appearance?episode_idx="+eDto.getEpisode_idx().toString();
 	}
 	
-	// 사건 열기 and 상세보기에서 수정
+	// 사건 열기 and 상세보기에서 수정 GET
 	@RequestMapping(value={"/episode_desc", "/episode_modify"}, method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
 	}
  
-	// 사건 수정
+	// 사건 수정 POST
 	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
 	public String update(EpisodeDTO eDto, Model model) throws Exception{
 		log.info("사건수정");
@@ -78,14 +78,14 @@ public class EpisodeController {
 		return "redirect:/episode/episode_list";
 	}
 	
-	// 사건 삭제
+	// 사건 삭제 GET
 	@RequestMapping(value="/episode_delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		service.delete(episode_idx);
 		return "redirect:/episode/episode_list";
 	}
 	
-	// 사건 리스트
+	// 사건 리스트 GET
 	@RequestMapping(value="/episode_list", method = RequestMethod.GET)
 	public void list(@ModelAttribute("cri") Criteria  cri, Model model) throws Exception{
 		log.info("사건 목록");

@@ -71,4 +71,11 @@ public class ImageServiceImpl implements IImageService{
 		return b;
 	}
 
+	@Override
+	public List<ImageDTO> resultListAll(int episode_idx) throws Exception {
+		List<ImageDTO> imgList = iDao.resultListAll(episode_idx);	
+		
+		return imgList;
+	}
+
 }

@@ -21,4 +21,7 @@ public interface IImageService {
 	// 영상 파일 삭제
 	public boolean delete(int img_idx) throws Exception;
 	
+	// visual_result 결과물 리스트
+	public List<ImageDTO> resultListAll(int episode_idx) throws Exception;
+	
 }
