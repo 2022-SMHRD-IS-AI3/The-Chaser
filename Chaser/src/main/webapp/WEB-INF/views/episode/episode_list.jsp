@@ -29,14 +29,14 @@
             width: 70px; position: relative; left: 90px; top: 10px;
         }
 
-        .wnwp{
-            font-family:avenir-lt-w01_85-heavy1475544,sans-serif; 
+        .wnwp {
+            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
             color: white;
-             font-size: 1.5rem;
-              font-weight: 600; 
-              position: relative;
-               left: 42px;
-                top: 20px;
+            font-size: 23px;
+            font-weight: 600;
+            position: relative;
+            left: 47px;
+            top: 23px;
         }
         .menu {
             font-size: large;
@@ -82,8 +82,8 @@
             <img src="./사진1.png" alt=""  class="top_img">
         </div>2
         <span
-            class="wnwp">The
-            Chaser</span>
+            class="wnwp"><a href="/main" >The
+            Chaser</a></span>
         <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
@@ -112,11 +112,11 @@
                             	<div class="type">${episode.episode_type}</div>
                             	<div class="state">
                             		<c:choose>
-                            			<c:when test="${episode.episode_flag.toString() eq '9'}">사건생성</c:when>
-                            			<c:when test="${episode.episode_flag.toString() eq '3'}">인상착의 등록완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '0'}">사건생성완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '1'}">인상착의 등록완료</c:when>
                             			<c:when test="${episode.episode_flag.toString() eq '2'}">동영상 선택완료</c:when>
-                            			<c:when test="${episode.episode_flag.toString() eq '1'}">동영상 분석완료</c:when>
-                            			<c:when test="${episode.episode_flag.toString() eq '0'}">사건 종결</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '3'}">동영상 분석완료</c:when>
+                            			<c:when test="${episode.episode_flag.toString() eq '9'}">사건 종결</c:when>
                             			<c:otherwise>바보야 다시해</c:otherwise>
                             		</c:choose>
                             	</div>
@@ -137,25 +137,25 @@
                         <a href="#" class="bt next">></a>
                         <a href="#" class="bt last">>></a>
                     </div> -->
-                    <div class='pull-right'>
-					<ul class="pagination">
+                    <div class='board_page'>
+					
 						<c:if test="${pageMaker.prev}">
-							<li class="bt prev"><a
-								href="/episode/episode_list?pageNum=${pageMaker.startPage -1}">Previous</a></li>
+							<a  class="bt prev"
+								href="/episode/episode_list?pageNum=${pageMaker.startPage -1}">이전</a>
 						</c:if>
 
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
-							<li class="num  ${pageMaker.cri.pageNum == num ? "active":""} ">
-								<a href="/episode/episode_list?pageNum=${num}">${num}</a>
-							</li>
+							
+								<a class="num  ${pageMaker.cri.pageNum == num ? "active":""} " href="/episode/episode_list?pageNum=${num}">${num}</a>
+							
 						</c:forEach>
 
 						<c:if test="${pageMaker.next}">
-							<li class="bt next"><a
-								href="/episode/episode_list?pageNum=${pageMaker.endPage +1 }">Next</a></li>
+							<a class="bt next" 
+								href="/episode/episode_list?pageNum=${pageMaker.endPage +1 }">다음</a>
 						</c:if>
-					</ul>
+					
 				</div>
                     
                     <div class="bt_wrap">
