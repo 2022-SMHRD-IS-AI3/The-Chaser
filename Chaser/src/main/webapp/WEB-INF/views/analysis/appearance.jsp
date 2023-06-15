@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>fix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -269,7 +269,7 @@ body {
 
 	<div class="topp">
 		<div style="width: fit-content; height: 79px;">
-			<img src="../사진1.png" alt="" class="top_img">
+			<img src="./사진1.png" alt="" class="top_img">
 		</div>
 		<span class="wnwp"><a href="/main" >The
             Chaser</a></span>
