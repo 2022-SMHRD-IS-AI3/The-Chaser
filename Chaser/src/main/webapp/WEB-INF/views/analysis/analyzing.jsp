@@ -172,10 +172,10 @@
     			url : "/flaskStart",
     			type : "POST",
     			data : {
-    				episode_idx : 1
+    				episode_idx : ${episode_idx}
     			},
     			success : function(){
-    				location.href = "/analysis/analysis_result?episode_idx=1";
+    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";
     			},
     			error : function(){
     				alert("실패");
