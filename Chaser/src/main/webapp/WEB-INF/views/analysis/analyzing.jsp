@@ -176,7 +176,6 @@
     				episode_idx : ${episode_idx}
     			},
     			success : function(){
-    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";
     			},
     			error : function(){
     				alert("실패");
@@ -196,7 +195,10 @@
             console.log(data);
             if(data.episode_idx == ${episode_idx}){
             	elem.style.width = data.per + '%'; 
-            	document.getElementById("label").innerHTML = data.per * 1  + '%';            	
+            	document.getElementById("label").innerHTML = data.per * 1  + '%';     
+            	if(data.per == 100){            		
+            	location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";
+            	}
             }
     	}
     	

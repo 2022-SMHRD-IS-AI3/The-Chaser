@@ -362,7 +362,7 @@ ul {
 								<i class="fas fa-chevron-up"></i>
 							</div>
 					</a>
-						<p class="accordion__content" id="w_per">상의 일치율 :
+						<p class="accordion__content" id="w_per">일치율 :
 							${wanted.w_per}%</p>
 						<p class="accordion__content">
 							나온 시간 :

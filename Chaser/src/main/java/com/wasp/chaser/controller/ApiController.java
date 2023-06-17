@@ -57,7 +57,7 @@ public class ApiController {
 	private IEpisodeService service4;
 	
 	@RequestMapping(value = "/flaskStart", method = RequestMethod.POST)
-	public boolean flaskStart(@RequestParam("episode_idx") int episode_idx) throws Exception{
+	public void flaskStart(@RequestParam("episode_idx") int episode_idx) throws Exception{
 		
 		EpisodeDTO epi = service4.read(episode_idx);
 		
@@ -65,10 +65,14 @@ public class ApiController {
 			EpisodeDTO epi2 = new EpisodeDTO();
 			epi2.setEpisode_idx(episode_idx);
 			epi2.setEpisode_flag('7');
+			service4.updateFlag(epi2);
 			
 			// 보낼 데이터 리스트 불러오기
 			log.info("데이터 가져오기..............");
 			List<ImageDTO> imgList =  service.beforeListAll(episode_idx);
+			if(imgList.size() > 0) {
+				
+			
 			AppeDTO appe = service3.read(episode_idx);
 			log.info("데이터 가져오기 완료..............");
 			ImageDTOList imgDTOList = new ImageDTOList();
@@ -114,10 +118,13 @@ public class ApiController {
 					service2.insert(wanted);				
 				}
 			}
+			}
+			
+			epi2.setEpisode_flag('3');
+			service4.updateFlag(epi2);
 		}
 		
 		
-		return true;
 	}
 	
 
