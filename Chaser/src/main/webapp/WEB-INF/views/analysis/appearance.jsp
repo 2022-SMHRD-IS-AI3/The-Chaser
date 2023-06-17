@@ -33,6 +33,9 @@
 	src: url('/font/NotoSansKR-Regular.woff') format('woff');
 }
 
+html{
+font-size: 10px !important;
+}
 body {
 	margin: 0;
 	padding: 0;
