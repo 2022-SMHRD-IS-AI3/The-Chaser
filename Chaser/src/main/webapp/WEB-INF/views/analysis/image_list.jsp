@@ -401,6 +401,8 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 
 <script>
+var loc = "${episode_loc}";
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(35.14978041369325, 126.91990640689913), // 지도의 중심좌표
@@ -415,10 +417,9 @@ myModalEl.addEventListener('shown.bs.modal', function (event) {
     map.relayout();
 })
 
-
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
-geocoder.addressSearch('동구 예술길 31-15', function(result, status) {
+geocoder.addressSearch(loc, function(result, status) {
     // 정상적으로 검색이 완료됐으면
     if (status === kakao.maps.services.Status.OK) {
     var coords = new kakao.maps.LatLng(result[0].y, result[0].x);

@@ -23,4 +23,5 @@ public interface IEpisodeService {
 
 	public int getTotalCnt(Criteria cri) throws Exception;
 
+	public String getEpisodeLoc(int episode_idx) throws Exception;
 }

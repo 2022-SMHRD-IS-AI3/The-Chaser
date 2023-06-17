@@ -111,8 +111,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		episode_idx > 0
 	</select>
 	
-	<select id="getEpisodeLoc">
-		
+	<select id="getEpisodeLoc" resultType="string">
+		SELECT episode_loc
+		FROM tb_episode
+		WHERE episode_idx = #{episode_idx}
 	</select>
 	
 </mapper>
