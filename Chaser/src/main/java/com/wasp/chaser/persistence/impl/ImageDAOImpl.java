@@ -43,9 +43,15 @@ public class ImageDAOImpl implements IImageDAO{
 	}
 
 	@Override
+	public ImageDTO getImageOne(ImageDTO image) {
+		return sqlSession.selectOne(namespace + ".getImageOne", image);
+	}
+	
+	@Override
 	public List<ImageDTO> resultListAll(int episode_idx) throws Exception {
 		return sqlSession.selectList(namespace + ".resultListAll", episode_idx);
 	}
+
 
 
 }

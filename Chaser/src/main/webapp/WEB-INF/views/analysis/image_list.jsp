@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<c:set var="contextPath" value="${pageContext.request.contextPath == '/' ? '' : pageContext.request.contextPath }" scope="application" />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,56 +18,6 @@
         var selectedFolder = null; // 선택한 폴더를 저장할 변수
         var folderCount = 0; // 폴더 개수
 
-        function createFolder() {
-            var input = document.createElement("input");
-            input.type = "text";
-            input.setAttribute("id", "id1");
-            input.style.width = "160px";
-            input.style.fontSize = "13px";
-            input.style.marginLeft = "10px";
-            input.style.marginTop = "10px";
-            input.placeholder = "폴더 이름을 입력하세요.";
-            
-            var input2 = document.createElement("input");
-            input2.type = "hidden";
-            input2.setAttribute("id", "id2");
-
-            var button = document.createElement("button");
-            button.innerHTML = "확인";
-            button.style.marginLeft = "2px";
-            button.style.fontSize = "12px";
-            button.style.width = "40px";
-            button.style.height = "25px";
-            button.style.backgroundColor = "white";
-            button.style.borderRadius = "5px"
-
-            button.addEventListener("click", function () {
-                var folderName = input.value;
-                var xy = input2.value;
-                if (folderName) {
-                    createFolderElement(folderName, xy);
-                    input.remove();
-                    input2.remove();
-                    button.remove();
-                }
-            });
-
-            var container = document.getElementById("container");
-
-            container.appendChild(input);
-            container.appendChild(input2);
-            container.appendChild(button);
-
-            input.addEventListener("keyup", function (event) {
-                event.preventDefault();
-                if (event.keyCode === 13) {
-                    // Enter 키를 눌렀을 때 확인 버튼 클릭 이벤트 발생
-                    button.click();
-                }
-            });
-            
-        }
-
         function createFolderElement(folderName, xy) {
             var folder = document.createElement("div");
             folder.className = "folder";
@@ -75,17 +26,28 @@
             folder.style.marginLeft = "10px";
 
             var image = document.createElement("img");
-            image.src = "folder.png";
+            image.src = "/resources/image/down.png";
             image.style.width = "20px";
             image.style.height = "20px";
+            image.style.filter = "invert(90%)";
+            image.style.marginTop = "3px";
+            image.setAttribute("id", "downIcon");
 
             var text = document.createElement("ul");
             text.innerHTML = folderName;
-            text.style.fontSize = "15px";
             text.id = "file-list";
             text.className = "fa-ul";
             text.style.paddingLeft = "0px";
             // text.style.listStyleImage = "url('right.png')";
+            
+            var delimg = document.createElement("img");
+            delimg.src = "/resources/image/del.png";
+            delimg.style.width = "30px";
+            delimg.style.height = "30px";
+            delimg.style.position = "fixed";
+            delimg.style.left = "530px";
+            delimg.style.marginBottom = "5px";
+            delimg.style.filter = "invert(90%)";            
 
             var text_child1 = document.createElement("input");
             text_child1.type = "hidden";
@@ -108,16 +70,55 @@
             folder.addEventListener("click", function (event) {
                 event.preventDefault();
                 toggleFolderCollapse(folder); // 폴더 접힘/펼침 토글
+                if (image.getAttribute('id') === "downIcon") {
+                    image.src = "/resources/image/right.png";
+                    image.setAttribute('id', "rightIcon");
+                }
+                else {
+                    image.src = "/resources/image/down.png";
+                    image.setAttribute('id', "downIcon");
+                }
             });
+            
+            delimg.addEventListener("click", function () {
+            	removeFolder(folder);
+                //folder.remove();
+            })
 
             folder.appendChild(image);
             folder.appendChild(folderNameElement);
             text.appendChild(text_child1);
             text.appendChild(text_child2);
             folder.appendChild(text);
+            folder.appendChild(delimg);
 
             var container = document.getElementById("container");
             container.appendChild(folder);
+            
+            toggleFolderSelection(folder);
+
+        }
+        function removeFolder(folder){
+         	var ulTag = folder.children[2];
+        	var liTags = ulTag.getElementsByTagName("li");
+        	    
+        	var file_ul = document.getElementById("fileList");
+        	for(j = liTags.length-1; j >= 0; j--){
+        		liTags[j].setAttribute("class", "xorm");
+        		liTags[j].style = "";
+        		liTags[j].children[1].setAttribute("type", "checkbox");
+        		liTags[j].children[1].checked = false;
+        		
+        		liTags[j].children[1].setAttribute("name", "fileName");
+        		liTags[j].children[1].style = "";
+        		liTags[j].children[2].style.width = "35%";
+        		liTags[j].children[3].style.display = "";
+        		file_ul.append(liTags[j].cloneNode(true));        	
+        	}
+        	
+        	
+        	folder.remove();
+
         }
 
         function toggleFolderSelection(folder) {
@@ -154,9 +155,14 @@
                 var checkbox = items[i].getElementsByTagName("input")[0];
                 if (checkbox.checked) {
                     var li = items[i];
+                    
                     var clonedLi = li.cloneNode(true); // li 요소를 복제하여 새로운 요소 생성
                     clonedLi.className = "added-item"; // 추가된 리스트 요소에 클래스 추가
                     li.parentNode.removeChild(li); // 기존의 li 요소 제거
+                    clonedLi.children[3].style.display = "none";
+                    clonedLi.children[2].style.width = "100%";
+                    
+                    clonedLi.style.marginLeft = "10px";
 
                     var clonedCheckbox = clonedLi.getElementsByTagName("input")[0];
                     clonedCheckbox.type = "hidden"
@@ -175,7 +181,7 @@
 
 
     <style>
-        @font-face {
+       @font-face {
             font-family: 'btnfont';
             src: url('/font/SCDream4.woff') format('woff');
         }
@@ -193,6 +199,7 @@
         body {
             margin: 0;
             padding: 0;
+            overflow: auto;
         }
 
         .topp {
@@ -230,7 +237,7 @@
 
         .main_content {
             font-family: 'cntfont';
-            color: rgb(182, 177, 177);
+            color: rgb(223, 217, 217);
             width: 100%;
             height: 858px;
             padding-top: 50px;
@@ -241,12 +248,12 @@
         .createbtn {
             font-size: 0.8rem;
             padding-bottom: 5px;
-            padding-left: 160px;
+            padding-left: 260px;
             background-color: transparent;
             border: none;
             width: 100%;
             border-bottom: 2px solid;
-            color: rgb(182, 177, 177);
+            color: rgb(223, 217, 217);
         }
 
         .folder {
@@ -257,7 +264,7 @@
         }
 
         .folder img {
-            margin-right: 10px;
+            margin-right: 5px;
         }
 
         .input-container {
@@ -287,6 +294,8 @@
 
         .xorm {
             padding-bottom: 2px;
+            display: flex;
+            padding-top: 15px;
         }
 
         .added-item {
@@ -302,14 +311,60 @@
 
         .plusbtn {
             border-radius: 15px;
-            background-color: rgba(177, 176, 179, 0.986);
+            background-color: rgba(216, 215, 223, 0.582);
             width: 90px;
             height: 40px;
             position: fixed;
             top: 65%;
             left: 53%;
+            font-family: ;
         }
-	    .map_wrap {position:relative;width:100%;height:650px;}
+
+        .vhfejtodtjd {
+            width: 23%;
+            height: 100%;
+            border-right: solid;
+            float: left;
+            overflow: auto;
+        }
+
+        .vhfejtodtjd::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .vhfejtodtjd::-webkit-scrollbar-thumb {
+            background-color: #2f3542;
+            border-radius: 10px;
+        }
+
+        .vhfejtodtjd::-webkit-scrollbar-track {
+            background-color: grey;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px white;
+        }
+
+        .vkdlfsodyd {
+            float: right;
+            width: 77%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        .vkdlfsodyd::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .vkdlfsodyd::-webkit-scrollbar-thumb {
+            background-color: #2f3542;
+            border-radius: 10px;
+        }
+
+        .vkdlfsodyd::-webkit-scrollbar-track {
+            background-color: grey;
+            border-radius: 10px;
+            box-shadow: inset 0px 0px 5px white;
+        }
+        .map_wrap {position:relative;width:100%;height:650px;}
 	    .title {font-weight:bold;display:block;}
 	    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
 	    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
@@ -317,31 +372,28 @@
     </style>
 </head>
 
-<body>
+<body onselectstart="return false" ondragstart="return false">
     <div class="topp">
         <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt="" class="top_img">
+            <img src="/resources/image/moon.png" alt="" class="top_img">
         </div>
-        <span class="wnwp">The
-            Chaser</span>
-        <button type="button" onclick="location.href='introduce.html'" class="menu"
-            style="padding-left: 400px;">회사소개</button>
+        <span class="wnwp">The Chaser</span>
+        <button type="button" onclick="location.href='introduce.html'" class="menu" style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='demo_video.html'" class="menu">시연영상</button>
         <button type="button" onclick="location.href='product_use.html'" class="menu">시작하기</button>
     </div>
     <main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
         <div class="main_content">
-            <div
-                style="width: 1500px; height: 500px; margin-top: 50px; border: solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
-                <div style="width: 16%; height: 100%; border-right: solid; float: left;">
-                    <button onclick="createFolder()" class="createbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">폴더 생성</button>
+            <div style="width: 1500px; height: 500px; margin-top: 50px; border: solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
+                <div class="vhfejtodtjd">
+                    <button class="createbtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">폴더 생성</button>
                         <form action="${contextPath}/analysis/image_insert" method="post" id="form1">
                             <input type="hidden" value="${episode_idx}" name="episode_idx">
                             <input type="hidden" value="cctv 파일 경로" name="path">
                             <div id="container">
                             	<c:forEach items="${old_fileList}" var="old_file">
                             		<div class="folder" data-folder-name="${old_file.uploadFolder}" style="margin-top: 10px; margin-left: 10px;">
-									<img src="folder.png" style="width: 20px; height: 20px;">
+									<img src="/resources/image/folder.png" style="width: 20px; height: 20px;">
 									<span class="folder-name">${old_file.uploadFolder}</span>
 										<ul id="file-list" class="fa-ul" style="font-size: 15px; padding-left: 0px;"><a href="/analysis/image_delete?img_idx=${old_file.idx}">${old_file.uploadFolder}</a>
 											<c:forEach items="${old_file.uploadFolderList}" var="olds">
@@ -355,12 +407,16 @@
                             </div>
                         </form>
                 </div>
-                <div style="float: right; width: 84%; height: 100%; overflow: scroll;">
+                <div class="vkdlfsodyd">
                     <ul class="fa-ul" id="fileList" style="margin-top: 10px;">
+                    	<div style="width: 35%; float: left;">이름</div>
+                        <div style="width: 65%; border-left: 2px solid; display: flex; padding-left: 12px;">경로</div>
                         <c:forEach var="files" items="${fileList}">
               				<li class="xorm">
               					<span class="fa-li"><i class="fa fa-angle-right"></i></span>
-              					<input type="checkbox" class="tag" value="${files.directory}" name="fileName">${files.fileName}
+              					<input type="checkbox" class="tag" value="${files.directory}" name="fileName">
+              						<div style="width:35%;">${files.fileName}</div>
+              						<div style="width:65%;">${files.directory}</div>
               				</li>
                     	</c:forEach>
                     </ul>
@@ -462,8 +518,8 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
             infowindow.setContent(content);
             infowindow.open(map, marker);
             
-            document.getElementById('id1').setAttribute('value', result[0].road_address.address_name);
-            document.getElementById('id2').setAttribute('value', message);      
+            image_loc = result[0].road_address.address_name;
+            image_xy = message;      
             document.getElementById('loc_confirm').setAttribute('data-bs-dismiss', "modal");
         }   
 			
@@ -500,14 +556,18 @@ function displayCenterInfo(result, status) {
     }    
 }
 
+var image_loc = "";
+var image_xy = "";
+
 function checkLoc(){
-    var check = document.getElementById('id1').getAttribute('value');
-    if(check == null){
+    if(image_loc == ""){
 		alert("장소를 선택해주세요");
     }else{
     	marker.setMap(null);
     	infowindow.setMap(null);
     	document.getElementById('loc_confirm').removeAttribute('data-bs-dismiss');
+    	createFolderElement(image_loc, image_xy);
+
     }
 }
 </script>
