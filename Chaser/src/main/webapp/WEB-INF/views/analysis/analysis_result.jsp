@@ -364,11 +364,21 @@ ul {
 					</a>
 						<p class="accordion__content" id="w_per">일치율 :
 							${wanted.w_per}%</p>
+							<%-- <fmt:parseNumbervar="pages"integerOnly="true"value="${wanted.w_first/2/3600}:${wanted.w_first}:${wanted.w_first/2%60}"/> --%>
 						<p class="accordion__content">
 							나온 시간 :
-							<button class="btn_time" onclick="goToTimestamp(this.innerHTML)">${wanted.w_first}</button>
+							<button class="btn_time" onclick="goToTimestamp(this.innerHTML)">
+							<fmt:parseNumber var="hours" value="${wanted.w_first/2/3600}" integerOnly="true" />
+							<fmt:parseNumber var="mins" value="${wanted.w_first/2/60%60}" integerOnly="true" />
+							<fmt:parseNumber var="secs" value="${wanted.w_first/2%60}" integerOnly="true" />
+							${hours}:${mins}:${secs} </button>
 							~
-							<button class="btn_time" onclick="goToTimestamp(this.innerHTML)">${wanted.w_last}</button>
+							<button class="btn_time" onclick="goToTimestamp(this.innerHTML)">
+							<fmt:parseNumber var="hours2" value="${wanted.w_last/2/3600}" integerOnly="true" />
+							<fmt:parseNumber var="mins2" value="${wanted.w_last/2/60%60}" integerOnly="true" />
+							<fmt:parseNumber var="secs2" value="${wanted.w_last/2%60}" integerOnly="true" />
+							${hours2}:${mins2}:${secs2}
+							</button>
 						</p>
 						<p class="accordion__content">
 							<button type="button" class="btn_confirm"
