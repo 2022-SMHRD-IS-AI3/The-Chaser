@@ -168,6 +168,7 @@
 
     <script>
     	$(document).ready(function(){
+    		
     		$.ajax({
     			url : "/flaskStart",
     			type : "POST",
@@ -191,10 +192,14 @@
     	let elem = document.getElementById("myBar");
     	
     	function onMessage(msg){
-            var data = Number(msg.data);
-            elem.style.width = data + '%'; 
-            document.getElementById("label").innerHTML = data * 1  + '%';
+            var data = JSON.parse(msg.data);
+            console.log(data);
+            if(data.episode_idx == ${episode_idx}){
+            	elem.style.width = data.per + '%'; 
+            	document.getElementById("label").innerHTML = data.per * 1  + '%';            	
+            }
     	}
+    	
     </script>
 
 </body>

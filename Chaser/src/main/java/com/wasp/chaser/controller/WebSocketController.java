@@ -14,11 +14,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketExtension;
 import org.springframework.web.socket.WebSocketMessage;
 import org.springframework.web.socket.WebSocketSession;
+
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wasp.chaser.domain.MessageVO;
+import com.wasp.chaser.domain.TestDTO;
 
 import lombok.extern.log4j.Log4j;
 
@@ -145,10 +151,12 @@ public class WebSocketController {
 		log.info("testSocket2........................................");
 	}
 	
-	@RequestMapping("/sendWebSocketMessage")
-	public void sendWebSocketMessage(@RequestBody String str) throws Exception {
-		log.info(str);
-		socketHandler.handleTextMessage(session, new TextMessage(str));
+	@RequestMapping(value = "/sendWebSocketMessage" , method = RequestMethod.POST)
+	public void sendWebSocketMessage(@RequestBody String msg) throws Exception {
+		
+		log.info(msg);
+		
+		socketHandler.handleTextMessage(session, new TextMessage(msg));
 	}
 	
 }
