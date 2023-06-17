@@ -99,23 +99,24 @@
 
         }
         function removeFolder(folder){
-         	var ulTag = folder.childNodes[2];
+         	var ulTag = folder.children[2];
         	var liTags = ulTag.getElementsByTagName("li");
         	    
         	var file_ul = document.getElementById("fileList");
-        	
-        	for(var i = 0; i < liTags.length; i++){
-        		liTags[i].setAttribute("class", "xorm");
-        		liTags[i].style = "";
-        		liTags[i].children[1].setAttribute("type", "checkbox");
-        		liTags[i].children[1].checked = false;
+        	for(j = liTags.length-1; j >= 0; j--){
+        		liTags[j].setAttribute("class", "xorm");
+        		liTags[j].style = "";
+        		liTags[j].children[1].setAttribute("type", "checkbox");
+        		liTags[j].children[1].checked = false;
         		
-        		liTags[i].children[1].setAttribute("name", "fileName");
-        		liTags[i].children[1].style = "";
-        		liTags[i].children[3].style.display = "";
-        		console.log(liTags[i]);
-        		file_ul.append(liTags[i]);        	
+        		liTags[j].children[1].setAttribute("name", "fileName");
+        		liTags[j].children[1].style = "";
+        		liTags[j].children[2].style.width = "35%";
+        		liTags[j].children[3].style.display = "";
+        		file_ul.append(liTags[j].cloneNode(true));        	
         	}
+        	
+        	
         	folder.remove();
 
         }
@@ -154,12 +155,12 @@
                 var checkbox = items[i].getElementsByTagName("input")[0];
                 if (checkbox.checked) {
                     var li = items[i];
-                    li.childNodes[3].style.width = "100%";
                     
                     var clonedLi = li.cloneNode(true); // li 요소를 복제하여 새로운 요소 생성
                     clonedLi.className = "added-item"; // 추가된 리스트 요소에 클래스 추가
                     li.parentNode.removeChild(li); // 기존의 li 요소 제거
                     clonedLi.children[3].style.display = "none";
+                    clonedLi.children[2].style.width = "100%";
                     
                     clonedLi.style.marginLeft = "10px";
 
@@ -198,6 +199,7 @@
         body {
             margin: 0;
             padding: 0;
+            overflow: auto;
         }
 
         .topp {

@@ -217,19 +217,30 @@ public class ImageController {
 
 	// 분석된 영상 리스트를 출력하는 메소드
 	@RequestMapping(value = "/analysis_result", method = RequestMethod.GET)
-	public void listAll(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception {
-		// 영상 리스트를 불러와서 담음
-		List<ImageDTO> imageList = service.afterListAll(episode_idx);
-
-		// 영상에 나오는 후보 리스트를 담음
-		for (ImageDTO imageDTO : imageList) {
-			WantedDTO wanted = new WantedDTO();
-			wanted.setEpisode_idx(episode_idx);
-			wanted.setImg_idx(imageDTO.getImg_idx());
-			imageDTO.setWantedDTOList(service2.listAll(wanted));
+	public void listAll(ImageDTO iDTO, Model model) throws Exception {
+		
+		// 사건에 대한 영상 리스트를 불러와서 담음
+		List<ImageDTO> imageList = service.afterListAll(iDTO.getEpisode_idx());
+		
+		// get 방식으로 받은 데이터에 조회할 img_idx가 없으면 전체 영상 리스트의 첫번째 img_idx를 담음
+		if(iDTO.getImg_idx() == null){
+			iDTO.setImg_idx(imageList.get(0).getImg_idx());
 		}
+		
+		// 영상 하나에 대한 객체를 받아옴
+		ImageDTO result = service.getImageOne(iDTO);
+		
+		
+		// 받아온 영상에 나오는 후보 리스트를 담음
+		WantedDTO wanted = new WantedDTO();
+		wanted.setEpisode_idx(result.getEpisode_idx());
+		wanted.setImg_idx(result.getImg_idx());
+		
+		result.setWantedDTOList(service2.listAll(wanted));
 
+		
 		model.addAttribute("imageList", imageList);
+		model.addAttribute("result", result);
 	}
 	
 	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)

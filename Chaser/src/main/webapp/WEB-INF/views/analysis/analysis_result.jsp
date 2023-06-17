@@ -4,8 +4,7 @@
 <%@page import="com.wasp.chaser.domain.WantedDTO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<c:set var="contextPath"
-	value="${pageContext.request.contextPath == '/' ? '' : pageContext.request.contextPath }"
+<c:set var="contextPath" value="${pageContext.request.contextPath == '/' ? '' : pageContext.request.contextPath }"
 	scope="application" />
 <!DOCTYPE html>
 <html lang="en">
@@ -15,14 +14,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
-
-<link rel="stylesheet"
-	href="https://blog.codepen.io/documentation/exporting-pens/">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-	crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<link rel="stylesheet" href="https://blog.codepen.io/documentation/exporting-pens/">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/css.css">
 
 <style>
@@ -337,8 +333,8 @@ ul {
 				<div class="sidebar">
 					<a class="closebtn" onclick="closeMenu()">×</a>
 
-					<c:forEach items="${imageList}" var="image" varStatus="idx">
-						<a onclick="move(${image.img_idx});" href="#">${image.img_nm }</a>
+					<c:forEach items="${imageList}" var="image">
+						<a href="/analysis/analysis_result?episode_idx=${image.episode_idx}&img_idx=${image.img_idx}" href="#">${image.img_nm }</a>
 					</c:forEach>
 				</div>
 
@@ -347,6 +343,7 @@ ul {
 				</div>
 				<ul class="accordion">
 					<span class="target" id="accordion"></span>
+					<c:forEach items="${result.wantedDTOList}" var="wanted">
 					<li class="accordion__li"><span class="target" id="accordion1"></span>
 						<a href="#accordion1" class="open-accordion" title="open">
 							<div>
@@ -377,12 +374,11 @@ ul {
 							<button type="button" class="btn_confirm"
 								onclick="confirmData(this)">확정</button>
 						</p></li>
-
+					</c:forEach>
 				</ul>
 
 				<div style="width: 900px; height: 1000px; float: left;">
-					<video id="video" prelaod="metadata" src="./test.mp4" controls
-						style="width: 100%;"></video>
+					<video id="video" prelaod="metadata" src="${result.img_src}" controls style="width:100%;"></video>
 					<!-- <div id="progress-bar-container">
                         <div id="progress-bar"></div>
                     </div> -->
@@ -504,12 +500,6 @@ ul {
 					pageId : firstPageId
 				}
 			})
-		}
-	</script>
-
-	<script type="text/javascript">
-		function move(u) {
-			${img.img_idx}
 		}
 	</script>
 

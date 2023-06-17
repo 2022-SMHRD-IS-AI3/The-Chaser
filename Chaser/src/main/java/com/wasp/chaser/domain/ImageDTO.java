@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ImageDTO {
 	
-	private int img_idx;			// 영상 순번
+	private Integer img_idx;			// 영상 순번
 	private String img_nm;		// 영상 이름
 	private String img_src;			// 영상 파일 주소
 	private String img_xy;			// 영상이 찍힌 좌표
