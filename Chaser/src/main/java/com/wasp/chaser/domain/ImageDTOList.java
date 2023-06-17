@@ -8,6 +8,8 @@ import lombok.Data;
 @Data
 public class ImageDTOList {
 	
+	private int episode_idx;
+	AppeDTO appe;
 	List<ImageDTO> imageDTOList;
 
 	public ImageDTOList() {
