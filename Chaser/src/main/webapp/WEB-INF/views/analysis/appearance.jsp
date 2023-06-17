@@ -506,9 +506,9 @@ body {
 
 						<div class="ex4">
 							<input id="appe_stuff_type1" type="radio" name="appe_stuff_type"
-								value="휴대폰"
-								<c:if test="${appe.appe_stuff_type.toString() eq '휴대폰' }"> checked </c:if>>
-							<label for="appe_stuff_type1">휴대폰</label>
+								value="배낭"
+								<c:if test="${appe.appe_stuff_type.toString() eq '배낭' }"> checked </c:if>>
+							<label for="appe_stuff_type1">배낭</label>
 						</div>
 
 						<div class="ex4">
@@ -520,16 +520,30 @@ body {
 
 						<div class="ex4">
 							<input id="appe_stuff_type3" type="radio" name="appe_stuff_type"
-								value="가방"
-								<c:if test="${appe.appe_stuff_type.toString() eq '가방' }"> checked </c:if>>
-							<label for="appe_stuff_type3">가방</label>
+								value="손가방"
+								<c:if test="${appe.appe_stuff_type.toString() eq '손가방' }"> checked </c:if>>
+							<label for="appe_stuff_type3">손가방</label>
 						</div>
 
 						<div class="ex4">
 							<input id="appe_stuff_type4" type="radio" name="appe_stuff_type"
+								value="넥타이"
+								<c:if test="${appe.appe_stuff_type.toString() eq '넥타이' }"> checked </c:if>>
+							<label for="appe_stuff_type4">넥타이</label>
+						</div>
+						
+						<div class="ex4">
+							<input id="appe_stuff_type5" type="radio" name="appe_stuff_type"
+								value="캐리어"
+								<c:if test="${appe.appe_stuff_type.toString() eq '캐리어' }"> checked </c:if>>
+							<label for="appe_stuff_type5">캐리어</label>
+						</div>
+						
+						<div class="ex4">
+							<input id="appe_stuff_type6" type="radio" name="appe_stuff_type"
 								value="모름"
 								<c:if test="${appe.appe_stuff_type.toString() eq '모름' }"> checked </c:if>>
-							<label for="appe_stuff_type4">모름</label>
+							<label for="appe_stuff_type6">모름</label>
 						</div>
 
 						<c:choose>
@@ -628,6 +642,8 @@ body {
 	          var input21 = document.getElementById("appe_stuff_type2")['checked'];
 	          var input22 = document.getElementById("appe_stuff_type3")['checked'];
 	          var input23 = document.getElementById("appe_stuff_type4")['checked'];
+	          var input24 = document.getElementById("appe_stuff_type5")['checked'];
+	          var input25 = document.getElementById("appe_stuff_type6")['checked'];
 	          
 	          /* var input17 = document.getElementById("appe_stuff_type1");
 	          
@@ -659,7 +675,7 @@ body {
 	             alert("하의 종류를 입력해주세요.");
 	             return;
 	          }
-	          if ((input20 == false) && (input21== false) && (input22== false) && (input23== false)) {
+	          if ((input20 == false) && (input21== false) && (input22== false) && (input23== false) && (input24== false) && (input25== false)) {
 	             alert("소지품 종류를 입력해주세요.");
 	             return;
 	          } else {
