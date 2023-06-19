@@ -130,9 +130,12 @@ body {
 		<div class=main_content style="width: 100%; height: 100%;">
 			<div id="map" style="width: 70%; height: 700px; margin-left: 50px;"></div>
 
-			<div class="datata">
-				<input type="text" id="sec_data"><br> <input
-					type="text" id="fst_data"><input type="button"
+			<div class="datata" style=" position:fixed; right:45%;">
+				출발지 : <input type="text" id="fst_data"><br>
+				도착지 : <input type="text" id="sec_data">
+				
+				 
+					<input type="button"
 					onclick="search()" id="submit_btn" value="경로조회">
 			</div>
 		</div>
