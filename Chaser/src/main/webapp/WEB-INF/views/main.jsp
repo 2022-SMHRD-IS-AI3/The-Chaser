@@ -145,16 +145,17 @@
 
 <body>
 
-    <div class="topp">
+    <div class = "topp">
         <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt="" class="top_img">
+            <img src="./사진1.png" alt=""  class="top_img">
         </div>
-        <span class="wnwp"><a href="main.html" class="move">The
+        <span
+            class="wnwp"><a href="/main" >The
             Chaser</a></span>
-        <button type="button" onclick="moveUrl('/introduction')" class="menu"
+        <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="moveUrl('/intro_video')" class="menu">시연영상</button>
-        <button type="button" id="Logsuccess" onclick="moveUrl('/product_use')" class="menu">시작하기</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button id="Logsuccess" type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
     </div>
     <main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
         <div class=main_content style="width: 100%; height: 100%;">

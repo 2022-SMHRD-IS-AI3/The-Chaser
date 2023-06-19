@@ -88,18 +88,18 @@ body {
 
 <body>
 
-	<div class="topp">
-		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
-		</div>
-		2 <span class="wnwp"><a href="/main">The Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='/intro_video'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='/product_use'"
-			class="menu">시작하기</button>
-	</div>
+	<div class = "topp">
+        <div style="width: fit-content; height:79px;">
+            <img src="./사진1.png" alt=""  class="top_img">
+        </div>
+        <span
+            class="wnwp"><a href="/main" >The
+            Chaser</a></span>
+        <button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
+    </div>
 	<div>
 		<p>
 			<button onclick="removeCircles()">모두 지우기</button>

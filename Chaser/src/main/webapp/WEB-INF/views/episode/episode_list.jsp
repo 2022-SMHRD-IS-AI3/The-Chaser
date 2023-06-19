@@ -80,7 +80,7 @@
     <div class = "topp">
         <div style="width: fit-content; height:79px;">
             <img src="./사진1.png" alt=""  class="top_img">
-        </div>2
+        </div>
         <span
             class="wnwp"><a href="/main" >The
             Chaser</a></span>
@@ -147,7 +147,7 @@
 						<c:forEach var="num" begin="${pageMaker.startPage}"
 							end="${pageMaker.endPage}">
 							
-								<a class="num  ${pageMaker.cri.pageNum == num ? "active":""} " href="/episode/episode_list?pageNum=${num}">${num}</a>
+								<a class="num  ${pageMaker.cri.pageNum == num ? "on":""} " href="/episode/episode_list?pageNum=${num}">${num}</a>
 							
 						</c:forEach>
 
