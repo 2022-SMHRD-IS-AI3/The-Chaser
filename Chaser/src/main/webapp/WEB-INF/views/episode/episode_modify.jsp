@@ -22,19 +22,33 @@ body {
 	padding: 0;
 }
 
-.topp {
-	width: 100%;
-	height: 79px;
-	background-color: rgb(31, 35, 44);
-	display: flex;
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
-.top_img {
-	width: 70px;
-	position: relative;
-	left: 90px;
-	top: 10px;
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
+
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
+        .topp {
+            width: 100%;
+            height: 79px;
+            background-color: rgb(31, 35, 44);
+            display: flex;
+        }
+
+        .top_img {
+            width: 70px;
+            position: relative;
+            left: 90px;
+            top: 12px;
+        }
 
         .wnwp {
             font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
@@ -46,13 +60,14 @@ body {
             top: 23px;
         }
 
-.menu {
-	font-size: large;
-	color: white;
-	background-color: transparent;
-	border: none;
-	padding-left: 250px;
-}
+        .menu {
+            font-size: large;
+            color: white;
+            background-color: transparent;
+            border: none;
+            padding-left: 250px;
+            font-family: 'btnfont';
+        }
 
 .sub-title {
 	width: fit-content;
@@ -168,17 +183,18 @@ option {
 	</script>
 
 
-	<div class="topp">
-		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
-		</div>
-		<span class="wnwp"><a href="/main" class="move">The
+	<div class = "topp">
+        <div style="width: fit-content; height:79px;">
+            <img src="/resources/image/moon.png" alt=""  class="top_img">
+        </div>
+        <span
+            class="wnwp"><a href="/main" >The
             Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'" class="menu"
+        <button type="button" onclick="location.href='/introduction'" class="menu"
             style="padding-left: 400px;">회사소개</button>
         <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
         <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
-	</div>
+    </div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 		<form action="/episode/episode_modify" method="post" id="form">
