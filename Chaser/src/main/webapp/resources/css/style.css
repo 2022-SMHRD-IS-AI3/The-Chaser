@@ -100,7 +100,7 @@ a {
 }
 
 .board_list .title {
-    width: 60%;
+    width: 45%;
     text-align: left;
 }
 
@@ -113,11 +113,11 @@ a {
 }
 
 .board_list .date {
-    width: 10%;
+    width: 20%;
 }
 
 .board_list .state {
-    width: 10%;
+    width: 15%;
 }
 
 .board_page {

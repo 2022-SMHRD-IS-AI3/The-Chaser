@@ -296,7 +296,7 @@ body {
 .tag {
 	margin-right: 10px;
 	position: relative;
-	bottom: 11px;
+	
 }
 
 .xorm {
