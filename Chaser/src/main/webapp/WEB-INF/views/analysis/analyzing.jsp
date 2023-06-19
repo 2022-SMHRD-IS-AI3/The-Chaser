@@ -168,6 +168,7 @@
 
     <script>
     	$(document).ready(function(){
+    		
     		$.ajax({
     			url : "/flaskStart",
     			type : "POST",
@@ -175,7 +176,6 @@
     				episode_idx : ${episode_idx}
     			},
     			success : function(){
-    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";
     			},
     			error : function(){
     				alert("실패");
@@ -191,10 +191,17 @@
     	let elem = document.getElementById("myBar");
     	
     	function onMessage(msg){
-            var data = Number(msg.data);
-            elem.style.width = data + '%'; 
-            document.getElementById("label").innerHTML = data * 1  + '%';
+            var data = JSON.parse(msg.data);
+            console.log(data);
+            if(data.episode_idx == ${episode_idx}){
+            	elem.style.width = data.per + '%'; 
+            	document.getElementById("label").innerHTML = data.per * 1  + '%';     
+            	if(data.per == 100){            		
+            	location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";
+            	}
+            }
     	}
+    	
     </script>
 
 </body>

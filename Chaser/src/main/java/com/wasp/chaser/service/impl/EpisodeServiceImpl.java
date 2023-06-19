@@ -59,4 +59,9 @@ public class EpisodeServiceImpl implements IEpisodeService {
 		
 	}
 
+	@Override
+	public String getEpisodeLoc(int episode_idx) throws Exception {
+		return eDao.getEpisodeLoc(episode_idx);
+	}
+
 }

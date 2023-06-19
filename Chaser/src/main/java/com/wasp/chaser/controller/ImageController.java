@@ -2,6 +2,7 @@ package com.wasp.chaser.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.ServletRequest;
@@ -23,6 +24,7 @@ import com.wasp.chaser.domain.TestDTOList;
 import com.wasp.chaser.domain.UploadDTO;
 import com.wasp.chaser.domain.UploadDTOList;
 import com.wasp.chaser.domain.WantedDTO;
+import com.wasp.chaser.service.IEpisodeService;
 import com.wasp.chaser.service.IImageService;
 import com.wasp.chaser.service.IWantedService;
 
@@ -33,12 +35,13 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class ImageController {
 
-	@Autowired
-	private IImageService service;
-	@Autowired
-	private IWantedService service2;
+	@Autowired	private IImageService service;
+	@Autowired	private IWantedService service2;
+	@Autowired	private IEpisodeService service3;
 
 	private String uploadPath = "C:\\Users\\smhrd\\Desktop\\cctv";
+	
+	final String[] extension_list = {"mp4", "avi", "m4v", "wmv", "mwa", "asf", "mpg", "mpeg", "ts", "mkv", "mov", "webm"};
 
 	private List<FileDTO> getFolder(String path) {
 		// 리턴될 파일 목록
@@ -49,26 +52,37 @@ public class ImageController {
 		File[] folders = new File(path).listFiles();
 
 		List<FileDTO> fList = new ArrayList<FileDTO>();
-
 		for (File folder : folders) { // cctv1, 2
+			boolean isVideo1 = (Arrays.asList(extension_list).contains(folder.getName().substring((folder.getName().lastIndexOf(".") + 1), folder.getName().length())));
 			if (folder.isFile()) {
-				FileDTO f1 = new FileDTO(folder.getPath(), folder.getName(), null, null);
-				onlyFileList.add(f1);
+				if(isVideo1) {
+					FileDTO f1 = new FileDTO(folder.getPath(), folder.getName(), null, null);
+					onlyFileList.add(f1);
+				}
 			} else {
 				for (File folder2 : folder.listFiles()) { // 2023, 2022
+					boolean isVideo2 = (Arrays.asList(extension_list).contains(folder2.getName().substring((folder2.getName().lastIndexOf(".") + 1), folder2.getName().length())));
 					if (folder2.isFile()) {
-						FileDTO f2 = new FileDTO(folder2.getPath(), folder2.getName(), null, null);
-						onlyFileList.add(f2);
+						if(isVideo2) {
+							FileDTO f2 = new FileDTO(folder2.getPath(), folder2.getName(), null, null);
+							onlyFileList.add(f2);
+						}
 					} else {
 						for (File folder3 : folder2.listFiles()) { // 01~12
+							boolean isVideo3 = (Arrays.asList(extension_list).contains(folder3.getName().substring((folder3.getName().lastIndexOf(".") + 1), folder3.getName().length())));
 							if (folder3.isFile()) {
-								FileDTO f3 = new FileDTO(folder3.getPath(), folder3.getName(), null, null);
-								onlyFileList.add(f3);
+								if(isVideo3) {
+									FileDTO f3 = new FileDTO(folder3.getPath(), folder3.getName(), null, null);
+									onlyFileList.add(f3);
+								}
 							} else {
-								for (File folder4 : folder3.listFiles()) { // 영상 파일
+								for (File folder4 : folder3.listFiles()) { // 최하위
+									boolean isVideo4 = (Arrays.asList(extension_list).contains(folder4.getName().substring((folder4.getName().lastIndexOf(".") + 1), folder4.getName().length())));
 									if (folder4.isFile()) {
-										FileDTO f4 = new FileDTO(folder4.getPath(), folder4.getName(), null, null);
-										onlyFileList.add(f4);
+										if(isVideo4) {
+											FileDTO f4 = new FileDTO(folder4.getPath(), folder4.getName(), null, null);
+											onlyFileList.add(f4);
+										}
 									}
 								}
 							}
@@ -103,6 +117,8 @@ public class ImageController {
 
 			String[] imgs = image.getOrigin_imgs().split(",");
 			ArrayList<String> uploadList = new ArrayList<String>();
+			if(onlyFileList.size()==0) {
+				
 			for (String img : imgs) {
 				String src = image.getOrigin_img_src() + img;
 				uploadList.add(img);
@@ -113,6 +129,7 @@ public class ImageController {
 					}
 
 				}
+			}
 
 			}
 			uDto.setUploadFolderList(uploadList);
@@ -124,6 +141,7 @@ public class ImageController {
 		model.addAttribute("old_fileList", old_fileList);
 		model.addAttribute("fileList", onlyFileList);
 		model.addAttribute("episode_idx", episode_idx);
+		model.addAttribute("episode_loc", service3.getEpisodeLoc(episode_idx));
 	}
 
 	// 영상 삭제하는 메소드
@@ -199,19 +217,30 @@ public class ImageController {
 
 	// 분석된 영상 리스트를 출력하는 메소드
 	@RequestMapping(value = "/analysis_result", method = RequestMethod.GET)
-	public void listAll(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception {
-		// 영상 리스트를 불러와서 담음
-		List<ImageDTO> imageList = service.afterListAll(episode_idx);
-
-		// 영상에 나오는 후보 리스트를 담음
-		for (ImageDTO imageDTO : imageList) {
-			WantedDTO wanted = new WantedDTO();
-			wanted.setEpisode_idx(episode_idx);
-			wanted.setImg_idx(imageDTO.getImg_idx());
-			imageDTO.setWantedDTOList(service2.listAll(wanted));
+	public void listAll(ImageDTO iDTO, Model model) throws Exception {
+		
+		// 사건에 대한 영상 리스트를 불러와서 담음
+		List<ImageDTO> imageList = service.afterListAll(iDTO.getEpisode_idx());
+		
+		// get 방식으로 받은 데이터에 조회할 img_idx가 없으면 전체 영상 리스트의 첫번째 img_idx를 담음
+		if(iDTO.getImg_idx() == null){
+			iDTO.setImg_idx(imageList.get(0).getImg_idx());
 		}
+		
+		// 영상 하나에 대한 객체를 받아옴
+		ImageDTO result = service.getImageOne(iDTO);
+		
+		
+		// 받아온 영상에 나오는 후보 리스트를 담음
+		WantedDTO wanted = new WantedDTO();
+		wanted.setEpisode_idx(result.getEpisode_idx());
+		wanted.setImg_idx(result.getImg_idx());
+		
+		result.setWantedDTOList(service2.listAll(wanted));
 
+		
 		model.addAttribute("imageList", imageList);
+		model.addAttribute("result", result);
 	}
 	
 	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)

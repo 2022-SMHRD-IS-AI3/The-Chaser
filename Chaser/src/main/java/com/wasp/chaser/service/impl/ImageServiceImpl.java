@@ -37,8 +37,7 @@ public class ImageServiceImpl implements IImageService{
 	
 	@Override
 	public List<ImageDTO> beforeListAll(int episode_idx) throws Exception {
-		List<ImageDTO> imgList = iDao.beforeListAll(episode_idx);
-		return imgList;
+		return iDao.beforeListAll(episode_idx);
 	}
 	
 	@Override
@@ -53,6 +52,10 @@ public class ImageServiceImpl implements IImageService{
 		return imgList;
 	}
 
+	@Override
+	public ImageDTO getImageOne(ImageDTO image) throws Exception {
+		return iDao.getImageOne(image);
+	}
 
 	@Override
 	public boolean delete(int img_idx) throws Exception {
@@ -73,9 +76,8 @@ public class ImageServiceImpl implements IImageService{
 
 	@Override
 	public List<ImageDTO> resultListAll(int episode_idx) throws Exception {
-		List<ImageDTO> imgList = iDao.resultListAll(episode_idx);	
-		
-		return imgList;
+		return iDao.resultListAll(episode_idx);	
 	}
+
 
 }

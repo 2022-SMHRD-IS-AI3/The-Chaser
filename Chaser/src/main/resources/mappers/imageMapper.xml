@@ -21,13 +21,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{episode_idx})
 	</insert>
 	
-	<select id="afterListAll" resultType="com.wasp.chaser.domain.ImageDTO">
-		<![CDATA[
-			SELECT * FROM tb_image 
-			WHERE episode_idx = #{episode_idx} AND img_src IS NOT NULL
-		]]>
-	</select>
-	
 	<select id="beforeListAll" resultType="com.wasp.chaser.domain.ImageDTO">
 		<![CDATA[
 			SELECT img_idx, img_xy, img_nm, origin_img_src, origin_imgs 
@@ -35,6 +28,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE episode_idx = #{episode_idx} AND img_src IS NULL
 		]]>
 	</select>
+		
+	<select id="afterListAll" resultType="com.wasp.chaser.domain.ImageDTO">
+		<![CDATA[
+			SELECT img_idx, img_nm, episode_idx FROM tb_image 
+			WHERE episode_idx = #{episode_idx} AND img_src IS NOT NULL
+		]]>
+	</select>
+	
+	<select id="getImageOne" resultType="com.wasp.chaser.domain.ImageDTO">
+			SELECT * 
+			FROM tb_image
+			WHERE episode_idx = #{episode_idx}
+			AND img_idx = #{img_idx}
+	</select>
+	
 	
 	<select id="resultListAll" resultType="com.wasp.chaser.domain.ImageDTO">
 		select img_idx, img_nm, img_xy from tb_image where episode_idx = #{episode_idx}
