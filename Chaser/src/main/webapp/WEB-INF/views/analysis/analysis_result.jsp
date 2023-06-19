@@ -412,8 +412,8 @@ ul {
 		data-main-content="true">
 
 		<div class=main_content
-			style="width: 100%; height: 100%; background-color: #2C2C2C;">
-			<div style="height: 1100px;">
+			style="width: 100%; height: 850px; background-color: #2C2C2C;">
+			<div style="height: 100%;">
 				<div class="sidebar">
 					<a class="closebtn" onclick="closeMenu()">×</a>
 
