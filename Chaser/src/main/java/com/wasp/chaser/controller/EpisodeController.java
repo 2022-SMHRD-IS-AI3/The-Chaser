@@ -3,6 +3,7 @@ package com.wasp.chaser.controller;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -88,8 +89,16 @@ public class EpisodeController {
 	// 사건 리스트 GET
 	@RequestMapping(value="/episode_list", method = RequestMethod.GET)
 	public void list(@ModelAttribute("cri") Criteria  cri, Model model) throws Exception{
-		log.info("사건 목록");
-		model.addAttribute("list", service.listAll(cri));
+		log.info("사건 목록" + cri.getAmount());
+		
+		List<EpisodeDTO> epiList = service.listAll(cri);
+		
+		for(EpisodeDTO epi : epiList) {
+			log.info(epi);
+		}
+		
+		model.addAttribute("list", epiList);
+		
 		
 		int total = service.getTotalCnt(cri);
 	      log.info("total............" + total);

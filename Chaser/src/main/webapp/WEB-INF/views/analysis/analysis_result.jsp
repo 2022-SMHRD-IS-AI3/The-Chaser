@@ -24,17 +24,17 @@
 <style>
 @font-face {
 	font-family: 'btnfont';
-	src: url('/font/SCDream4.woff') format('woff');
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'contentfont';
-	src: url('/font/NotoSansKR-Medium.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'cntfont';
-	src: url('/font/NotoSansKR-Regular.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
 }
 
 body {
@@ -105,53 +105,49 @@ body {
 }
 
 .sidebar {
-	height: 100%;
-	width: 0px;
-	position: fixed;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: rgb(31, 35, 44);
-	overflow-x: hidden;
-	transition: 0.3s;
-	/*펼침속도*/
-	padding-top: 60px;
-}
-
-.sidebar a {
-	padding: 8px 8px 8px 32px;
-	text-decoration: none;
-	font-size: 20px;
-	color: #818181;
-	display: block;
-	transition: 0.3s;
-}
-
-/*메뉴열기 hover 시*/
-.sidebar a:hover {
-	color: #f1f1f1;
-}
-
-.sidebar .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-.openbtn {
-	font-size: 15px;
-	cursor: pointer;
-	background-color: rgb(31, 35, 44);
-	color: #C8C8C8;
-	padding: 10px 15px;
-	border: none;
-}
-
-.openbtn:hover {
-	background-color: #444;
-}
+            height: 100%;
+            width: 0px;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            overflow: auto;
+            background-color: rgb(31, 35, 44);
+            overflow-x: hidden;
+            transition: 0.3s;
+            /*펼침속도*/
+            padding-top: 60px;
+        }
+        .sidebar a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+        /*메뉴열기 hover 시*/
+        .sidebar a:hover {
+            color: #F1F1F1;
+        }
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            font-size: 36px;
+            /* margin-left: 50px; */
+        }
+        .openbtn {
+            font-size: 17px;
+            cursor: pointer;
+            background-color: transparent;
+            color: #C8C8C8;
+            padding: 10px 15px;
+            border: none;
+        }
+        .openbtn:hover {
+            background-color: #444;
+        }
 
 #main {
 	transition: margin-left 0.4s;
@@ -304,6 +300,94 @@ ul {
 	position: relative;
 	top: 2px;
 }
+
+.ekdma {
+            width: 250px;
+            height: 50px;
+            padding-top: 30px;
+            border: 2px solid #FFFEFE;
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            font-size: 20px;
+            color: #FFFEFE;
+            top: 80px;
+            left: 350px;
+        }
+        .btn-7 {
+            line-height: 39px;
+            padding: 0;
+        }
+        .btn-7:hover {
+            background: transparent;
+            color: #FFFEFE;
+        }
+        .btn-7 span {
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+            padding-top: 5px;
+        }
+        .btn-7:before,
+        .btn-7:after {
+            position: absolute;
+            content: "";
+            left: 0;
+            top: 0;
+            background: #FEFEFF;
+            transition: all 0.3s ease;
+        }
+        .btn-7:before {
+            height: 0%;
+            width: 2px;
+        }
+        .btn-7:after {
+            width: 0%;
+            height: 2px;
+        }
+        .btn-7:hover:before {
+            height: 100%;
+        }
+        .btn-7:hover:after {
+            width: 100%;
+        }
+        .btn-7 span:before,
+        .btn-7 span:after {
+            position: absolute;
+            content: "";
+            right: 0;
+            bottom: 0;
+            background: #FFFEFE;
+            transition: all 0.3s ease;
+        }
+        .btn-7 span:before {
+            width: 2px;
+            height: 0%;
+        }
+        .btn-7 span:after {
+            width: 0%;
+            height: 2px;
+        }
+        .btn-7 span:hover:before {
+            height: 100%;
+        }
+        .btn-7 span:hover:after {
+            width: 100%;
+        }
+        
+        .folder-link {
+    display: block;
+    font-size: 15px;
+    width: 300px; /* 원하는 넓이 값으로 변경하세요 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 </style>
 <script>
 	var wantedList = [];
@@ -312,18 +396,18 @@ ul {
 
 <body>
 
-	<div class="topp">
-		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
-		</div>
-		<span class="wnwp">The Chaser</span>
-		<button type="button" onclick="location.href='introduce.html'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='demo_video.html'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='product_use.html'"
-			class="menu">시작하기</button>
-	</div>
+	<div class = "topp">
+        <div style="width: fit-content; height:79px;">
+            <img src="/resources/image/moon.png" alt=""  class="top_img">
+        </div>
+        <span
+            class="wnwp"><a href="/main" >The
+            Chaser</a></span>
+        <button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
+    </div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 
@@ -334,8 +418,13 @@ ul {
 					<a class="closebtn" onclick="closeMenu()">×</a>
 
 					<c:forEach items="${imageList}" var="image">
-						<a href="/analysis/analysis_result?episode_idx=${image.episode_idx}&img_idx=${image.img_idx}" href="#">${image.img_nm }</a>
+						<div style="display: flex;">
+                        <a href="/analysis/analysis_result?episode_idx=${image.episode_idx}&img_idx=${image.img_idx}" class="folder-link">${image.img_nm }</a>
+                        <a href="/analysis/image_delete?img_idx=${image.img_idx}" style="position: relative;
+    bottom: 10px;"><i class="fa fa-trash-o" aria-hidden="true" style="color: #C8C8C8; font-size: 15px; margin-right:5px; margin-top: 13px;"></i></a>
+                      </div>
 					</c:forEach>
+					
 				</div>
 
 				<div id="main">
@@ -348,16 +437,16 @@ ul {
 						<a href="#accordion1" class="open-accordion" title="open">
 							<div>
 								<div>
-									<span class="accordion__num">01</span>
-									<h5 class="accordion__title">용의자</h5>
+									<span class="accordion__num" style="color:${wanted.w_color};">01</span>
+									<h5 class="accordion__title" style="color:${wanted.w_color};">용의자</h5>
 								</div>
 								<i class="fas fa-chevron-down"></i>
 							</div>
 					</a> <a href="#accordion" class="close-accordion" title="close">
 							<div>
 								<div>
-									<span class="accordion__num">01</span>
-									<h5 class="accordion__title">용의자</h5>
+									<span class="accordion__num" style="color:${wanted.w_color};">01</span>
+									<h5 class="accordion__title" style="color:${wanted.w_color};">용의자</h5>
 								</div>
 								<i class="fas fa-chevron-up"></i>
 							</div>
@@ -392,131 +481,111 @@ ul {
 					</c:forEach>
 				</ul>
 
-				<div style="width: 900px; height: 1000px; float: left;">
-					<video id="video" prelaod="metadata" src="${result.img_src}" controls style="width:100%;"></video>
-					<!-- <div id="progress-bar-container">
-                        <div id="progress-bar"></div>
-                    </div> -->
-				</div>
+				
+				<div style="width: 900px;  float: left; "><video id="video" prelaod="metadata" src="${result.img_src}" controls
+                        style="width: 100%;"></video>
+                    <button class="ekdma btn-7"><a href="/analysis/visualize_result?episode_idx=${episode_idx}"><span>경로 확인하기</span></a></button>
+                </div>
 			</div>
 		</div>
 	</main>
 
-	<script src="https://kit.fontawesome.com/70e0dc75f1.js"
-		crossorigin="anonymous"></script>
-
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
-
-	<script>
-		function confirmData(button) {
-			var buttonText = button.innerHTML;
-			var liElement = button.parentNode.parentNode; // 확정 버튼이 속한 li 태그 선택
-			if (buttonText === "확정") {
-				button.innerHTML = "확정취소";
-				liElement.style.boxShadow = "0 0 10px grey"; // box-shadow 추가
-				// 저장 기능을 여기에 추가
-			} else if (buttonText === "확정취소") {
-				button.innerHTML = "확정";
-				liElement.style.boxShadow = ""; // box-shadow 제거
-				// 저장 취소 기능을 여기에 추가
-			}
-		}
-	</script>
-
-	<script>
-		// 비디오 엘리먼트와 프로그레스 바 엘리먼트를 가져옵니다.
-		var video = document.getElementById('video');
-		var progressBar = document.getElementById('progress-bar');
-
-		// 비디오 로드가 완료되었을 때의 이벤트 핸들러를 등록합니다.
-		video.addEventListener('loadedmetadata', function() {
-			// 비디오의 총 재생 시간을 가져옵니다.
-			var duration = video.duration;
-
-			// 프로그레스 바를 클릭하였을 때의 이벤트 핸들러를 등록합니다.
-			progressBar.addEventListener('click', function(event) {
-				// 클릭한 위치의 x 좌표를 가져옵니다.
-				var clickX = event.pageX - progressBar.offsetLeft;
-				// console.log("${event.pageX}");
-				// 프로그레스 바의 총 너비를 가져옵니다.
-				var progressBarWidth = progressBar.offsetWidth;
-
-				// 비디오를 클릭한 위치의 시간으로 이동시킵니다.
-				video.currentTime = (clickX / progressBarWidth) * duration;
-			});
-		});
-	</script>
-
-	<script>
-		function goToTimestamp(timestampText) {
-			var video = document.getElementById('video');
-			var timeParts = timestampText.split(':');
-			var hours = 0;
-			var minutes = 0;
-			var seconds = 0;
-
-			if (timeParts.length === 2) {
-				minutes = parseInt(timeParts[0], 10);
-				seconds = parseInt(timeParts[1], 10);
-			} else if (timeParts.length === 3) {
-				hours = parseInt(timeParts[0], 10);
-				minutes = parseInt(timeParts[1], 10);
-				seconds = parseInt(timeParts[2], 10);
-			}
-
-			var totalSeconds = hours * 3600 + minutes * 60 + seconds;
-			video.currentTime = totalSeconds;
-		}
-	</script>
-
-
-	<script>
-		function changeSize(select) {
-			var text = document.getElementById('text');
-
-			if (select.value === 'option1') {
-				text.classList.remove('normal');
-				text.classList.add('selected');
-			} else if (select.value === 'option2') {
-				text.classList.remove('selected');
-				text.classList.add('normal');
-			}
-		}
-	</script>
-
-
-	<script>
-		function openMenu() {
-			document.getElementById("main").style.marginLeft = "250px";
-			document.querySelector('.sidebar').style.width = "250px";
-			document.querySelector('.openbtn').style.display = 'none';
-		}
-
-		function closeMenu() {
-			document.getElementById("main").style.marginLeft = "0";
-			document.querySelector('.sidebar').style.width = "0";
-			document.querySelector('.openbtn').style.display = 'block';
-		}
-	</script>
-	<script>
-		window.firstPageId = 'zg724'
-		window.bi.sendBeat(12, 'Partially visible', {
-			pageId : window.firstPageId
-		})
-		if (window.requestCloseWelcomeScreen) {
-			window.requestCloseWelcomeScreen()
-		}
-		if (!window.__browser_deprecation__) {
-			window.fedops.phaseStarted('partially_visible', {
-				paramsOverrides : {
-					pageId : firstPageId
-				}
-			})
-		}
-	</script>
+	<script src="https://kit.fontawesome.com/70e0dc75f1.js"s></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function confirmData(button) {
+            var buttonText = button.innerHTML;
+            var liElement = button.parentNode.parentNode; // 확정 버튼이 속한 li 태그 선택
+            if (buttonText === "확정") {
+                button.innerHTML = "확정취소";
+                liElement.style.boxShadow = "0 0 10px grey"; // box-shadow 추가
+                // 저장 기능을 여기에 추가
+            } else if (buttonText === "확정취소") {
+                button.innerHTML = "확정";
+                liElement.style.boxShadow = ""; // box-shadow 제거
+                // 저장 취소 기능을 여기에 추가
+            }
+        }
+    </script>
+    <script>
+        // 비디오 엘리먼트와 프로그레스 바 엘리먼트를 가져옵니다.
+        var video = document.getElementById('video');
+        var progressBar = document.getElementById('progress-bar');
+        // 비디오 로드가 완료되었을 때의 이벤트 핸들러를 등록합니다.
+        video.addEventListener('loadedmetadata', function () {
+            // 비디오의 총 재생 시간을 가져옵니다.
+            var duration = video.duration;
+            // 프로그레스 바를 클릭하였을 때의 이벤트 핸들러를 등록합니다.
+            progressBar.addEventListener('click', function (event) {
+                // 클릭한 위치의 x 좌표를 가져옵니다.
+                var clickX = event.pageX - progressBar.offsetLeft;
+                // console.log("${event.pageX}");
+                // 프로그레스 바의 총 너비를 가져옵니다.
+                var progressBarWidth = progressBar.offsetWidth;
+                // 비디오를 클릭한 위치의 시간으로 이동시킵니다.
+                video.currentTime = (clickX / progressBarWidth) * duration;
+            });
+        });
+    </script>
+    <script>
+        function goToTimestamp(timestampText) {
+            var video = document.getElementById('video');
+            var timeParts = timestampText.split(':');
+            var hours = 0;
+            var minutes = 0;
+            var seconds = 0;
+            if (timeParts.length === 2) {
+                minutes = parseInt(timeParts[0], 10);
+                seconds = parseInt(timeParts[1], 10);
+            } else if (timeParts.length === 3) {
+                hours = parseInt(timeParts[0], 10);
+                minutes = parseInt(timeParts[1], 10);
+                seconds = parseInt(timeParts[2], 10);
+            }
+            var totalSeconds = hours * 3600 + minutes * 60 + seconds;
+            video.currentTime = totalSeconds;
+        }
+    </script>
+    <script>
+        function changeSize(select) {
+            var text = document.getElementById('text');
+            if (select.value === 'option1') {
+                text.classList.remove('normal');
+                text.classList.add('selected');
+            } else if (select.value === 'option2') {
+                text.classList.remove('selected');
+                text.classList.add('normal');
+            }
+        }
+    </script>
+    <script>
+        function openMenu() {
+            document.getElementById("main").style.marginLeft = "250px";
+            document.querySelector('.sidebar').style.width = "350px";
+            document.querySelector('.openbtn').style.display = 'none';
+        }
+        function closeMenu() {
+            document.getElementById("main").style.marginLeft = "0";
+            document.querySelector('.sidebar').style.width = "0";
+            document.querySelector('.openbtn').style.display = 'block';
+        }
+    </script>
+    <script>
+        window.firstPageId = 'zg724'
+        window.bi.sendBeat(12, 'Partially visible', {
+            pageId: window.firstPageId
+        })
+        if (window.requestCloseWelcomeScreen) {
+            window.requestCloseWelcomeScreen()
+        }
+        if (!window.__browser_deprecation__) {
+            window.fedops.phaseStarted('partially_visible', {
+                paramsOverrides: {
+                    pageId: firstPageId
+                }
+            })
+        }
+    </script>
 
 </body>
 

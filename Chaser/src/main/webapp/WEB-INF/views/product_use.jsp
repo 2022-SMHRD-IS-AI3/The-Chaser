@@ -19,17 +19,17 @@
 <style>
 @font-face {
 	font-family: 'btnfont';
-	src: url('/font/SCDream4.woff') format('woff');
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'contentfont';
-	src: url('/font/NotoSansKR-Medium.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'cntfont';
-	src: url('/font/NotoSansKR-Regular.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
 }
 
 body {
@@ -99,75 +99,167 @@ body {
 	color: #116dff;
 }
 
-#Logsuccess {
-	visibility: hidden;
+.ekdma {
+	width: 110px;
+	height: 40px;
+	padding: 10px 25px;
+	border: 2px solid #444343;
+	font-family: 'Lato', sans-serif;
+	font-weight: 550;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	font-size: 20px;
+	color: #444343;
+	bottom: 30px;
+	left: 1735px;
+}
+
+.btn-7 {
+	line-height: 39px;
+	padding: 0;
+}
+
+.btn-7:hover {
+	background: transparent;
+	color: #444343;
+}
+
+.btn-7 span {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-7:before, .btn-7:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0;
+	background: #444343;
+	transition: all 0.3s ease;
+}
+
+.btn-7:before {
+	height: 0%;
+	width: 2px;
+}
+
+.btn-7:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-7:hover:before {
+	height: 100%;
+}
+
+.btn-7:hover:after {
+	width: 100%;
+}
+
+.btn-7 span:before, .btn-7 span:after {
+	position: absolute;
+	content: "";
+	right: 0;
+	bottom: 0;
+	background: #444343;
+	transition: all 0.3s ease;
+}
+
+.btn-7 span:before {
+	width: 2px;
+	height: 0%;
+}
+
+.btn-7 span:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-7 span:hover:before {
+	height: 100%;
+}
+
+.btn-7 span:hover:after {
+	width: 100%;
+}
+
+#aaa {
+	text-decoration-line: none;
+	color: #fff;
+}
+
+#aaa:hover {
+	color: #0d6efd;
 }
 </style>
 </head>
 
 <body>
 
-    <div class="topp">
-        <div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
+	<div class="topp">
+		<div style="width: fit-content; height: 79px;">
+			<img src="/resources/image/moon.png" alt="" class="top_img">
 		</div>
-		<span class="wnwp"><a href="/main" class="move">The
-            Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'" class="menu"
-            style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
-    </div>
+		<span class="wnwp"><a href="/main" id="aaa">The Chaser</a></span>
+		<button type="button" onclick="location.href='/introduction'"
+			class="menu" style="padding-left: 400px;">회사소개</button>
+		<button type="button" onclick="location.href='/intro_video'"
+			class="menu">시연영상</button>
+		<button type="button" onclick="location.href='/product_use'"
+			class="menu">시작하기</button>
+	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 		<div class=main_content style="width: 100%; height: 100%;">
 			<h3
 				style="font-size: xx-large; padding-left: 100px; padding-top: 40px; padding-bottom: 30px; font-family: 'btnfont';">
 				제품 사용법
-				</h3>
+				</h2>
 				<div style="display: flex;">
 					<span>
-						<div style="width: 950px; margin-right: 100px; padding-left: 100px;">
-							<nav id="navbar-example2"
-								class="navbar navbar-light bg-light px-3">
-								<a class="navbar-brand" href="#"></a>
-								<ul class="nav nav-pills">
-									<li class="nav-item dropdown">
-										<!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                                            role="button" aria-expanded="false" style="font-size:20px;">목록</a> -->
-										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="#scrollspyHeading1">Step1</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#scrollspyHeading2">Step2</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#scrollspyHeading3">Step3</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#scrollspyHeading4">Step4</a></li>
-											<li>
-												<hr class="dropdown-divider">
-											</li>
-											<li><a class="dropdown-item" href="#scrollspyHeading5">Step5</a></li>
-										</ul>
-									</li>
-								</ul>
+						<div
+							style="width: 950px; margin-right: 100px; padding-left: 100px;">
+
+							<ul class="nav nav-pills">
+								<li class="nav-item dropdown">
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="#scrollspyHeading1">Step1</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="#scrollspyHeading2">Step2</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="#scrollspyHeading3">Step3</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="#scrollspyHeading4">Step4</a></li>
+										<li>
+											<hr class="dropdown-divider">
+										</li>
+										<li><a class="dropdown-item" href="#scrollspyHeading5">Step5</a></li>
+									</ul>
+								</li>
+							</ul>
 							</nav>
-							
 							<div data-bs-spy="scroll" data-bs-target="#navbar-example2"
 								data-bs-offset="0" class="scrollspy-example" tabindex="0"
-								style="height: 700px; overflow-y: scroll;">
+								style="height: 650px; overflow-y: scroll;">
 								<br>
 								<h2 id="scrollspyHeading1" class="step">Step 1</h2>
 								<br>
 								<p class="ptag">
-									1.목록 페이지 에서는 등록 버튼을 눌러 사건을 등록 합니다.<br> 2.사건을 등록 할 때 에는 제목,
-									사건유형, 발생장소를 필수로 작성해야 하고 본인이 메모하거나 사건에 대해 적고 싶은 내용을 작성 할 수 있습니다.<br>
-									3. 글을 등록하면 등록한 리스트를 누른 후 다음 버튼을 눌러 인상착의 선택 페이지로 넘어갑니다.
+									1. 목록 페이지 에서는 등록 버튼을 눌러 사건을 등록 합니다.<br> 2. 사건을 등록 할 때 에는
+									제목, 사건유형, 발생장소를 필수로 작성해야 하고 본인이 메모하거나 사건에 대해 적고 싶은 내용을 작성 할 수
+									있습니다.<br> 3. 글을 등록하면 등록한 리스트를 누른 후 다음 버튼을 눌러 인상착의 선택 페이지로
+									넘어갑니다.
 								</p>
 								<br>
 								<h2 id="scrollspyHeading2" class="step">Step 2</h2>
@@ -216,45 +308,43 @@ body {
 					<div>
 						<video prelaod="metadata" src="./LG 시그니처 제품 소개 영상.mp4#t=0.8"
 							controls style="width: 800px;"></video>
+						<p
+							style="font-size: x-large; padding-left: 400px; font-family: 'btnfont'; margin-top: 20px;">사용예시</p>
 					</div>
 				</div>
-				<div
-					style="font-size: 30px; position: relative; left: 1750px; bottom: 50px;"
-					class="next">
-					<a href="/episode/episode_list?pageNum=1" style="color: black;">다음</a>
-				</div>
+				<button class="ekdma btn-7" onclick="moveUrl('/episode/episode_list')">
+					<span>다음</span>
+				</button>
 		</div>
 	</main>
 
-
+	<script type="text/javascript">
+		const moveUrl = (url) => {
+			location.href = url;
+		}
+	</script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 		crossorigin="anonymous"></script>
-	<script type="text/javascript"
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
 	<script>
-        window.firstPageId = 'zg724'
-        window.bi.sendBeat(12, 'Partially visible', {
-            pageId: window.firstPageId
-        })
-        if (window.requestCloseWelcomeScreen) {
-            window.requestCloseWelcomeScreen()
-        }
-        if (!window.__browser_deprecation__) {
-            window.fedops.phaseStarted('partially_visible', {
-                paramsOverrides: {
-                    pageId: firstPageId
-                }
-            })
-        }
-        
-        const moveUrl = (url) => {
-    		console.log('move..............url...............')
-    		location.href = url;
-    	}
-    </script>
+		window.firstPageId = 'zg724'
+		window.bi.sendBeat(12, 'Partially visible', {
+			pageId : window.firstPageId
+		})
+		if (window.requestCloseWelcomeScreen) {
+			window.requestCloseWelcomeScreen()
+		}
+		if (!window.__browser_deprecation__) {
+			window.fedops.phaseStarted('partially_visible', {
+				paramsOverrides : {
+					pageId : firstPageId
+				}
+			})
+		}
+	</script>
 
 </body>
 

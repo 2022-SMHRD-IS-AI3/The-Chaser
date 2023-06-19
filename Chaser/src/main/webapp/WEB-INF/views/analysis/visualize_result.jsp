@@ -23,6 +23,21 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
+
 .topp {
 	width: 100%;
 	height: 79px;
@@ -34,7 +49,7 @@ body {
 	width: 70px;
 	position: relative;
 	left: 90px;
-	top: 10px;
+	top: 12px;
 }
 
 .wnwp {
@@ -53,6 +68,7 @@ body {
 	background-color: transparent;
 	border: none;
 	padding-left: 250px;
+	font-family: 'btnfont';
 }
 
 .info {
@@ -88,18 +104,18 @@ body {
 
 <body>
 
-	<div class="topp">
-		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
-		</div>
-		2 <span class="wnwp"><a href="/main">The Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'"
-			class="menu" style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='/intro_video'"
-			class="menu">시연영상</button>
-		<button type="button" onclick="location.href='/product_use'"
-			class="menu">시작하기</button>
-	</div>
+	<div class = "topp">
+        <div style="width: fit-content; height:79px;">
+            <img src="/resources/image/moon.png" alt=""  class="top_img">
+        </div>
+        <span
+            class="wnwp"><a href="/main" >The
+            Chaser</a></span>
+        <button type="button" onclick="location.href='/introduction'" class="menu"
+            style="padding-left: 400px;">회사소개</button>
+        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
+        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
+    </div>
 	<div>
 		<p>
 			<button onclick="removeCircles()">모두 지우기</button>
