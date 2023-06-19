@@ -241,6 +241,7 @@ public class ImageController {
 		
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("result", result);
+		model.addAttribute("episode_idx", iDTO.getEpisode_idx());
 	}
 	
 	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)

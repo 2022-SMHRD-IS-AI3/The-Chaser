@@ -179,6 +179,7 @@
     			},
     			error : function(){
     				alert("실패");
+    				location.href="/episode/episode_desc?episode_idx=${episode_idx}";
     			}
     		})
     	})
