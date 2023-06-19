@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
@@ -22,6 +23,21 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
+
 .topp {
 	width: 100%;
 	height: 79px;
@@ -33,18 +49,18 @@ body {
 	width: 70px;
 	position: relative;
 	left: 90px;
-	top: 10px;
+	top: 12px;
 }
 
-        .wnwp {
-            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-            color: white;
-            font-size: 23px;
-            font-weight: 600;
-            position: relative;
-            left: 47px;
-            top: 23px;
-        }
+.wnwp {
+	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+	color: white;
+	font-size: 23px;
+	font-weight: 600;
+	position: relative;
+	left: 47px;
+	top: 23px;
+}
 
 .menu {
 	font-size: large;
@@ -52,6 +68,7 @@ body {
 	background-color: transparent;
 	border: none;
 	padding-left: 250px;
+	font-family: 'btnfont';
 }
 
 .sub-title {
@@ -228,18 +245,18 @@ option {
 
 
 
-	<div class = "topp">
-        <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt=""  class="top_img">
-        </div>
-        <span
-            class="wnwp"><a href="/main" >The
-            Chaser</a></span>
-        <button type="button" onclick="location.href='/introduction'" class="menu"
-            style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
-    </div>
+	<div class="topp">
+		<div style="width: fit-content; height: 79px;">
+			<img src="/resources/image/moon.png" alt="" class="top_img">
+		</div>
+		<span class="wnwp"><a href="/main">The Chaser</a></span>
+		<button type="button" onclick="location.href='/introduction'"
+			class="menu" style="padding-left: 400px;">회사소개</button>
+		<button type="button" onclick="location.href='/intro_video'"
+			class="menu">시연영상</button>
+		<button type="button" onclick="location.href='/product_use'"
+			class="menu">시작하기</button>
+	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 		<form action="/episode/episode_register" method="post" id="form">
@@ -286,13 +303,13 @@ option {
 										<input type="text" id="sample4_postcode" placeholder="우편번호">
 										<input type="button" onclick="sample4_execDaumPostcode()"
 											value="우편번호 찾기"> <br> <input type="text"
-											id="sample4_roadAddress" placeholder="도로명주소" name="episode_loc">
-										<input type="hidden" id="sample4_jibunAddress" name="juso"
-											placeholder="지번주소"> <span id="guide"
-											style="color: #999; display: none"></span> <input type="text"
-											id="sample4_detailAddress" name="juso2" placeholder="상세주소">
-										<input type="hidden" id="sample4_extraAddress"
-											placeholder="참고항목">
+											id="sample4_roadAddress" placeholder="도로명주소"
+											name="episode_loc"> <input type="hidden"
+											id="sample4_jibunAddress" name="juso" placeholder="지번주소">
+										<span id="guide" style="color: #999; display: none"></span> <input
+											type="text" id="sample4_detailAddress" name="juso2"
+											placeholder="상세주소"> <input type="hidden"
+											id="sample4_extraAddress" placeholder="참고항목">
 
 
 

@@ -24,17 +24,17 @@
 <style>
 @font-face {
 	font-family: 'btnfont';
-	src: url('/font/SCDream4.woff') format('woff');
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'contentfont';
-	src: url('/font/NotoSansKR-Medium.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'cntfont';
-	src: url('/font/NotoSansKR-Regular.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
 }
 
 body {
@@ -314,7 +314,7 @@ ul {
 
 	<div class = "topp">
         <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt=""  class="top_img">
+            <img src="/resources/image/moon.png" alt=""  class="top_img">
         </div>
         <span
             class="wnwp"><a href="/main" >The

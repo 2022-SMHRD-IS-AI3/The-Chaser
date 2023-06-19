@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
@@ -22,6 +23,21 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
+
 .topp {
 	width: 100%;
 	height: 79px;
@@ -33,18 +49,18 @@ body {
 	width: 70px;
 	position: relative;
 	left: 90px;
-	top: 10px;
+	top: 12px;
 }
 
 .wnwp {
-            font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-            color: white;
-            font-size: 23px;
-            font-weight: 600;
-            position: relative;
-            left: 47px;
-            top: 23px;
-        }
+	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+	color: white;
+	font-size: 23px;
+	font-weight: 600;
+	position: relative;
+	left: 47px;
+	top: 23px;
+}
 
 .menu {
 	font-size: large;
@@ -52,6 +68,7 @@ body {
 	background-color: transparent;
 	border: none;
 	padding-left: 250px;
+	font-family: 'btnfont';
 }
 
 .sub-title {
@@ -83,18 +100,18 @@ body {
 
 <body>
 
-	<div class = "topp">
-        <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt=""  class="top_img">
-        </div>
-        <span
-            class="wnwp"><a href="/main" >The
-            Chaser</a></span>
-        <button type="button" onclick="location.href='/introduction'" class="menu"
-            style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
-    </div>
+	<div class="topp">
+		<div style="width: fit-content; height: 79px;">
+			<img src="/resources/image/moon.png" alt="" class="top_img">
+		</div>
+		<span class="wnwp"><a href="/main">The Chaser</a></span>
+		<button type="button" onclick="location.href='/introduction'"
+			class="menu" style="padding-left: 400px;">회사소개</button>
+		<button type="button" onclick="location.href='/intro_video'"
+			class="menu">시연영상</button>
+		<button type="button" onclick="location.href='/product_use'"
+			class="menu">시작하기</button>
+	</div>
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 		<div class=main_content style="width: 100%; height: 100%;">
@@ -113,20 +130,23 @@ body {
 							</dl>
 							<dl>
 								<dt>상태</dt>
-								<dd>								
-									 <c:choose>
+								<dd>
+									<c:choose>
 										<c:when test="${episode.episode_flag.toString() eq '0'}">사건생성완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '1'}">인상착의 등록완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '2'}">동영상 선택완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '3'}">동영상 분석완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '9'}">사건 종결</c:when>
 										<c:otherwise>DB Error02</c:otherwise>
-									</c:choose>		 						
+									</c:choose>
 								</dd>
 							</dl>
 							<dl>
 								<dt>작성일</dt>
-								<dd><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${episode.episode_start_dt}"/></dd>
+								<dd>
+									<fmt:formatDate pattern="yyyy-MM-dd HH:mm"
+										value="${episode.episode_start_dt}" />
+								</dd>
 							</dl>
 
 						</div>
@@ -138,28 +158,34 @@ body {
 						</div>
 					</div>
 					<div class="bt_wrap">
-						<button onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button>
-						<button onclick="moveUrl('/episode/episode_delete?episode_idx=${episode.episode_idx }')">삭제</button>
+						<button
+							onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button>
+						<button
+							onclick="moveUrl('/episode/episode_delete?episode_idx=${episode.episode_idx }')">삭제</button>
 						<button onclick="moveUrl('/episode/episode_list')" class="on">목록</button>
-									 <c:choose>
-										<c:when test="${episode.episode_flag.toString() eq '0'}">
-										<button class="on" onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의 입력</button>
-										</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '1'}">
-										<button class="on" onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의 수정</button>
-										</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '2'}">
+						<c:choose>
+							<c:when test="${episode.episode_flag.toString() eq '0'}">
+								<button class="on"
+									onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의
+									입력</button>
+							</c:when>
+							<c:when test="${episode.episode_flag.toString() eq '1'}">
+								<button class="on"
+									onclick="moveUrl('/analysis/appearance?episode_idx=${episode.episode_idx }')">인상착의
+									수정</button>
+							</c:when>
+							<c:when test="${episode.episode_flag.toString() eq '2'}">
 										동영상 선택완료
 										</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '3'}">
+							<c:when test="${episode.episode_flag.toString() eq '3'}">
 										동영상 분석완료
 										</c:when>
-										<c:when test="${episode.episode_flag.toString() eq '9'}">
+							<c:when test="${episode.episode_flag.toString() eq '9'}">
 										사건 종결
 										</c:when>
-										<c:otherwise>DB Error02</c:otherwise>
-									</c:choose> 
-						
+							<c:otherwise>DB Error02</c:otherwise>
+						</c:choose>
+
 					</div>
 				</div>
 			</div>

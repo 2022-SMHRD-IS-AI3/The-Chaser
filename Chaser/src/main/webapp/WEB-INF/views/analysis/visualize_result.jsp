@@ -23,6 +23,21 @@ body {
 	padding: 0;
 }
 
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
+
 .topp {
 	width: 100%;
 	height: 79px;
@@ -34,7 +49,7 @@ body {
 	width: 70px;
 	position: relative;
 	left: 90px;
-	top: 10px;
+	top: 12px;
 }
 
 .wnwp {
@@ -53,6 +68,7 @@ body {
 	background-color: transparent;
 	border: none;
 	padding-left: 250px;
+	font-family: 'btnfont';
 }
 
 .info {
@@ -90,7 +106,7 @@ body {
 
 	<div class = "topp">
         <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt=""  class="top_img">
+            <img src="/resources/image/moon.png" alt=""  class="top_img">
         </div>
         <span
             class="wnwp"><a href="/main" >The

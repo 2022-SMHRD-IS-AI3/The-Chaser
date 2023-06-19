@@ -20,22 +20,23 @@
 <style>
 @font-face {
 	font-family: 'btnfont';
-	src: url('/font/SCDream4.woff') format('woff');
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'contentfont';
-	src: url('/font/NotoSansKR-Medium.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'cntfont';
-	src: url('/font/NotoSansKR-Regular.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
 }
 
-html{
-font-size: 10px !important;
+html {
+	font-size: 10px !important;
 }
+
 body {
 	margin: 0;
 	padding: 0;
@@ -103,99 +104,124 @@ body {
 	color: #116DFF;
 }
 
- @supports(-webkit-appearance: none) or (-moz-appearance: none) {
-      input[type='radio'] {
-        --active: #275EFE;
-        --active-inner: #fff;
-        --focus: 2px rgba(39, 94, 254, .3);
-        --border: #BBC1E1;
-        --border-hover: #275EFE;
-        --background: #fff;
-        --disabled: #F6F8FF;
-        --disabled-inner: #E1E6F9;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        height: 21px;
-        outline: none;
-        display: inline-block;
-        vertical-align: top;
-        position: relative;
-        margin: 0;
-        cursor: pointer;
-        border: 1px solid var(--bc, var(--border));
-        background: var(--b, var(--background));
-        transition: background .3s, border-color .3s, box-shadow .2s;
-        &:after {
-          content: '';
-          display: block;
-          left: 0;
-          top: 0;
-          position: absolute;
-          transition: transform var(--d-t, .3s) var(--d-t-e, ease), opacity var(--d-o, .2s);
-        }
-        &:checked {
-          --b: var(--active);
-          --bc: var(--active);
-          --d-o: .3s;
-          --d-t: .6s;
-          --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
-        }
-        &:disabled {
-          --b: var(--disabled);
-          cursor: not-allowed;
-          opacity: .9;
-          &:checked {
-            --b: var(--disabled-inner);
-            --bc: var(--border);
-          }
-          &+label {
-            cursor: not-allowed;
-          }
-        }
-        &:hover {
-          &:not(:checked) {
-            &:not(:disabled) {
-              --bc: var(--border-hover);
-            }
-          }
-        }
-        &:focus {
-          box-shadow: 0 0 0 var(--focus);
-        }
-        &:not(.switch) {
-          width: 21px;
-          &:after {
-            opacity: var(--o, 0);
-          }
-          &:checked {
-            --o: 1;
-          }
-        }
-        &+label {
-          font-size: 20px;
-          line-height: 21px;
-          display: inline-block;
-          vertical-align: top;
-          cursor: pointer;
-          margin-left: 4px;
-          padding-left: 3px;
-        }
-      }
-      input[type='radio'] {
-        border-radius: 50%;
-        &:after {
-          width: 19px;
-          height: 19px;
-          border-radius: 50%;
-          background: var(--active-inner);
-          opacity: 0;
-          transform: scale(var(--s, .7));
-        }
-        &:checked {
-          --s: .5;
-        }
-      }
-    }
+@
+supports(-webkit-appearance: none) or (-moz-appearance: none) {input
+	[type='radio'] { --active:#275EFE; -
+	-active-inner: #fff; -
+	-focus: 2px rgba(39, 94, 254, .3); -
+	-border: #BBC1E1; -
+	-border-hover: #275EFE; -
+	-background: #fff; -
+	-disabled: #F6F8FF; -
+	-disabled-inner: #E1E6F9;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	height: 21px;
+	outline: none;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	margin: 0;
+	cursor: pointer;
+	border: 1px solid var(- -bc, var(- -border));
+	background: var(- -b, var(- -background));
+	transition: background .3s, border-color .3s, box-shadow .2s; &: after
+	{ content : '';
+	display: block;
+	left: 0;
+	top: 0;
+	position: absolute;
+	transition: transform var(- -d-t, .3s) var(- -d-t-e, ease), opacity
+		var(- -d-o, .2s);
+}
+
+&
+:checked { -
+	-b: var(- -active); -
+	-bc: var(- -active); -
+	-d-o: .3s; -
+	-d-t: .6s; -
+	-d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+}
+
+&
+:disabled { -
+	-b: var(- -disabled);
+	cursor: not-allowed;
+	opacity: .9; &: checked { --b : var( - -disabled-inner); -
+	-bc: var(- -border);
+}
+
+&+
+label {
+	cursor: not-allowed;
+}
+
+}
+&
+:hover { &:
+	not (: checked){
+            &:not(: disabled){
+              --bc: var(- -border-hover);
+}
+
+}
+}
+&
+:focus {
+	box-shadow: 0 0 0 var(- -focus);
+}
+
+&
+:not(.switch) {
+	width: 21px;
+	&:
+	after
+	{
+	opacity
+	:
+	var(
+	-
+	-o
+	,
+	0
+	);
+}
+
+&
+:checked { -
+	-o: 1;
+}
+
+}
+&+
+label {
+	font-size: 20px;
+	line-height: 21px;
+	display: inline-block;
+	vertical-align: top;
+	cursor: pointer;
+	margin-left: 4px;
+	padding-left: 3px;
+}
+
+}
+input[type='radio'] {
+	border-radius: 50%; &: after { width : 19px;
+	height: 19px;
+	border-radius: 50%;
+	background: var(- -active-inner);
+	opacity: 0;
+	transform: scale(var(- -s, .7));
+}
+
+&
+:checked { -
+	-s: .5;
+}
+
+}
+}
 label {
 	font-size: 20px;
 	line-height: 21px;
@@ -254,7 +280,6 @@ input {
 	border: #000;
 	box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px
 		rgba(168, 166, 166, 0.521);
-	background-color: #E5E8F1;
 }
 
 .ex4 {
@@ -276,25 +301,25 @@ input {
 }
 
 .colorpick {
-    position: relative;
-    right: 9px;
+	position: relative;
+	right: 9px;
 }
 
 .ekdma {
-	width: 130px;
+	width: 110px;
 	height: 40px;
 	padding: 10px 25px;
-	border: 2px solid #FFFEFE;
+	border: 2px solid #444343;
 	font-family: 'Lato', sans-serif;
-	font-weight: 500;
+	font-weight: 550;
 	background: transparent;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	position: relative;
 	display: inline-block;
 	font-size: 20px;
-	color: #FFFEFE;
-	margin-left: 10px;
+	color: #444343;
+	margin-left: 25px;
 }
 
 .btn-7 {
@@ -304,7 +329,7 @@ input {
 
 .btn-7:hover {
 	background: transparent;
-	color: #FFFEFE;
+	color: #444343;
 }
 
 .btn-7 span {
@@ -319,7 +344,7 @@ input {
 	content: "";
 	left: 0;
 	top: 0;
-	background: #FEFEFF;
+	background: #444343;
 	transition: all 0.3s ease;
 }
 
@@ -346,7 +371,7 @@ input {
 	content: "";
 	right: 0;
 	bottom: 0;
-	background: #FFFEFE;
+	background: #444343;
 	transition: all 0.3s ease;
 }
 
@@ -372,25 +397,25 @@ input {
 
 <body>
 
-	<div class = "topp">
-        <div style="width: fit-content; height:79px;">
-            <img src="./사진1.png" alt=""  class="top_img">
-        </div>
-        <span
-            class="wnwp"><a href="/main" >The
-            Chaser</a></span>
-        <button type="button" onclick="location.href='/introduction'" class="menu"
-            style="padding-left: 400px;">회사소개</button>
-        <button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-        <button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
-    </div>
+	<div class="topp">
+		<div style="width: fit-content; height: 79px;">
+			<img src="/resources/image/moon.png" alt="" class="top_img">
+		</div>
+		<span class="wnwp"><a href="/main">The Chaser</a></span>
+		<button type="button" onclick="location.href='/introduction'"
+			class="menu" style="padding-left: 400px;">회사소개</button>
+		<button type="button" onclick="location.href='/intro_video'"
+			class="menu">시연영상</button>
+		<button type="button" onclick="location.href='/product_use'"
+			class="menu">시작하기</button>
+	</div>
 
 
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
 		data-main-content="true">
 		<form action="/analysis/appearance" method="post" id="form">
 			<div class="main_content"
-				style="width: 100%; height:890px; display: flex; flex-wrap: wrap; padding-left: 280px; padding-right: 180px; background-color: #2C2C2C;">
+				style="width: 100%; height: 890px; display: flex; flex-wrap: wrap; padding-left: 280px; padding-right: 180px;">
 
 				<div class="ho">
 
@@ -605,7 +630,7 @@ input {
 				</div>
 				<div class="ho">
 					<fieldset
-						style="width: 550px; height: 170px; border-radius: 10px; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521); background-color: #E5E8F1;">
+						style="width: 550px; height: 170px; border-radius: 10px; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
 						<div class="ex1"
 							style="font-size: x-large; border-bottom: 2px solid; padding-top: 5px; padding-bottom: 5px; margin-bottom: 10px; padding-left: 10px; text-align: center;">
 							소지품</div>

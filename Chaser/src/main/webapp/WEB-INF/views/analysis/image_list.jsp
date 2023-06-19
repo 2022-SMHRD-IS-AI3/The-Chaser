@@ -35,7 +35,7 @@
 		image.src = "/resources/image/down.png";
 		image.style.width = "20px";
 		image.style.height = "20px";
-		image.style.filter = "invert(90%)";
+		/* image.style.filter = "invert(90%)"; */
 		image.style.marginTop = "3px";
 		image.setAttribute("id", "downIcon");
 
@@ -48,12 +48,11 @@
 
 		var delimg = document.createElement("img");
 		delimg.src = "/resources/image/del.png";
-		delimg.style.width = "30px";
-		delimg.style.height = "30px";
+		/* delimg.style.width = "30px"; */
+		delimg.style.height = "27px";
 		delimg.style.position = "fixed";
-		delimg.style.left = "530px";
-		delimg.style.marginBottom = "5px";
-		delimg.style.filter = "invert(90%)";
+		delimg.style.left = "527px";
+		delimg.style.filter = "invert(20%)";
 
 		var text_child1 = document.createElement("input");
 		text_child1.type = "hidden";
@@ -192,17 +191,17 @@
 <style>
 @font-face {
 	font-family: 'btnfont';
-	src: url('/font/SCDream4.woff') format('woff');
+	src: url('/resources/font/SCDream4.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'contentfont';
-	src: url('/font/NotoSansKR-Medium.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'cntfont';
-	src: url('/font/NotoSansKR-Regular.woff') format('woff');
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
 }
 
 body {
@@ -246,23 +245,20 @@ body {
 
 .main_content {
 	font-family: 'cntfont';
-	color: rgb(223, 217, 217);
 	width: 100%;
 	height: 858px;
 	padding-top: 50px;
 	padding-left: 220px;
-	background-color: #2c2c2c;
 }
 
 .createbtn {
 	font-size: 0.8rem;
 	padding-bottom: 5px;
-	padding-left: 260px;
+	padding-left: 280px;
 	background-color: transparent;
 	border: none;
 	width: 100%;
-	border-bottom: 2px solid;
-	color: rgb(223, 217, 217);
+	border-bottom: 1px solid;
 }
 
 .folder {
@@ -299,6 +295,8 @@ body {
 
 .tag {
 	margin-right: 10px;
+	position: relative;
+	bottom: 11px;
 }
 
 .xorm {
@@ -319,20 +317,28 @@ body {
 }
 
 .plusbtn {
-	border-radius: 15px;
-	background-color: rgba(216, 215, 223, 0.582);
-	width: 90px;
+	border-radius: 5px;
+	width: 150px;
 	height: 40px;
 	position: fixed;
-	top: 65%;
-	left: 53%;
-	font-family:;
+	top: 72%;
+	left: 81.5%;
+	border: 1px solid;
+	background-color: transparent;
+	border-radius: 10px;
+	box-shadow: .8rem .5rem 1.4rem #BEC5D0, -.3rem -.4rem .8rem #FBFBFB;
+}
+
+.plusbtn:active {
+	box-shadow: inset -.3rem -.1rem 1.4rem #FBFBFB, inset .3rem .4rem .8rem
+		#BEC5D0;
+	cursor: pointer;
 }
 
 .vhfejtodtjd {
 	width: 23%;
 	height: 100%;
-	border-right: solid;
+	border-right: 1px solid;
 	float: left;
 	overflow: auto;
 }
@@ -412,10 +418,94 @@ body {
 #aaa {
 	text-decoration-line: none;
 	color: #fff;
-	
 }
-#aaa:hover{
-	color: #0d6efd;
+
+.ekdma {
+	width: 200px;
+	height: 40px;
+	border: 2px solid #444343;
+	font-family: 'Lato', sans-serif;
+	/* font-weight: 550; */
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	font-size: 20px;
+	color: #444343;
+	margin-top: 120px;
+	margin-left: 37.5%;
+}
+
+.btn-7 {
+	line-height: 39px;
+	padding: 0;
+}
+
+.btn-7:hover {
+	background: transparent;
+	color: #444343;
+}
+
+.btn-7 span {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.btn-7:before, .btn-7:after {
+	position: absolute;
+	content: "";
+	left: 0;
+	top: 0;
+	background: #444343;
+	transition: all 0.3s ease;
+}
+
+.btn-7:before {
+	height: 0%;
+	width: 2px;
+}
+
+.btn-7:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-7:hover:before {
+	height: 100%;
+}
+
+.btn-7:hover:after {
+	width: 100%;
+}
+
+.btn-7 span:before, .btn-7 span:after {
+	position: absolute;
+	content: "";
+	right: 0;
+	bottom: 0;
+	background: #444343;
+	transition: all 0.3s ease;
+}
+
+.btn-7 span:before {
+	width: 2px;
+	height: 0%;
+}
+
+.btn-7 span:after {
+	width: 0%;
+	height: 2px;
+}
+
+.btn-7 span:hover:before {
+	height: 100%;
+}
+
+.btn-7 span:hover:after {
+	width: 100%;
 }
 </style>
 </head>
@@ -423,7 +513,7 @@ body {
 <body onselectstart="return false" ondragstart="return false">
 	<div class="topp">
 		<div style="width: fit-content; height: 79px;">
-			<img src="./사진1.png" alt="" class="top_img">
+			<img src="/resources/image/moon.png" alt="" class="top_img">
 		</div>
 		<span class="wnwp"><a href="/main" id="aaa">The Chaser</a></span>
 		<button type="button" onclick="location.href='/introduction'"
@@ -437,7 +527,7 @@ body {
 		data-main-content="true">
 		<div class="main_content">
 			<div
-				style="width: 1500px; height: 500px; margin-top: 50px; border: solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
+				style="width: 1500px; height: 500px; margin-top: 50px; border: 1px solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
 				<div class="vhfejtodtjd">
 					<button class="createbtn" data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop">폴더 생성</button>
@@ -478,12 +568,14 @@ body {
 								<div style="width: 65%;">${files.directory}</div></li>
 						</c:forEach>
 					</ul>
-					<button class="plusbtn" onclick="moveItems()">추가</button>
+					<button class="plusbtn" onclick="moveItems()">파일 추가</button>
 				</div>
 			</div>
-			<a href="#"
-				style="font-size: 1.5rem; position: relative; margin-top: 10px; left: 1450px;"
-				onclick="document.getElementById('form1').submit();">다음</a>
+			<button class="ekdma btn-7">
+				<span><a href="#"
+					style="text-decoration-line: none; color: black;"
+					onclick="document.getElementById('form1').submit();">분석시작</a></span>
+			</button>
 		</div>
 
 	</main>
@@ -516,7 +608,7 @@ body {
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js""></script>
-	<script type="text/javascript"
+	<script type=" text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 
 	<script>
