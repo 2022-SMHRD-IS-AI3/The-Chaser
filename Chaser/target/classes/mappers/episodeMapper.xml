@@ -70,7 +70,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					episode_end_dt,
 					episode_flag
 			FROM (
-					SELECT /*+ INDEX_DESC(tb_episode episode_idx) */
+					SELECT /*+ INDEX_DESC(tb_episode IDX_tb_episode_pk) */
 						rownum rn,
 						episode_idx,
 						episode_type,
@@ -83,10 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						episode_flag
 					FROM tb_episode
 					WHERE 
-			]]>
-			<![CDATA[	
-					rownum <= #{pageNum} * #{amount}
-					ORDER BY episode_idx DESC
+						rownum <= #{pageNum} * #{amount}
 				)
 				WHERE rn > (#{pageNum} -1) * #{amount}
 			]]>
