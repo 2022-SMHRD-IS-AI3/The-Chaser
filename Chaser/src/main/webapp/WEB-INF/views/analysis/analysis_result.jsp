@@ -371,13 +371,18 @@ ul {
 							<fmt:parseNumber var="hours" value="${wanted.w_first/2/3600}" integerOnly="true" />
 							<fmt:parseNumber var="mins" value="${wanted.w_first/2/60%60}" integerOnly="true" />
 							<fmt:parseNumber var="secs" value="${wanted.w_first/2%60}" integerOnly="true" />
-							${hours}:${mins}:${secs} </button>
+							${hours}:
+							<c:if test="${mins <= '9'}">0${mins}</c:if><c:if test="${mins > '9'}">${mins}</c:if>:
+							<c:if test="${secs <= '9'}">0${secs}</c:if><c:if test="${secs > '9'}">${secs}</c:if> 
+							</button>
 							~
 							<button class="btn_time" onclick="goToTimestamp(this.innerHTML)">
 							<fmt:parseNumber var="hours2" value="${wanted.w_last/2/3600}" integerOnly="true" />
 							<fmt:parseNumber var="mins2" value="${wanted.w_last/2/60%60}" integerOnly="true" />
 							<fmt:parseNumber var="secs2" value="${wanted.w_last/2%60}" integerOnly="true" />
-							${hours2}:${mins2}:${secs2}
+							${hours2}:
+							<c:if test="${mins2 <= '9'}">0${mins2}</c:if><c:if test="${mins2 > '9'}">${mins2}</c:if>:
+							<c:if test="${secs2 <= '9'}">0${secs2}</c:if><c:if test="${secs2 > '9'}">${secs2}</c:if>
 							</button>
 						</p>
 						<p class="accordion__content">
