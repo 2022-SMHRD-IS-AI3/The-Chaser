@@ -258,7 +258,7 @@ body {
 	background-color: transparent;
 	border: none;
 	width: 100%;
-	border-bottom: 1px solid;
+	border-bottom: 2px solid;
 }
 
 .folder {
@@ -296,7 +296,7 @@ body {
 .tag {
 	margin-right: 10px;
 	position: relative;
-	bottom: 11px;
+	
 }
 
 .xorm {
@@ -527,7 +527,7 @@ body {
 		data-main-content="true">
 		<div class="main_content">
 			<div
-				style="width: 1500px; height: 500px; margin-top: 50px; border: 1px solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
+				style="width: 1500px; height: 500px; margin-top: 50px; border: 2px solid; box-shadow: 0 14px 28px rgba(168, 166, 166, 0.521), 0 10px 10px rgba(168, 166, 166, 0.521);">
 				<div class="vhfejtodtjd">
 					<button class="createbtn" data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop">폴더 생성</button>

@@ -329,7 +329,7 @@ input {
 
 .btn-7:hover {
 	background: transparent;
-	color: #444343;
+	color: #FFFEFE;
 }
 
 .btn-7 span {
