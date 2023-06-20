@@ -14,9 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wasp.chaser.domain.PageDTO;
+import com.wasp.chaser.domain.AppeDTO;
 import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
+import com.wasp.chaser.service.IAppeService;
 import com.wasp.chaser.service.IEpisodeService;
+import com.wasp.chaser.service.IImageService;
+import com.wasp.chaser.service.IWantedService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -26,6 +30,9 @@ import lombok.extern.log4j.Log4j;
 public class EpisodeController {
 	
 	@Autowired private IEpisodeService service;
+	@Autowired private IAppeService Aservice;
+	@Autowired private IImageService Iservice;
+	@Autowired private IWantedService Wservice;
 	
 	// 사건 작성 GET
 	@RequestMapping(value="/episode_register", method = RequestMethod.GET)
@@ -105,10 +112,14 @@ public class EpisodeController {
 	      model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
-	// 사건 종결
+	// 사건 종결 POST
 	@RequestMapping(value="/episode_end", method = RequestMethod.POST)
 	public void episode_end(EpisodeDTO eDto, Model model) throws Exception{
 		service.updateEnd(eDto);
+		log.info("사건종결");
+		log.info("episode_end POST...........");
+		eDto.setEpisode_flag('9');
+		service.insert(eDto);
 	}
 
 }

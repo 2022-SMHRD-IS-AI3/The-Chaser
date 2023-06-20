@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.wasp.chaser.domain.AppeDTO;
+import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.domain.FileDTO;
 import com.wasp.chaser.domain.ImageDTO;
 import com.wasp.chaser.domain.ImageDTOList;
@@ -24,6 +26,7 @@ import com.wasp.chaser.domain.TestDTOList;
 import com.wasp.chaser.domain.UploadDTO;
 import com.wasp.chaser.domain.UploadDTOList;
 import com.wasp.chaser.domain.WantedDTO;
+import com.wasp.chaser.service.IAppeService;
 import com.wasp.chaser.service.IEpisodeService;
 import com.wasp.chaser.service.IImageService;
 import com.wasp.chaser.service.IWantedService;
@@ -36,8 +39,10 @@ import lombok.extern.log4j.Log4j;
 public class ImageController {
 
 	@Autowired	private IImageService service;
-	@Autowired	private IWantedService service2;
-	@Autowired	private IEpisodeService service3;
+	@Autowired private IAppeService Aservice;
+	@Autowired private IImageService Iservice;
+	@Autowired private IWantedService Wservice;
+	@Autowired private IEpisodeService Eservice;
 
 	private String uploadPath = "C:\\Users\\smhrd\\Desktop\\cctv";
 	
@@ -141,7 +146,7 @@ public class ImageController {
 		model.addAttribute("old_fileList", old_fileList);
 		model.addAttribute("fileList", onlyFileList);
 		model.addAttribute("episode_idx", episode_idx);
-		model.addAttribute("episode_loc", service3.getEpisodeLoc(episode_idx));
+		model.addAttribute("episode_loc", Eservice.getEpisodeLoc(episode_idx));
 	}
 
 	// 영상 삭제하는 메소드
@@ -236,7 +241,7 @@ public class ImageController {
 		wanted.setEpisode_idx(result.getEpisode_idx());
 		wanted.setImg_idx(result.getImg_idx());
 		
-		result.setWantedDTOList(service2.listAll(wanted));
+		result.setWantedDTOList(Wservice.listAll(wanted));
 
 		
 		model.addAttribute("imageList", imageList);
@@ -245,8 +250,29 @@ public class ImageController {
 	}
 	
 	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)
-	public void list(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+	public void list(@RequestParam("episode_idx") int episode_idx,WantedDTO wanted, Model model,EpisodeDTO eDto) throws Exception{
+		// 이미지 리스트 테이블 가져오기
 		model.addAttribute("list",service.resultListAll(episode_idx));	
+		
+		// 에피소드 테이블 가져오기
+		model.addAttribute("episode", Eservice.read(episode_idx));
+		log.info("사건불러오기");
+		log.info("get...................");
+		
+		// 인상착의 테이블 가져오기
+		AppeDTO appeDto = Aservice.read(episode_idx);
+		if(appeDto != null) {
+			model.addAttribute("appe", appeDto);	
+		}
+		model.addAttribute("episode_idx", episode_idx);
+		
+		log.info("인상착의불러오기");
+		log.info("get...................");
+		
+		// 후보리스트 테이블 가져오기
+		log.info("후보 리스트 불러오기");
+		log.info(Wservice.listAll(wanted).toString());
+		
 	}
 
 }

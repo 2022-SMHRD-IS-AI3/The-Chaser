@@ -499,7 +499,7 @@ input {
 							<input id="appe_height4" type="radio" name="appe_height"
 								value="4"
 								<c:if test="${appe.appe_height eq '4' }">checked </c:if>>
-							<label for="appe_height4">180~190cm미만</label>
+							<label for="appe_height4">180cm이상</label>
 						</div>
 
 					</fieldset>

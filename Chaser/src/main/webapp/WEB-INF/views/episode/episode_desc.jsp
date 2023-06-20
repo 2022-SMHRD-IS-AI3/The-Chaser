@@ -175,13 +175,18 @@ body {
 									수정</button>
 							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '2'}">
-										동영상 선택완료
+								<button class="on" onclick="moveUrl('/analysis/image_list?episode_idx=${episode.episode_idx }')">동영상 선택완료
+									</button>
 										</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '3'}">
+									<button class="on" onclick="moveUrl('/analysis/analysis_result?episode_idx=${episode.episode_idx }')">
 										동영상 분석완료
+									</button>
 										</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '9'}">
+									<button class="on" onclick="moveUrl('/analysis/visualize_result?episode_idx=${episode.episode_idx }')">
 										사건 종결
+										</button>
 										</c:when>
 							<c:otherwise>DB Error02</c:otherwise>
 						</c:choose>

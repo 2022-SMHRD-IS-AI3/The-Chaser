@@ -180,31 +180,42 @@
 				<div style="margin-right: 50px;">
 					<p style="padding-left: 120px; font-size: 23px;">사건요약</p>
 					<br>
-					<p class="sub">사건제목 : 광주납치사건</p>
-					<p class="sub">사건유형 : 납치</p>
-					<p class="sub">발생일자 : 2023-05-16</p>
-					<p class="sub">내용 : 동네 주민들의 증언에 따르면 범인은 큰 키에 모자를 쓰고 있었고 나이가 좀 들어 보인다고 하였음 </p>
+					<p class="sub">사건제목 : ${episode.episode_title}</p>
+					<p class="sub">사건유형 : ${episode.episode_type}</p>
+					<p class="sub">발생일자 : <fmt:formatDate pattern="yyyy-MM-dd"
+										value="${episode.episode_time}" /></p>
+					<p class="sub">내용 : ${episode.episode_content } </p>
 					<br><br><br>
 					<p style="padding-left: 120px; font-size: 23px; padding-top: 50px;">인상착의</p>
 					<br>
-					<p class="sub">성별 : 남자 </p>
-					<p class="sub">연령대 : 중년</p>
-					<p class="sub">키 : 180cm~190cm미만</p>
-					<p class="sub">체형 : 보통</p>
-					<p class="sub">상의 : 긴팔</p>
-					<p class="sub">하의 : 반바지</p>
-					<p class="sub">소지품 : 모름</p>
+					<p class="sub">성별 : 
+					<c:if test="${appe.appe_gender.toString() eq 'M'}">남자</c:if>
+					<c:if test="${appe.appe_gender.toString() eq 'F'}">여자</c:if>
+					<c:if test="${appe.appe_gender.toString() eq '0'}">모름</c:if></p>
+					<p class="sub">연령대 : 
+					<c:if test="${appe.appe_age eq '1'}">학생</c:if>
+					<c:if test="${appe.appe_age eq '2'}">성인</c:if>
+					<c:if test="${appe.appe_age eq '3'}">노인</c:if></p>
+					<p class="sub">키 : 
+					<c:if test="${appe.appe_height eq '1'}">160cm미만</c:if>
+					<c:if test="${appe.appe_height eq '2'}">160~170cm미만</c:if>
+					<c:if test="${appe.appe_height eq '3'}">170~180cm미만</c:if>
+					<c:if test="${appe.appe_height eq '4'}">180cm이상</c:if></p>
+					<p class="sub">체형 : ${appe.appe_body }</p>
+					<p class="sub">상의 : ${appe.appe_top_type }</p>
+					<p class="sub">하의 : ${appe.appe_bottom_type }</p>
+					<p class="sub">소지품 : ${appe.appe_stuff_type }</p>
 					<br>
 				</div>
 				<div id="map" style="width: 50%; height: 700px; background-color: black; "></div>
-				<div style="margin-left: 50px;">
-					<p style="font-size: x-large; text-align: center; color: yellow;">금남로 4가</p>
-					<p style="text-align: center;">찍힌 날짜 및 시간 : 2023-05-16</p>
+				<div style="margin-left: 40px; border : 2px solid; height : 100%;">
+					<p style="font-size: x-large; text-align: center; color: yellow; margin-top : 15px;">위치 : ${episode.episode_loc}</p>
+					<p style="text-align: center;">찍힌 날짜 및 시간 : </p>
 					<br>
 					
 				</div>
 			</div>
-			<button class="custom-btn btn-10"><a href="">결과 저장</a></button>
+			<button class="custom-btn btn-10"><a href="/episode/episode_list">결과 저장</a></button>
 		</div>
 	</main>
 	<script type="text/javascript"
@@ -631,6 +642,11 @@
 		polyline.setMap(map);
 	</script>
 
+	<script type="text/javascript">
+		const moveUrl = (url) => {
+			location.href = url;
+		}
+	</script>
 
 </body>
 

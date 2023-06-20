@@ -18,7 +18,7 @@ public class AppeDTO {
 	private String appe_stuff_color;		// 소지품 색상
 	private Character appe_gender;				// 성별
 	private Integer appe_age;					// 연령대
-	private double appe_height;				// 키
+	private Integer appe_height;				// 키
 	private String appe_body;				// 체형
 	private Integer episode_idx;				// 사건 번호
 
