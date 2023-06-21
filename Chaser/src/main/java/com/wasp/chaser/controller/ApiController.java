@@ -84,7 +84,7 @@ public class ApiController {
 				// 데이터 담을 객체 생성
 				RestTemplate restTemplate = new RestTemplate();
 
-				String url = "http://localhost:9091/modeling";
+				String url = "http://localhost:9091/";
 
 				// 객체 Header
 				HttpHeaders httpHeaders = new HttpHeaders();
