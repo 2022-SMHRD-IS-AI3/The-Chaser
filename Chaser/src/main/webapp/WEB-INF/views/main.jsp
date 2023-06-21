@@ -278,7 +278,7 @@ video {
       if (inputData == 'smhrd') {
         $("#Logsuccess").css("visibility", "visible");
       } else {
-        alert("다시다시 다시마 .");
+        alert("다시 입력해주세요");
         return;
       }
     }
