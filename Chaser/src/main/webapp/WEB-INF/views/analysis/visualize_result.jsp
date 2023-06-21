@@ -108,7 +108,7 @@ p {
 	height: 50px;
 	margin-top: 30px;
 	padding: 10px 25px;
-	margin-left: 760px;
+	margin-left: 820px;
 	border: 2px solid #000;
 	font-family: 'Lato', sans-serif;
 	font-weight: 500;
@@ -179,6 +179,7 @@ p {
 		<div class=main_content style="width: 100%; height: 100%;">
 			<div style="display: flex; margin-top: 50px; margin-left: 80px;">
 				<div style="margin-right: 50px;">
+				
 					<p style="padding-left: 120px; font-size: 23px;">사건요약</p>
 					<br>
 					<p class="sub">사건제목 : ${episode.episode_title}</p>
@@ -188,10 +189,10 @@ p {
 						<fmt:formatDate pattern="yyyy-MM-dd"
 							value="${episode.episode_time}" />
 					</p>
-					<p class="sub">내용 : ${episode.episode_content }</p>
-					<br>
-					<br>
-					<br>
+					<p class="sub" style="height : 180px;
+	overflow : auto;">내용 : ${episode.episode_content }</p>
+				
+					
 					<p style="padding-left: 120px; font-size: 23px; padding-top: 50px;">인상착의</p>
 					<br>
 					<p class="sub">
@@ -221,9 +222,9 @@ p {
 				</div>
 
 				<div id="map" style="width: 50%; height: 700px; background-color: black; "></div>
-					<div style="height:100%">
+					<div style="height:700px; overflow:auto; margin-left:40px;">
 						<c:forEach items="${list}" var="imgList">
-						<div style="margin-left: 40px; border : 2px solid; height : 100%; margin-bottom:30px;">
+						<div style="margin-left: 40px; border : 2px solid; margin-bottom:30px;">
 							<p style="font-size: 2rem; font-weight:600; text-align: center; margin-top : 15px; overflow: hidden;
 	text-overflow: ellipsis; white-space: nowrap; margin-left:10px; margin-right:10px;">${imgList.img_nm}</p>
 							<p style="text-align: center;">찍힌 날짜 및 시간 : ${imgList.img_time}</p>
@@ -232,7 +233,7 @@ p {
 						</c:forEach>
 					</div>
 			</div>
-			<p style="position: relative; left : 70.3%;">
+			<p style="position: relative; left : 68.3%; bottom : 45px; background-color : transparent;">
 				<button onclick="removeCircles()">모두 지우기</button>
 				<br>
 			</p>
