@@ -161,8 +161,10 @@ body {
                   </div>
 					</div>
 					<div class="bt_wrap">
+					<c:if test="${episode.episode_flag.toString() ne '9'}">
 						<button
 							onclick="moveUrl('/episode/episode_modify?episode_idx=${episode.episode_idx }')">수정</button>
+					</c:if>
 						<button
 							onclick="moveUrl('/episode/episode_delete?episode_idx=${episode.episode_idx }')">삭제</button>
 						<button onclick="moveUrl('/episode/episode_list')" class="on">목록</button>
@@ -180,17 +182,17 @@ body {
 							<c:when test="${episode.episode_flag.toString() eq '2'}">
 								<button class="on"
 									onclick="moveUrl('/analysis/image_list?episode_idx=${episode.episode_idx }')">동영상
-									선택완료</button>
+									선택 페이지</button>
 							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '3'}">
 								<button class="on"
 									onclick="moveUrl('/analysis/analysis_result?episode_idx=${episode.episode_idx }')">
-									동영상 분석완료</button>
+									분석 결과 페이지</button>
 							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '9'}">
 								<button class="on"
 									onclick="moveUrl('/analysis/visualize_result?episode_idx=${episode.episode_idx }')">
-									사건 종결</button>
+									결과 시각화 페이지</button>
 							</c:when>
 							<c:otherwise>DB Error02</c:otherwise>
 						</c:choose>
@@ -590,20 +592,6 @@ body {
 			return content;
 		}
 
-		/* // 마커에 click 이벤트를 등록합니다
-		 kakao.maps.event.addListener(marker, 'click', function() {
-		
-		 var click1 = document.getElementById('fst_data');
-		 var click2 = document.getElementById('sec_data');
-		
-		 var ttl = this.getTitle();
-		 console.log(ttl);
-		 click1.value=click2.value;
-		 click2.value=ttl;    
-		
-		 }); */
-
-		//지도에 선을 표시합니다 
 		polyline.setMap(map);
 	</script>
 	

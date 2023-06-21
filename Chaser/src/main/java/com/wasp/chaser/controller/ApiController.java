@@ -58,9 +58,20 @@ public class ApiController {
 	private IEpisodeService service4;
 
 	@RequestMapping(value = "/flaskStart", method = RequestMethod.POST)
-	public void flaskStart(@RequestParam("episode_idx") int episode_idx) throws Exception {
+	public boolean flaskStart(@RequestParam("episode_idx") int episode_idx) throws Exception {
 
 		EpisodeDTO epi = service4.read(episode_idx);
+		
+		RestTemplate restTemplate1 = new RestTemplate();
+		String url1 = "http://localhost:9091/";
+		// Header
+		HttpHeaders httpHeaders1 = new HttpHeaders();
+		httpHeaders1.setContentType(MediaType.APPLICATION_JSON);
+		// 보낼 Message
+		HttpEntity<?> requestMessage1 = new HttpEntity<>("", httpHeaders1);
+		// Request
+		HttpEntity<String> response1 = restTemplate1.postForEntity(url1, requestMessage1, String.class);
+		
 
 		// 현재 사건이 이미 분석 중인지 if
 		if (epi.getEpisode_flag() != '7') {
@@ -125,6 +136,8 @@ public class ApiController {
 			epi2.setEpisode_flag('3');
 			service4.updateFlag(epi2);
 		}
+		
+		return true;
 
 	}
 

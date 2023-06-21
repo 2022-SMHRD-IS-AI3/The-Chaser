@@ -141,8 +141,9 @@ body {
 										<c:when test="${episode.episode_flag.toString() eq '1'}">인상착의 등록완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '2'}">동영상 선택완료</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '3'}">동영상 분석완료</c:when>
+										<c:when test="${episode.episode_flag.toString() eq '7'}">동영상 분석중</c:when>
 										<c:when test="${episode.episode_flag.toString() eq '9'}">사건 종결</c:when>
-										<c:otherwise>바보야 다시해</c:otherwise>
+										<c:otherwise></c:otherwise>
 									</c:choose>
 								</div>
 								<div class="date">

@@ -135,12 +135,15 @@ body {
     			},
     			success : function(){
     				if(isSuccess == true){
-    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";    					
+	    				alert("분석이 완료되었습니다.");
+	    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";    					
+    				}else{
+        				alert("분석 서버 접속에 실패했습니다.");
+    					location.href="/episode/episode_desc?episode_idx=${episode_idx}";
     				}
     			},
     			error : function(){
-    				alert("실패");
-    				location.href="/episode/episode_desc?episode_idx=${episode_idx}";
+    				alert("분석 서버에서 문제가 생겼습니다.");
     			}
     		})
     	})
@@ -198,7 +201,11 @@ body {
            			if(img_time >= 0 && isSuccess == false){
 		           		document.getElementById("total_img_time").innerText = parseInt(img_time/3600)+"시간 "+parseInt(img_time/60)+"분 "+(img_time%60)+"초";
            			}
-	           		document.getElementById("total_imgs_time").innerText = parseInt(imgs_time/3600)+"시간 "+parseInt(imgs_time/60)+"분 "+(imgs_time%60)+"초";           			
+           			
+           			if(imgs_time >= 0){
+		           		document.getElementById("total_imgs_time").innerText = parseInt(imgs_time/3600)+"시간 "+parseInt(imgs_time/60)+"분 "+(imgs_time%60)+"초";           			
+           			}
+           				
            		}, 100);
            		
            		
@@ -226,11 +233,11 @@ body {
             	elem.style.width = img_frame / imgs[cnt] * 100 + '%'; 										// 현재 폴더의 진행도에 바도 변경
             	
             	// 100까지찼다면 0.5초 후에 0으로 보여주기
-            	if(parseInt(img_frame / imgs[cnt] * 100) == 100){
+            	if(parseInt(img_frame / imgs[cnt] * 100) == 100 && cnt != imgs.length-1){
             		setTimeout(function() {
 		            	document.getElementById("label").innerHTML = 0  + '%';
 		            	elem.style.width = 0 + '%';
-            			}, 500);
+            			}, 50);
             	}
             	
             	// 전체 폴더 상태도 변화
