@@ -10,171 +10,178 @@
 
 <head>
 
-	<meta charset="utf-8">
-	<title>Visualize_result Page</title>
-	<link rel="stylesheet" href="https://blog.codepen.io/documentation/exporting-pens/">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="/resources/css/css.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+<meta charset="utf-8">
+<title>Visualize_result Page</title>
+<link rel="stylesheet"
+	href="https://blog.codepen.io/documentation/exporting-pens/">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link rel="stylesheet" href="/resources/css/css.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
 
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-		}
+<style>
+body {
+	margin: 0;
+	padding: 0;
+}
 
-		@font-face {
-			font-family: 'btnfont';
-			src: url('/resources/font/SCDream4.woff') format('woff');
-		}
+@font-face {
+	font-family: 'btnfont';
+	src: url('/resources/font/SCDream4.woff') format('woff');
+}
 
-		@font-face {
-			font-family: 'contentfont';
-			src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
-		}
+@font-face {
+	font-family: 'contentfont';
+	src: url('/resources/font/NotoSansKR-Medium.woff') format('woff');
+}
 
-		@font-face {
-			font-family: 'cntfont';
-			src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
-		}
+@font-face {
+	font-family: 'cntfont';
+	src: url('/resources/font/NotoSansKR-Regular.woff') format('woff');
+}
 
-		.topp {
-			width: 100%;
-			height: 79px;
-			background-color: rgb(31, 35, 44);
-			display: flex;
-		}
+.topp {
+	width: 100%;
+	height: 79px;
+	background-color: rgb(31, 35, 44);
+	display: flex;
+}
 
-		.top_img {
-			width: 70px;
-			position: relative;
-			left: 90px;
-			top: 12px;
-		}
+.top_img {
+	width: 70px;
+	position: relative;
+	left: 90px;
+	top: 12px;
+}
 
-		.wnwp {
-			font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
-			color: white;
-			font-size: 23px;
-			font-weight: 600;
-			position: relative;
-			left: 47px;
-			top: 23px;
-		}
+.wnwp {
+	font-family: avenir-lt-w01_85-heavy1475544, sans-serif;
+	color: white;
+	font-size: 23px;
+	font-weight: 600;
+	position: relative;
+	left: 47px;
+	top: 23px;
+}
 
-		.menu {
-			font-size: large;
-			color: white;
-			background-color: transparent;
-			border: none;
-			padding-left: 250px;
-			font-family: 'btnfont';
-		}
+.menu {
+	font-size: large;
+	color: white;
+	background-color: transparent;
+	border: none;
+	padding-left: 250px;
+	font-family: 'btnfont';
+}
 
-		.info {
-			position: relative;
-			top: 5px;
-			left: 5px;
-			border-radius: 6px;
-			border: 1px solid #ccc;
-			border-bottom: 2px solid #ddd;
-			font-size: 12px;
-			padding: 5px;
-			background: #fff;
-			list-style: none;
-			margin: 0;
-		}
+.info {
+	position: relative;
+	top: 5px;
+	left: 5px;
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	border-bottom: 2px solid #ddd;
+	font-size: 12px;
+	padding: 5px;
+	background: #fff;
+	list-style: none;
+	margin: 0;
+}
 
-		.info:nth-of-type(n) {
-			border: 0;
-			box-shadow: 0px 1px 2px #888;
-		}
+.info:nth-of-type(n) {
+	border: 0;
+	box-shadow: 0px 1px 2px #888;
+}
 
-		.info .label {
-			display: inline-block;
-			width: 50px;
-		}
+.info .label {
+	display: inline-block;
+	width: 50px;
+}
 
-		.number {
-			font-weight: bold;
-			color: #00a0e9;
-		}
+.number {
+	font-weight: bold;
+	color: #00a0e9;
+}
 
-		p {
-			font-size: 18px;
-			width: 400px;
-		}
+p {
+	font-size: 18px;
+	width: 400px;
+}
 
-		.custom-btn {
-			width: 450px;
-			height: 50px;
-			margin-top: 30px;
-			padding: 10px 25px;
-			margin-left: 760px;
-			border: 2px solid #000;
-			font-family: 'Lato', sans-serif;
-			font-weight: 500;
-			font-size: 2rem;
-			background: transparent;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			position: relative;
-			display: inline-block;
-			border-radius: 5px;
-		}
+.custom-btn {
+	width: 450px;
+	height: 50px;
+	margin-top: 30px;
+	padding: 10px 25px;
+	margin-left: 760px;
+	border: 2px solid #000;
+	font-family: 'Lato', sans-serif;
+	font-weight: 500;
+	font-size: 2rem;
+	background: transparent;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+	display: inline-block;
+	border-radius: 5px;
+}
 
-		.btn-10 {
-			transition: all 0.3s ease;
-			overflow: hidden;
-		}
+.btn-10 {
+	transition: all 0.3s ease;
+	overflow: hidden;
+}
 
-		.btn-10:after {
-			position: absolute;
-			content: " ";
-			top: 0;
-			left: 0;
-			z-index: -1;
-			width: 100%;
-			height: 100%;
-			transition: all 0.3s ease;
-			-webkit-transform: scale(.1);
-			transform: scale(.1);
-		}
+.btn-10:after {
+	position: absolute;
+	content: " ";
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s ease;
+	-webkit-transform: scale(.1);
+	transform: scale(.1);
+}
 
-		.btn-10:hover {
-			color: #fff;
-		}
+.btn-10:hover {
+	color: #fff;
+}
 
-		.btn-10:hover:after {
-			background: #000;
-			-webkit-transform: scale(1);
-			transform: scale(1);
-		}
+.btn-10:hover:after {
+	background: #000;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+}
 
-		.sub {
-			margin-bottom: 10px;
-		}
-		.conttt{
-			text-align : center;
-		}
-	</style>
+.sub {
+	margin-bottom: 10px;
+}
+
+.conttt {
+	text-align: center;
+}
+</style>
 </head>
 
 <body>
 
 	<div class="topp">
-		<div style="width: fit-content; height:79px;">
+		<div style="width: fit-content; height: 79px;">
 			<img src="/resources/image/moon.png" alt="" class="top_img">
 		</div>
-		<span class="wnwp"><a href="/main">The
-				Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'" class="menu"
-			style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-		<button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
+		<span class="wnwp"><a href="/main">The Chaser</a></span>
+		<button type="button" onclick="location.href='/introduction'"
+			class="menu" style="padding-left: 400px;">회사소개</button>
+		<button type="button" onclick="location.href='/intro_video'"
+			class="menu">시연영상</button>
+		<button type="button" onclick="location.href='/product_use'"
+			class="menu">시작하기</button>
 	</div>
 
-	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
+	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1"
+		data-main-content="true">
 		<div class=main_content style="width: 100%; height: 100%;">
 			<div style="display: flex; margin-top: 50px; margin-left: 80px;">
 				<div style="margin-right: 50px;">
@@ -182,42 +189,60 @@
 					<br>
 					<p class="sub">사건제목 : ${episode.episode_title}</p>
 					<p class="sub">사건유형 : ${episode.episode_type}</p>
-					<p class="sub">발생일자 : <fmt:formatDate pattern="yyyy-MM-dd"
-										value="${episode.episode_time}" /></p>
-					<p class="sub">내용 : ${episode.episode_content } </p>
-					<br><br><br>
+					<p class="sub">
+						발생일자 :
+						<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${episode.episode_time}" />
+					</p>
+					<p class="sub">내용 : ${episode.episode_content }</p>
+					<br>
+					<br>
+					<br>
 					<p style="padding-left: 120px; font-size: 23px; padding-top: 50px;">인상착의</p>
 					<br>
-					<p class="sub">성별 : 
-					<c:if test="${appe.appe_gender.toString() eq 'M'}">남자</c:if>
-					<c:if test="${appe.appe_gender.toString() eq 'F'}">여자</c:if>
-					<c:if test="${appe.appe_gender.toString() eq '0'}">모름</c:if></p>
-					<p class="sub">연령대 : 
-					<c:if test="${appe.appe_age eq '1'}">학생</c:if>
-					<c:if test="${appe.appe_age eq '2'}">성인</c:if>
-					<c:if test="${appe.appe_age eq '3'}">노인</c:if></p>
-					<p class="sub">키 : 
-					<c:if test="${appe.appe_height eq '1'}">160cm미만</c:if>
-					<c:if test="${appe.appe_height eq '2'}">160~170cm미만</c:if>
-					<c:if test="${appe.appe_height eq '3'}">170~180cm미만</c:if>
-					<c:if test="${appe.appe_height eq '4'}">180cm이상</c:if></p>
+					<p class="sub">
+						성별 :
+						<c:if test="${appe.appe_gender.toString() eq 'M'}">남자</c:if>
+						<c:if test="${appe.appe_gender.toString() eq 'F'}">여자</c:if>
+						<c:if test="${appe.appe_gender.toString() eq '0'}">모름</c:if>
+					</p>
+					<p class="sub">
+						연령대 :
+						<c:if test="${appe.appe_age eq '1'}">학생</c:if>
+						<c:if test="${appe.appe_age eq '2'}">성인</c:if>
+						<c:if test="${appe.appe_age eq '3'}">노인</c:if>
+					</p>
+					<p class="sub">
+						키 :
+						<c:if test="${appe.appe_height eq '1'}">160cm미만</c:if>
+						<c:if test="${appe.appe_height eq '2'}">160~170cm미만</c:if>
+						<c:if test="${appe.appe_height eq '3'}">170~180cm미만</c:if>
+						<c:if test="${appe.appe_height eq '4'}">180cm이상</c:if>
+					</p>
 					<p class="sub">체형 : ${appe.appe_body }</p>
 					<p class="sub">상의 : ${appe.appe_top_type }</p>
 					<p class="sub">하의 : ${appe.appe_bottom_type }</p>
 					<p class="sub">소지품 : ${appe.appe_stuff_type }</p>
 					<br>
 				</div>
-				<div id="map" style="width: 50%; height: 700px; background-color: black; "></div>
-				<div style="margin-left: 40px; border : 2px solid; height : 100%;">
-					<p style="font-size: x-large; text-align: center; color: yellow; margin-top : 15px;">위치 : ${episode.episode_loc}</p>
+				<div id="map"
+					style="width: 50%; height: 700px; background-color: black;"></div>
+				<div style="margin-left: 40px; border: 2px solid; height: 100%;">
+					<p
+						style="font-size: x-large; text-align: center; color: yellow; margin-top: 15px;">위치
+						: ${episode.episode_loc}</p>
 					<p style="text-align: center;">찍힌 날짜 및 시간 : 2023-05-07 20:32</p>
 					<br>
-					
+
 				</div>
 			</div>
+			<p style="position: relative; left : 70.3%;">
+				<button onclick="removeCircles()">모두 지우기</button>
+				<br>
+			</p>
 			<form action="/episode/episode_end" method="post" id="form">
-			<button class="custom-btn btn-10" onclick="submitData()">결과저장</button>
-			<input type="hidden" value="${episode_idx }" name="episode_idx">
+				<button class="custom-btn btn-10" onclick="submitData()">결과저장</button>
+				<input type="hidden" value="${episode_idx }" name="episode_idx">
 			</form>
 		</div>
 	</main>
@@ -253,7 +278,7 @@
 
        
 </script>
-//console.log(${list[0]});
+
 	</script>
 	<script type="text/javascript">
 		function search() {
@@ -319,17 +344,17 @@
 			}  */
 		];
 
-<% List < ImageDTO > imgList = (List < ImageDTO >) request.getAttribute("list");
-		for (int i = 0; i < imgList.size(); i++) {%>
+<%List<ImageDTO> imgList = (List<ImageDTO>) request.getAttribute("list");
+for (int i = 0; i < imgList.size(); i++) {%>
 			/* positions = ${list[0]}; */
-			console.log(<%=i %>);
-			positions[<%= i %>] = {
+			console.log(<%=i%>);
+			positions[<%=i%>] = {
 				//인포위도우에 표시할 내용
 				title: `<%=imgList.get(i).getImg_nm()%>
 		`,
 					// 표시할 위도경도 좌표값
 					latlng : new kakao.maps.LatLng(
-	<%=imgList.get(i).getImg_xy() %>
+	<%=imgList.get(i).getImg_xy()%>
 		)
 			}
 	<%}%>
@@ -358,7 +383,7 @@
 			//     positions[i].title+'&eName='+positions[i+1].title+'">'+positions[i].title + '</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			// };
 
-			var iwContent = '<div style="width:100%;padding:5px;">'
+			var iwContent = '<div style="width:100%;padding:5px;font-size: medium;">'
 				+ positions[i].title + '</div>' // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			// 인포윈도우를 생성합니다
 			var infowindow = new kakao.maps.InfoWindow({

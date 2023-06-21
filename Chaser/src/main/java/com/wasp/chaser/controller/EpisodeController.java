@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.wasp.chaser.domain.PageDTO;
+import com.wasp.chaser.domain.WantedDTO;
 import com.wasp.chaser.domain.AppeDTO;
 import com.wasp.chaser.domain.Criteria;
 import com.wasp.chaser.domain.EpisodeDTO;
@@ -63,11 +64,20 @@ public class EpisodeController {
 	}
 	
 	// 사건 열기 and 상세보기에서 수정 GET
-	@RequestMapping(value={"/episode_desc", "/episode_modify"}, method = RequestMethod.GET)
+	@RequestMapping(value={"/episode_desc"}, method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
+		// 이미지 리스트 테이블 가져오기
+		model.addAttribute("list",Iservice.resultListAll(episode_idx));	
 
 	}
+	// 사건 열기 and 상세보기에서 수정 GET
+		@RequestMapping(value={ "/episode_modify"}, method = RequestMethod.GET)
+		public void modify(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
+			model.addAttribute("episode", service.read(episode_idx));
+			
+
+		}
  
 	// 사건 수정 POST
 	@RequestMapping(value="/episode_modify", method = RequestMethod.POST)
