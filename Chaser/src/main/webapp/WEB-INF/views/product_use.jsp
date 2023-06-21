@@ -194,9 +194,6 @@ body {
 	color: #fff;
 }
 
-#aaa:hover {
-	color: #0d6efd;
-}
 </style>
 </head>
 
@@ -307,7 +304,7 @@ body {
 
 					</span>
 					<div>
-						<video prelaod="metadata" src="./LG 시그니처 제품 소개 영상.mp4#t=0.8"
+						<video prelaod="metadata" src="/resources/image/howto_use.mp4"
 							controls style="width: 800px;"></video>
 						<p
 							style="font-size: x-large; padding-left: 400px; font-family: 'btnfont'; margin-top: 20px;">사용예시</p>

@@ -442,7 +442,8 @@ ul {
 						<div style="display: flex;">
 							<a
 								href="/analysis/analysis_result?episode_idx=${image.episode_idx}&img_idx=${image.img_idx}"
-								class="folder-link">${image.img_nm }</a> <a
+								class="folder-link">${image.img_nm }</a> 
+							<a
 								href="/analysis/image_delete?img_idx=${image.img_idx}"
 								style="position: relative; bottom: 10px;"><i
 								class="fa fa-trash-o" aria-hidden="true"

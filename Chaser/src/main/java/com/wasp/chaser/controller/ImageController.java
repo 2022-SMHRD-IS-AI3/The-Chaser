@@ -222,10 +222,14 @@ public class ImageController {
 
 	// 분석된 영상 리스트를 출력하는 메소드
 	@RequestMapping(value = "/analysis_result", method = RequestMethod.GET)
-	public void listAll(ImageDTO iDTO, Model model) throws Exception {
+	public String listAll(ImageDTO iDTO, Model model) throws Exception {
 		
 		// 사건에 대한 영상 리스트를 불러와서 담음
 		List<ImageDTO> imageList = service.afterListAll(iDTO.getEpisode_idx());
+		
+		if(imageList.size() == 0) {
+			return "redirect:/analysis/image_list?episode_idx="+iDTO.getEpisode_idx();
+		}
 		
 		// get 방식으로 받은 데이터에 조회할 img_idx가 없으면 전체 영상 리스트의 첫번째 img_idx를 담음
 		if(iDTO.getImg_idx() == null){
@@ -247,6 +251,8 @@ public class ImageController {
 		model.addAttribute("imageList", imageList);
 		model.addAttribute("result", result);
 		model.addAttribute("episode_idx", iDTO.getEpisode_idx());
+		
+		return "/analysis/analysis_result";
 	}
 	
 	@RequestMapping(value="/visualize_result", method = RequestMethod.GET)

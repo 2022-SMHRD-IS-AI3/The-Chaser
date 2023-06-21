@@ -7,9 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
-
 <head>
-
 	<meta charset="utf-8">
 	<title>Visualize_result Page</title>
 	<link rel="stylesheet" href="https://blog.codepen.io/documentation/exporting-pens/">
@@ -163,15 +161,14 @@
 <body>
 
 	<div class="topp">
-		<div style="width: fit-content; height:79px;">
-			<img src="/resources/image/moon.png" alt="" class="top_img">
+		<div style="width: fit-content; height: 79px;">
+		<img src="/resources/image/moon.png" alt="" class="top_img">
 		</div>
-		<span class="wnwp"><a href="/main">The
+		<span class="wnwp"><a href="main.html" class="move">The
 				Chaser</a></span>
-		<button type="button" onclick="location.href='/introduction'" class="menu"
-			style="padding-left: 400px;">회사소개</button>
-		<button type="button" onclick="location.href='/intro_video'" class="menu">시연영상</button>
-		<button type="button" onclick="location.href='/product_use'" class="menu">시작하기</button>
+		<button type="button" class="menu" style="padding-left: 400px;"><a href="/introduction">회사소개</a></button>
+		<button type="button" class="menu"><a href="/intro_video">시연영상</a></button>
+		<button type="button" id="Logsuccess" class="menu"><a href="/product_use">시작하기</a></button>
 	</div>
 
 	<main id="PAGES_CONTAINER" class="PAGES_CONTAINER" tabindex="-1" data-main-content="true">
@@ -208,12 +205,16 @@
 					<br>
 				</div>
 				<div id="map" style="width: 50%; height: 700px; background-color: black; "></div>
-				<div style="margin-left: 40px; border : 2px solid; height : 100%;">
-					<p style="font-size: x-large; text-align: center; color: yellow; margin-top : 15px;">위치 : ${episode.episode_loc}</p>
-					<p style="text-align: center;">찍힌 날짜 및 시간 : 2023-05-07 20:32</p>
-					<br>
-					
-				</div>
+					<div style="height:100%">
+						<c:forEach items="${list}" var="imgList">
+						<div style="margin-left: 40px; border : 2px solid; height : 100%; margin-bottom:30px;">
+							<p style="font-size: 2rem; font-weight:600; text-align: center; margin-top : 15px; overflow: hidden;
+	text-overflow: ellipsis; white-space: nowrap; margin-left:10px; margin-right:10px;">${imgList.img_nm}</p>
+							<p style="text-align: center;">찍힌 날짜 및 시간 : ${imgList.img_time}</p>
+							<br>
+						</div>
+						</c:forEach>
+					</div>
 			</div>
 			<form action="/episode/episode_end" method="post" id="form">
 			<button class="custom-btn btn-10" onclick="submitData()">결과저장</button>
@@ -253,8 +254,6 @@
 
        
 </script>
-//console.log(${list[0]});
-	</script>
 	<script type="text/javascript">
 		function search() {
 			var ip1 = document.getElementById('fst_data').value;
