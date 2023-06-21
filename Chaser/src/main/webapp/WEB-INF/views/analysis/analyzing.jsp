@@ -176,8 +176,8 @@ body {
             	}
             	
             	// 프레임 수에 3씩 곱해서 변수에 담음
-            	imgs_time = sumImgs * 3;
-            	img_time = imgs[cnt] * 3;
+            	imgs_time = sumImgs * 1;
+            	img_time = imgs[cnt] * 1;
             	
             	// 전체 프레임 수와 현재 프레임 수를 innerText
            		document.getElementById("total_img_frame").innerText = imgs[cnt];
@@ -199,7 +199,7 @@ body {
 		           		document.getElementById("total_img_time").innerText = parseInt(img_time/3600)+"시간 "+parseInt(img_time/60)+"분 "+(img_time%60)+"초";
            			}
 	           		document.getElementById("total_imgs_time").innerText = parseInt(imgs_time/3600)+"시간 "+parseInt(imgs_time/60)+"분 "+(imgs_time%60)+"초";           			
-           		}, 1000);
+           		}, 100);
            		
            		
             }
@@ -217,7 +217,7 @@ body {
 	           		img_frame = data.img_frame - sumPreImg;								// 다시 한번 더 프레임 계산
                		document.getElementById("imgs_frame").innerText = cnt;				// 전체 폴더에서 현재 폴더도 변경
                		
-           			img_time = imgs[cnt] * 3;		// 현재 폴더의 프레임의 * 3 => 한 프레임당 평균 3초 걸리니까
+           			img_time = imgs[cnt] * 1;		// 현재 폴더의 프레임의 * 3 => 한 프레임당 평균 3초 걸리니까
            			document.getElementById("total_img_time").innerText = parseInt(img_time/3600)+"시간 "+parseInt(img_time/60)+"분 "+(img_time%60)+"초";  // 시간계산해서 출력
             	}
             		

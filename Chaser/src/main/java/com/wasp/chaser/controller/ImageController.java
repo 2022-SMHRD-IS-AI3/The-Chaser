@@ -1,6 +1,8 @@
 package com.wasp.chaser.controller;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -163,6 +165,30 @@ public class ImageController {
 		log.info("image_insert.................................");
 		log.info(uploadList);
 		// 영상 선택 페이지에서 가져온 리스트를 ImageDTO에 담아서 insert시킴
+		
+		File ePath = new File("C:\\cctv\\", uploadList.getEpisode_idx() + "");
+		
+		if(ePath.exists() == false) {
+			ePath.mkdirs();
+		}
+		
+		File ePath2 = new File(ePath.toPath() + "");
+		
+		
+		for(UploadDTO uploadDTO1 : uploadList.getUploadList()) {
+			File newPath = new File(ePath2, uploadDTO1.getUploadFolder());
+			if(newPath.exists() == false) {
+				newPath.mkdir();
+			}
+			for(String file : uploadDTO1.getUploadFolderList()) {
+				
+				File newPath2 = new File(newPath, file.substring(file.lastIndexOf("\\")+1));
+				File origin = new File(file);
+				Files.copy(origin.toPath(), newPath2.toPath(), StandardCopyOption.REPLACE_EXISTING);
+			}
+		}
+		
+		
 		if (uploadList.getUploadList().size() > 0) {
 			for (UploadDTO uploadDTO : uploadList.getUploadList()) {
 				if (uploadDTO.getUploadFolderList() != null) {
@@ -175,7 +201,7 @@ public class ImageController {
 
 					// 원본 파일 주소를 담음
 					int idx = uploadDTO.getUploadFolderList().get(0).lastIndexOf("\\") + 1;
-					imageDTO.setOrigin_img_src(uploadDTO.getUploadFolderList().get(0).substring(0, idx));
+					imageDTO.setOrigin_img_src("C:\\cctv\\" + uploadList.getEpisode_idx() + "\\" + uploadDTO.getUploadFolder());
 
 					// 원본 파일 이름들을 담음
 					String nms = new String();
