@@ -2,6 +2,7 @@ package com.wasp.chaser.service;
 
 import java.util.List;
 
+import com.wasp.chaser.domain.EpisodeDTO;
 import com.wasp.chaser.domain.ImageDTO;
 
 public interface IImageService {

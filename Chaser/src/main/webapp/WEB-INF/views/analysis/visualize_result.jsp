@@ -210,17 +210,49 @@
 				<div id="map" style="width: 50%; height: 700px; background-color: black; "></div>
 				<div style="margin-left: 40px; border : 2px solid; height : 100%;">
 					<p style="font-size: x-large; text-align: center; color: yellow; margin-top : 15px;">위치 : ${episode.episode_loc}</p>
-					<p style="text-align: center;">찍힌 날짜 및 시간 : </p>
+					<p style="text-align: center;">찍힌 날짜 및 시간 : 2023-05-07 20:32</p>
 					<br>
 					
 				</div>
 			</div>
-			<button class="custom-btn btn-10"><a href="/episode/episode_list">결과 저장</a></button>
+			<form action="/episode/episode_end" method="post" id="form">
+			<button class="custom-btn btn-10" onclick="submitData()">결과저장</button>
+			<input type="hidden" value="${episode_idx }" name="episode_idx">
+			</form>
 		</div>
 	</main>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 	<script type="text/javascript">
+	
+	<script type="text/javascript">
+	const moveUrl = (url) => {
+		location.href = url;
+	}
+	
+	function submitData(){
+		console.log('testtttttttttttttttttttttt');
+	           
+	        	  if (confirm("정말 진행하시겠습니까??") == true){    //확인
+
+	        		  var form1 = document.getElementById('form')
+		        	  form1.submit();
+
+	        		 }else{   //취소
+
+	        		     return false;
+
+	        		 }
+	        		
+	        	  
+	          
+	          
+	          
+	    }   
+	
+
+       
+</script>
 //console.log(${list[0]});
 	</script>
 	<script type="text/javascript">

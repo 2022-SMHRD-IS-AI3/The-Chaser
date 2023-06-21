@@ -66,6 +66,7 @@ public class EpisodeController {
 	@RequestMapping(value={"/episode_desc", "/episode_modify"}, method = RequestMethod.GET)
 	public void read(@RequestParam("episode_idx") int episode_idx, Model model) throws Exception{
 		model.addAttribute("episode", service.read(episode_idx));
+
 	}
  
 	// 사건 수정 POST
@@ -114,12 +115,14 @@ public class EpisodeController {
 	
 	// 사건 종결 POST
 	@RequestMapping(value="/episode_end", method = RequestMethod.POST)
-	public void episode_end(EpisodeDTO eDto, Model model) throws Exception{
-		service.updateEnd(eDto);
+	public String episode_end(@RequestParam("episode_idx") int episode_idx,EpisodeDTO eDto, Model model) throws Exception{
 		log.info("사건종결");
 		log.info("episode_end POST...........");
+		model.addAttribute("episode", service.read(episode_idx));
 		eDto.setEpisode_flag('9');
-		service.insert(eDto);
+		service.updateEnd(eDto);
+		
+		return "redirect:/episode/episode_list";
 	}
 
 }

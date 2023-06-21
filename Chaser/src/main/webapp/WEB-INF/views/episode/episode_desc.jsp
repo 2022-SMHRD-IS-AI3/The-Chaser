@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="com.wasp.chaser.domain.ImageDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
@@ -150,12 +152,12 @@ body {
 							</dl>
 
 						</div>
-						<div class="cont">
-							<div style="float: right; margin-right: 130px;">
-								${episode.episode_content }</div>
-							<div class="map"
-								style="width: 600px; height: 505px; background-color: #000;"></div>
-						</div>
+						      <div class="cont" style="display: flex;">
+                     <div style="float: left; width: 70%;">
+                        ${episode.episode_content }</div>
+                     <div class="map"
+                        style="width: 600px; height: 505px; background-color: #000;"></div>
+                  </div>
 					</div>
 					<div class="bt_wrap">
 						<button
@@ -175,19 +177,20 @@ body {
 									수정</button>
 							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '2'}">
-								<button class="on" onclick="moveUrl('/analysis/image_list?episode_idx=${episode.episode_idx }')">동영상 선택완료
-									</button>
-										</c:when>
+								<button class="on"
+									onclick="moveUrl('/analysis/image_list?episode_idx=${episode.episode_idx }')">동영상
+									선택완료</button>
+							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '3'}">
-									<button class="on" onclick="moveUrl('/analysis/analysis_result?episode_idx=${episode.episode_idx }')">
-										동영상 분석완료
-									</button>
-										</c:when>
+								<button class="on"
+									onclick="moveUrl('/analysis/analysis_result?episode_idx=${episode.episode_idx }')">
+									동영상 분석완료</button>
+							</c:when>
 							<c:when test="${episode.episode_flag.toString() eq '9'}">
-									<button class="on" onclick="moveUrl('/analysis/visualize_result?episode_idx=${episode.episode_idx }')">
-										사건 종결
-										</button>
-										</c:when>
+								<button class="on"
+									onclick="moveUrl('/analysis/visualize_result?episode_idx=${episode.episode_idx }')">
+									사건 종결</button>
+							</c:when>
 							<c:otherwise>DB Error02</c:otherwise>
 						</c:choose>
 
@@ -232,6 +235,18 @@ body {
 					pageId : firstPageId
 				}
 			})
+		}
+	</script>
+
+	<script type="text/javascript">
+		function search() {
+			var ip1 = document.getElementById('fst_data').value;
+			var ip2 = document.getElementById('sec_data').value;
+			console.log(ip1);
+			console.log(ip2);
+			var url = "https://map.kakao.com/?sName=" + ip1 + "&eName=" + ip2;
+			window.open(url);
+
 		}
 	</script>
 

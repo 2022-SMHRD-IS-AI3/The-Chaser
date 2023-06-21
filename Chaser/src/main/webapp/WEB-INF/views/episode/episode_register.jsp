@@ -290,7 +290,6 @@ option {
 											<option value="살인">살인</option>
 											<option value="유괴">유괴</option>
 											<option value="납치">납치</option>
-
 										</select>
 									</dd>
 								</dl>
