@@ -167,7 +167,7 @@ p {
 		<img src="/resources/image/moon.png" alt="" class="top_img">
 		</div>
 
-		<span class="wnwp"><a href="main.html" class="move">The
+		<span class="wnwp"><a href="/main" class="move">The
 				Chaser</a></span>
 		<button type="button" class="menu" style="padding-left: 400px;"><a href="/introduction">회사소개</a></button>
 		<button type="button" class="menu"><a href="/intro_video">시연영상</a></button>
