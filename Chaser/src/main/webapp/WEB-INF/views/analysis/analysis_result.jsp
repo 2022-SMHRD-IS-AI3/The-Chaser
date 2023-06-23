@@ -20,8 +20,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<link rel="stylesheet"
-	href="https://blog.codepen.io/documentation/exporting-pens/">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -460,7 +458,7 @@ ul {
 					<span class="target" id="accordion"></span>
 					<c:forEach items="${result.wantedDTOList}" var="wanted">
 						<c:set var="i" value="${i+1 }" />
-						<li class="accordion__li"><span class="target"
+						<li class="accordion__li" <c:if test="${wanted.w_flag.toString() eq 'Y'}">style="box-shadow:0 0 10px grey"; </c:if>><span class="target"
 							id="accordion${i}"></span> <a href="#accordion${i}"
 							class="open-accordion" title="open">
 								<div>
@@ -514,8 +512,14 @@ ul {
 								</button>
 							</p>
 							<p class="accordion__content">
+								<c:if test="${wanted.w_flag.toString() eq 'N' }">
 								<button type="button" class="btn_confirm"
-									onclick="confirmData(this)">확정</button>
+									onclick="confirmData(this, ${wanted.w_idx})">확정</button>
+								</c:if>
+								<c:if test="${wanted.w_flag.toString() eq 'Y' }">
+								<button type="button" class="btn_confirm"
+									onclick="confirmData(this, ${wanted.w_idx})">확정취소</button>
+								</c:if>
 							</p></li>
 					</c:forEach>
 				</ul>
@@ -537,19 +541,38 @@ ul {
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
-		function confirmData(button) {
+		function confirmData(button, w_idx) {
 			var buttonText = button.innerHTML;
 			var liElement = button.parentNode.parentNode; // 확정 버튼이 속한 li 태그 선택
 			if (buttonText === "확정") {
 				button.innerHTML = "확정취소";
 				liElement.style.boxShadow = "0 0 10px grey"; // box-shadow 추가
+				updateWanted(w_idx, 'Y');
 				// 저장 기능을 여기에 추가
 			} else if (buttonText === "확정취소") {
 				button.innerHTML = "확정";
 				liElement.style.boxShadow = ""; // box-shadow 제거
-				// 저장 취소 기능을 여기에 추가
+				updateWanted(w_idx, 'N');
 			}
 		}
+		
+		function updateWanted(w_idx, w_flag){
+			$.ajax({
+				url : "/analysis/wanted_modify",
+				type : "POST",
+				data : {
+					w_idx : w_idx,
+					w_flag : w_flag
+				},
+				success : function(){
+					alert("확정 성공");
+				},
+				error : function(){
+					alert("실패");
+				}
+			})
+		}
+		
 	</script>
 	<script>
 		// 비디오 엘리먼트와 프로그레스 바 엘리먼트를 가져옵니다.

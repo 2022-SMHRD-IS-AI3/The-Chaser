@@ -237,17 +237,23 @@ p {
 				<button onclick="removeCircles()">모두 지우기</button>
 				<br>
 			</p>
-			<form action="/episode/episode_end" method="post" id="form">
-				<button class="custom-btn btn-10" onclick="submitData()">결과저장</button>
-				<input type="hidden" value="${episode_idx }" name="episode_idx">
-			</form>
+			<c:choose>
+				<c:when test="${episode.episode_flag.toString() ne '9'}">
+					<form action="/episode/episode_end" method="post" id="form">
+						<button class="custom-btn btn-10" onclick="submitData()">최종 결과 저장</button>
+						<input type="hidden" value="${episode_idx }" name="episode_idx">
+					</form>
+				</c:when>
+				<c:otherwise>
+					<a href="/episode/episode_list"><button class="custom-btn btn-10">사건 목록</button></a>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</main>
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	c85ff3c34864a0b1cc76a56f7ada7356&libraries=services"></script>
 	<script type="text/javascript">
 	
-	<script type="text/javascript">
 	const moveUrl = (url) => {
 		location.href = url;
 	}
@@ -272,8 +278,6 @@ p {
 	          
 	    }   
 	
-
-       
 </script>
 
 	<script type="text/javascript">
@@ -297,12 +301,6 @@ p {
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
-
-		/* var titList=[];
-		for(var i=0; i<${fn:length(list)}; i++){
-			titList[i]=list[i].img_nm;
-		} */
-
 		// 마커를 표시할 위치와 title 객체 배열입니다 
 		var positions = [
 
@@ -313,31 +311,7 @@ p {
 				// 표시할 위도경도 좌표값
 				latlng: new kakao.maps.LatLng(35.14838454247798, 126.91838510907495)
 			},
-			{         
-				title : "광주광역시 동구 중앙로196번길 35",
-				latlng: new kakao.maps.LatLng(35.1484931914149, 126.91910929651485)
-			},
-			{        
-				title : "광주광역시 동구 예술길 38",
-				latlng: new kakao.maps.LatLng(35.14883825585116, 126.91955066768315)
-			},
-			{        
-				title : "광주광역시 동구 예술길 31-15",
-				latlng: new kakao.maps.LatLng(35.14979168613704, 126.91991462661997)
-			},
-			{        
-				title : "광주광역시 동구 중앙로196번길 13",
-				latlng: new kakao.maps.LatLng(35.14992516754839, 126.91734923619617)
-			},{        
-				title : "광주광역시 동구 중앙로 207",
-				latlng: new kakao.maps.LatLng(35.15152244332673, 126.91678517345801)
-			},{        
-				title : "광주광역시 동구 제봉로 183-5",
-				latlng: new kakao.maps.LatLng(35.152480109927836, 126.9167430432406)
-			},{        
-				title : "광주광역시 동구 구성로204번길 15-7",
-				latlng: new kakao.maps.LatLng(35.15286045736732, 126.91605124548794)
-			}  */
+			*/
 		];
 
 <%List<ImageDTO> imgList = (List<ImageDTO>) request.getAttribute("list");
@@ -695,11 +669,6 @@ for (int i = 0; i < imgList.size(); i++) {%>
 		polyline.setMap(map);
 	</script>
 
-	<script type="text/javascript">
-		const moveUrl = (url) => {
-			location.href = url;
-		}
-	</script>
 
 </body>
 

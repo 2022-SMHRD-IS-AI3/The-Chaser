@@ -572,9 +572,9 @@ body {
 				</div>
 			</div>
 			<button class="ekdma btn-7">
-				<span><a href="#"
+				<a href="#"
 					style="text-decoration-line: none; color: black;"
-					onclick="document.getElementById('form1').submit();">분석시작</a></span>
+					onclick="document.getElementById('form1').submit();"><span>분석시작</span></a>
 			</button>
 		</div>
 

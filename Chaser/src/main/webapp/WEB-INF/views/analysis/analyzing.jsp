@@ -135,12 +135,15 @@ body {
     			},
     			success : function(){
     				if(isSuccess == true){
-    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";    					
+	    				alert("분석이 완료되었습니다.");
+	    				location.href = "/analysis/analysis_result?episode_idx=${episode_idx}";    					
+    				}else{
+        				alert("분석 서버 접속에 실패했습니다.");
+    					location.href="/episode/episode_desc?episode_idx=${episode_idx}";
     				}
     			},
     			error : function(){
-    				alert("실패");
-    				location.href="/episode/episode_desc?episode_idx=${episode_idx}";
+    				alert("분석 서버에서 문제가 생겼습니다.");
     			}
     		})
     	})
@@ -176,8 +179,8 @@ body {
             	}
             	
             	// 프레임 수에 3씩 곱해서 변수에 담음
-            	imgs_time = sumImgs * 3;
-            	img_time = imgs[cnt] * 3;
+            	imgs_time = sumImgs * 1;
+            	img_time = imgs[cnt] * 1;
             	
             	// 전체 프레임 수와 현재 프레임 수를 innerText
            		document.getElementById("total_img_frame").innerText = imgs[cnt];
@@ -198,8 +201,12 @@ body {
            			if(img_time >= 0 && isSuccess == false){
 		           		document.getElementById("total_img_time").innerText = parseInt(img_time/3600)+"시간 "+parseInt(img_time/60)+"분 "+(img_time%60)+"초";
            			}
-	           		document.getElementById("total_imgs_time").innerText = parseInt(imgs_time/3600)+"시간 "+parseInt(imgs_time/60)+"분 "+(imgs_time%60)+"초";           			
-           		}, 1000);
+           			
+           			if(imgs_time >= 0){
+		           		document.getElementById("total_imgs_time").innerText = parseInt(imgs_time/3600)+"시간 "+parseInt(imgs_time/60)+"분 "+(imgs_time%60)+"초";           			
+           			}
+           				
+           		}, 100);
            		
            		
             }
@@ -217,7 +224,7 @@ body {
 	           		img_frame = data.img_frame - sumPreImg;								// 다시 한번 더 프레임 계산
                		document.getElementById("imgs_frame").innerText = cnt;				// 전체 폴더에서 현재 폴더도 변경
                		
-           			img_time = imgs[cnt] * 3;		// 현재 폴더의 프레임의 * 3 => 한 프레임당 평균 3초 걸리니까
+           			img_time = imgs[cnt] * 1;		// 현재 폴더의 프레임의 * 3 => 한 프레임당 평균 3초 걸리니까
            			document.getElementById("total_img_time").innerText = parseInt(img_time/3600)+"시간 "+parseInt(img_time/60)+"분 "+(img_time%60)+"초";  // 시간계산해서 출력
             	}
             		
@@ -226,11 +233,11 @@ body {
             	elem.style.width = img_frame / imgs[cnt] * 100 + '%'; 										// 현재 폴더의 진행도에 바도 변경
             	
             	// 100까지찼다면 0.5초 후에 0으로 보여주기
-            	if(parseInt(img_frame / imgs[cnt] * 100) == 100){
+            	if(parseInt(img_frame / imgs[cnt] * 100) == 100 && cnt != imgs.length-1){
             		setTimeout(function() {
 		            	document.getElementById("label").innerHTML = 0  + '%';
 		            	elem.style.width = 0 + '%';
-            			}, 500);
+            			}, 50);
             	}
             	
             	// 전체 폴더 상태도 변화

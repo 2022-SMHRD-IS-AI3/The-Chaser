@@ -18,6 +18,6 @@ public class CommonExceptionAdvice {
 
       log.info("model................{}", model);
 
-      return "error_page";
+      return "redirect:/episode/episode_list";
    }
 }
