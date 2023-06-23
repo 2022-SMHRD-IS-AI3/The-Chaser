@@ -233,7 +233,7 @@ p {
 						</c:forEach>
 					</div>
 			</div>
-			<p style="position: relative; left : 68.3%; bottom : 45px; background-color : transparent;">
+			<p style="position: relative; left : 68.36%; bottom : 45px; background-color : transparent;">
 				<button onclick="removeCircles()">모두 지우기</button>
 				<br>
 			</p>
