@@ -34,6 +34,7 @@
 ![usecase](https://github.com/2022-SMHRD-IS-AI3/The-Chaser/assets/125546505/962937bd-2eab-4a40-ba5f-eaa7dd692137)
 
 # 5. WEB페이지
+
 * 메인 페이지
 ![스크린샷 2023-07-04 092132](https://github.com/2022-SMHRD-IS-AI3/The-Chaser/assets/125546505/5886cfbf-0362-4566-b620-dc882a0eea2f)
 
